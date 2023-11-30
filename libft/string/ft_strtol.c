@@ -6,28 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:42:38 by reasuke           #+#    #+#             */
-/*   Updated: 2023/10/12 19:02:45 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/11/30 19:39:07 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
 #include "libft.h"
-
-#define LOWER_BASE "0123456789abcdefghijklmnopqrstuvwxyz"
-#define UPPER_BASE "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#define MAX_OVERFLOW 0b01
-#define MIN_OVERFLOW 0b10
-
-typedef struct s_conv_spec{
-	const char	*str;
-	char		**endptr;
-	long		nb;
-	int			base;
-	int			sign;
-	int			digit_cnt;
-	int			overflow;
-}	t_conv_spec;
 
 static int	parse_prefix(t_conv_spec *sp)
 {

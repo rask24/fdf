@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_chmax.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 19:22:37 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/09 15:35:01 by reasuke          ###   ########.fr       */
+/*   Created: 2023/11/30 19:53:14 by reasuke           #+#    #+#             */
+/*   Updated: 2023/11/30 20:28:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new_lst)
+bool	ft_chmax(int *a, int b)
 {
-	if (!lst)
-		return ;
-	if (!*lst)
+	if (*a < b)
 	{
-		*lst = new_lst;
-		return ;
+		*a = b;
+		return (true);
 	}
-	ft_lstlast(*lst)->next = new_lst;
+	return (false);
 }

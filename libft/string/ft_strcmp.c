@@ -5,12 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 16:42:10 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/26 16:47:07 by reasuke          ###   ########.fr       */
+/*   Created: 2023/08/14 19:24:43 by reasuke           #+#    #+#             */
+/*   Updated: 2023/11/30 20:20:13 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
@@ -19,5 +17,5 @@ int	ft_strcmp(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	return ((unsigned int)*s1 - (unsigned int)*s2);
 }

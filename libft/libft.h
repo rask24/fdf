@@ -6,30 +6,46 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:54:41 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/28 22:29:09 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/11/30 20:42:16 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
-# include <stddef.h>
-# include <stdint.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <stdbool.h>
+# include <stddef.h>
+# include <stdint.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-# define OK 0
+# define OK    0
 # define ERROR -1
+
+# define LOWER_BASE "0123456789abcdefghijklmnopqrstuvwxyz"
+# define UPPER_BASE "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define MAX_OVERFLOW 0b01
+# define MIN_OVERFLOW 0b10
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_conv_spec
+{
+	const char	*str;
+	char		**endptr;
+	long		nb;
+	int			base;
+	int			sign;
+	int			digit_cnt;
+	int			overflow;
+}	t_conv_spec;
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -53,7 +69,7 @@ void	*ft_free_strs(char **strs);
 char	*ft_itoa(int n);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
-int		ft_strcmp(const char *s1, const char *s2);
+int		*ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *s1);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(const char *s1, const char *s2);
@@ -73,8 +89,8 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new_lst);
+void	ft_lstadd_front(t_list **lst, t_list *new_lst);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*f)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
@@ -87,8 +103,11 @@ int		ft_printf(const char *format, ...);
 
 char	*get_next_line(int fd);
 
-char	**file_to_line_array(char *file_path);
+char	**file_to_line_array(char *file_name);
 
-void	ft_swap(int *a, int *b);
+int		ft_max(int a, int b);
+int		ft_min(int a, int b);
+bool	ft_chmax(int *a, int b);
+bool	ft_chmin(int *a, int b);
 
 #endif
