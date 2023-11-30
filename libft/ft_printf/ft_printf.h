@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:20:27 by reasuke           #+#    #+#             */
-/*   Updated: 2023/10/17 15:42:54 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/11/10 22:27:55 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+# include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
-# include <stdbool.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # include "libft.h"
 

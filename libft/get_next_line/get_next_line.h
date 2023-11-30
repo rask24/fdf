@@ -6,17 +6,17 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:56:56 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/03 15:21:15 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/11/10 22:04:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stddef.h>
 # include <stdbool.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
