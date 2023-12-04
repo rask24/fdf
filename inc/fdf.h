@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/28 22:41:02 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/04 21:40:56 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 # define NOT_SPECIFIED -1
 
-# define ENLARGE_RATE_XY 40
+# define DEFAULT_MAP_SCALE 0.95
 # define ENLARGE_RATE_Z 2
 # define ENLARGE_X 0b001
 # define ENLARGE_Y 0b010

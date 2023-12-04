@@ -32,7 +32,7 @@ void	_translate_points(t_map *map, int dx, int dy, int dz)
 	}
 }
 
-void	_enlarge_map(t_map *map, int rate, int axis_flag)
+void	_scale_points(t_map *map, double scale_factor, int axis_flag)
 {
 	int	x;
 	int	y;
@@ -44,11 +44,11 @@ void	_enlarge_map(t_map *map, int rate, int axis_flag)
 		while (x < map->width)
 		{
 			if (axis_flag & ENLARGE_X)
-				map->points[y][x].x *= rate;
+				map->points[y][x].x *= scale_factor;
 			if (axis_flag & ENLARGE_Y)
-				map->points[y][x].y *= rate;
+				map->points[y][x].y *= scale_factor;
 			if (axis_flag & ENLARGE_Z)
-				map->points[y][x].z *= rate;
+				map->points[y][x].z *= scale_factor;
 			x++;
 		}
 		y++;
@@ -109,19 +109,35 @@ void	_rotete_z_axis(t_map *map, double theta)
 	}
 }
 
+double	_calc_map_scale(t_map *map)
+{
+	double	x_rate;
+	double	y_rate;
+
+	x_rate = (WIN_WIDTH * DEFAULT_MAP_SCALE * sqrt(2))
+		/ (map->width + map->height);
+	y_rate = (WIN_HEIGHT * DEFAULT_MAP_SCALE * sqrt(6))
+		/ (map->width + map->height);
+	if (x_rate < y_rate)
+		return (x_rate);
+	return (y_rate);
+}
+
 void	convert_points_to_isometric(t_map *map)
 {
-	int	center_map_x;
-	int	center_map_y;
-	int	center_window_x;
-	int	center_window_y;
+	int		center_map_x;
+	int		center_map_y;
+	int		center_window_x;
+	int		center_window_y;
+	double	map_scale;
 
-	center_map_x = (map->width - 1) * ENLARGE_RATE_XY / 2;
-	center_map_y = (map->height - 1) * ENLARGE_RATE_XY / 2;
+	map_scale = _calc_map_scale(map);
+	center_map_x = (map->width - 1) * map_scale / 2;
+	center_map_y = (map->height - 1) * map_scale / 2;
 	center_window_x = (WIN_WIDTH - 1) / 2;
 	center_window_y = (WIN_HEIGHT - 1) / 2;
-	_enlarge_map(map, ENLARGE_RATE_XY, ENLARGE_X | ENLARGE_Y);
-	_enlarge_map(map, ENLARGE_RATE_Z, ENLARGE_Z);
+	_scale_points(map, map_scale, ENLARGE_X | ENLARGE_Y);
+	_scale_points(map, ENLARGE_RATE_Z, ENLARGE_Z);
 	_translate_points(map, -center_map_x, -center_map_y, 0);
 	_rotete_z_axis(map, M_PI_4);
 	_rotete_x_axis(map, atan(sqrt(2)));
