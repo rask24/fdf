@@ -12,103 +12,6 @@
 
 #include "fdf.h"
 
-void	_translate_points(t_map *map, int dx, int dy, int dz)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			map->points[y][x].x += dx;
-			map->points[y][x].y += dy;
-			map->points[y][x].z += dz;
-			x++;
-		}
-		y++;
-	}
-}
-
-void	_scale_points(t_map *map, double scale_factor, int axis_flag)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			if (axis_flag & ENLARGE_X)
-				map->points[y][x].x *= scale_factor;
-			if (axis_flag & ENLARGE_Y)
-				map->points[y][x].y *= scale_factor;
-			if (axis_flag & ENLARGE_Z)
-				map->points[y][x].z *= scale_factor;
-			x++;
-		}
-		y++;
-	}
-}
-
-void	_rotete_x_axis(t_map *map, double theta)
-{
-	int		x;
-	int		y;
-	int		tmp_y;
-	double	cos_theta;
-	double	sin_theta;
-
-	cos_theta = cos(theta);
-	sin_theta = sin(theta);
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			tmp_y = map->points[y][x].y;
-			map->points[y][x].y = cos_theta * tmp_y
-				- sin_theta * map->points[y][x].z;
-			map->points[y][x].z = sin_theta * tmp_y
-				+ cos_theta * map->points[y][x].z;
-			x++;
-		}
-		y++;
-	}
-}
-
-void	_rotete_z_axis(t_map *map, double theta)
-{
-	int		x;
-	int		y;
-	int		tmp_x;
-	double	cos_theta;
-	double	sin_theta;
-
-	cos_theta = cos(theta);
-	sin_theta = sin(theta);
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			tmp_x = map->points[y][x].x;
-			map->points[y][x].x = cos_theta * tmp_x
-				- sin_theta * map->points[y][x].y;
-			map->points[y][x].y = sin_theta * tmp_x
-				+ cos_theta * map->points[y][x].y;
-			x++;
-		}
-		y++;
-	}
-}
-
 double	_calc_map_scale(t_map *map)
 {
 	double	x_rate;
@@ -136,10 +39,10 @@ void	convert_points_to_isometric(t_map *map)
 	center_map_y = (map->height - 1) * map_scale / 2;
 	center_window_x = (WIN_WIDTH - 1) / 2;
 	center_window_y = (WIN_HEIGHT - 1) / 2;
-	_scale_points(map, map_scale, ENLARGE_X | ENLARGE_Y);
-	_scale_points(map, ENLARGE_RATE_Z, ENLARGE_Z);
-	_translate_points(map, -center_map_x, -center_map_y, 0);
-	_rotete_z_axis(map, M_PI_4);
-	_rotete_x_axis(map, atan(sqrt(2)));
-	_translate_points(map, center_window_x, center_window_y, 0);
+	scale_points(map, map_scale, ENLARGE_X | ENLARGE_Y);
+	scale_points(map, ENLARGE_RATE_Z, ENLARGE_Z);
+	translate_points(map, -center_map_x, -center_map_y, 0);
+	rotete_points_z(map, M_PI_4);
+	rotete_points_x(map, atan(sqrt(2)));
+	translate_points(map, center_window_x, center_window_y, 0);
 }

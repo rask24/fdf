@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/04 21:40:56 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/04 22:09:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ void	convert_points_to_isometric(t_map *map);
 void	draw_points(t_map map);
 
 void	exit_with_error(char *message);
+
+void	translate_points(t_map *map, int dx, int dy, int dz);
+void	scale_points(t_map *map, double scale_factor, int axis_flag);
+void	rotete_points_x(t_map *map, double theta);
+void	rotete_points_z(t_map *map, double theta);
 
 void	set_mlx(t_mlx *mlx);
 int		exit_window(void);

@@ -10,6 +10,7 @@ SRCS            = $(SRCS_DIR)/main.c \
 					$(SRCS_DIR)/check_map.c \
 					$(SRCS_DIR)/convert_points_to_isometric.c \
 					$(SRCS_DIR)/draw_points.c \
+					$(SRCS_DIR)/point_operations.c \
 					$(SRCS_DIR)/mlx_utils.c \
 					$(SRCS_DIR)/error.c
 OBJS            = $(SRCS:.c=.o)
