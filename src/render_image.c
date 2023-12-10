@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_points.c                                      :+:      :+:    :+:   */
+/*   render_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 18:51:11 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/28 21:24:28by reasuke          ###   ########.fr       */
+/*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
+/*   Updated: 2023/12/10 14:09:19 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// FIXME: norm
 void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 {
 	bool	steep;
@@ -65,7 +66,7 @@ void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 	}
 }
 
-void	_draw_line(t_map map, t_mlx *mlx)
+void	_connet_points_grid_image(t_map map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
@@ -94,12 +95,12 @@ void	_draw_line(t_map map, t_mlx *mlx)
 	}
 }
 
-void	draw_points(t_map map)
+void	render_image(t_map map)
 {
 	t_mlx	mlx;
 
 	set_mlx(&mlx);
-	_draw_line(map, &mlx);
+	_connet_points_grid_image(map, &mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
 	mlx_hook(mlx.win_ptr, ON_KEYDOWN, 1L << 0, handle_keydown, NULL);
 	mlx_hook(mlx.win_ptr, ON_DESTROY, 0L, exit_window, NULL);
