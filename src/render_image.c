@@ -6,11 +6,21 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:09:19 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:14:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	_plot_point_to_image(t_mlx *mlx, int x, int y, int color)
+{
+	int		center_window_x;
+	int		center_window_y;
+
+	center_window_x = (WIN_WIDTH - 1) / 2;
+	center_window_y = (WIN_HEIGHT - 1) / 2;
+	my_mlx_pixel_put(mlx, x + center_window_x, y + center_window_y, color);
+}
 
 // FIXME: norm
 void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
@@ -53,9 +63,9 @@ void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 	while (x <= p1.x)
 	{
 		if (steep)
-			my_mlx_pixel_put(mlx, y, x, color);
+			_plot_point_to_image(mlx, y, x, color);
 		else
-			my_mlx_pixel_put(mlx, x, y, color);
+			_plot_point_to_image(mlx, x, y, color);
 		error -= dy;
 		if (error < 0)
 		{
