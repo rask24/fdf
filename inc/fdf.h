@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:33:09 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:35:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define WIN_WIDTH  1080
+# define WIN_WIDTH  1200
 # define WIN_HEIGHT 800
 
 # define NOT_SPECIFIED -1
@@ -64,6 +64,8 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
+	int		min_val;
+	int		max_val;
 	t_point	**points;
 }	t_map;
 

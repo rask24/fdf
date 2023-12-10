@@ -83,6 +83,8 @@ void	_set_points(t_map *map, char **line_array)
 		y++;
 	}
 	y = 0;
+	map->min_val = INT_MAX;
+	map->max_val = INT_MIN;
 	while (y < map->height)
 	{
 		x = 0;
@@ -93,6 +95,8 @@ void	_set_points(t_map *map, char **line_array)
 				map->points[y][x].color = 0xAABBC;
 			else if (map->points[y][x].color == NOT_SPECIFIED)
 				map->points[y][x].color = 0xDDDDDD;
+			ft_chmin(&map->min_val, map->points[y][x].z);
+			ft_chmax(&map->max_val, map->points[y][x].z);
 			x++;
 		}
 		y++;
