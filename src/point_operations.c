@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:07:39 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/04 22:09:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:33:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	scale_points(t_map *map, double scale_factor, int axis_flag)
 		x = 0;
 		while (x < map->width)
 		{
-			if (axis_flag & ENLARGE_X)
+			if (axis_flag & SCALE_X)
 				map->points[y][x].x *= scale_factor;
-			if (axis_flag & ENLARGE_Y)
+			if (axis_flag & SCALE_Y)
 				map->points[y][x].y *= scale_factor;
-			if (axis_flag & ENLARGE_Z)
+			if (axis_flag & SCALE_Z)
 				map->points[y][x].z *= scale_factor;
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:14:54 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:23:44 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 	}
 }
 
-void	_connet_points_grid_image(t_map map, t_mlx *mlx)
+void	_connect_points_grid_image(t_map map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
@@ -110,7 +110,7 @@ void	render_image(t_map map)
 	t_mlx	mlx;
 
 	set_mlx(&mlx);
-	_connet_points_grid_image(map, &mlx);
+	_connect_points_grid_image(map, &mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
 	mlx_hook(mlx.win_ptr, ON_KEYDOWN, 1L << 0, handle_keydown, NULL);
 	mlx_hook(mlx.win_ptr, ON_DESTROY, 0L, exit_window, NULL);

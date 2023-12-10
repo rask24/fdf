@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 13:56:13 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:33:09 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@
 # define NOT_SPECIFIED -1
 
 # define DEFAULT_MAP_SCALE 0.95
-# define ENLARGE_RATE_Z 2
-# define ENLARGE_X 0b001
-# define ENLARGE_Y 0b010
-# define ENLARGE_Z 0b100
+# define DEFAULT_Z_SCALE 2
+# define SCALE_X 0b001
+# define SCALE_Y 0b010
+# define SCALE_Z 0b100
 
 # define ON_KEYDOWN 2
 # define ON_DESTROY 17

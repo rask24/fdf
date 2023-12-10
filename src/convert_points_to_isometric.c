@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:28:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:11:11 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:33:19 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	convert_points_to_isometric(t_map *map)
 	map_scale = _calc_map_scale(map);
 	center_map_x = (map->width - 1) * map_scale / 2;
 	center_map_y = (map->height - 1) * map_scale / 2;
-	scale_points(map, map_scale, ENLARGE_X | ENLARGE_Y);
-	scale_points(map, ENLARGE_RATE_Z, ENLARGE_Z);
+	scale_points(map, map_scale, SCALE_X | SCALE_Y);
+	scale_points(map, DEFAULT_Z_SCALE, SCALE_Z);
 	translate_points(map, -center_map_x, -center_map_y, 0);
 	rotete_points_z(map, M_PI_4);
 	rotete_points_x(map, atan(sqrt(2)));
