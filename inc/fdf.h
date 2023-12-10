@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/04 22:09:06 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 13:56:13 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	extract_map_info(t_map *map, char *file_path);
 
 void	convert_points_to_isometric(t_map *map);
 
-void	draw_points(t_map map);
+void	render_image(t_map map);
 
 void	exit_with_error(char *message);
 
