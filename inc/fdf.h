@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:35:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/11 12:48:12 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include "libft.h"
 # include "mlx.h"
 
+# include "mlx_config.h"
+
 # define WIN_WIDTH  1200
 # define WIN_HEIGHT 800
 
@@ -35,11 +37,6 @@
 # define SCALE_X 0b001
 # define SCALE_Y 0b010
 # define SCALE_Z 0b100
-
-# define ON_KEYDOWN 2
-# define ON_DESTROY 17
-
-# define KEY_ESCAPE 65307
 
 typedef struct s_mlx
 {
