@@ -6,19 +6,19 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:13:20 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/11 13:16:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:25:07 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	_exit_window(void)
+static int	_exit_window(void)
 {
 	exit(0);
 	return (0);
 }
 
-int	_handle_keydown(int keycode)
+static int	_handle_keydown(int keycode)
 {
 	if (keycode == KEY_ESCAPE)
 		_exit_window();

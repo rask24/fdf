@@ -6,13 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:18:59 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:01:52 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:24:51 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	_set_map_size(t_map *map, char **line_array)
+static void	_set_map_size(t_map *map, char **line_array)
 {
 	char	*first_line;
 
@@ -31,7 +31,7 @@ void	_set_map_size(t_map *map, char **line_array)
 		map->height++;
 }
 
-void	_alloc_points(t_map *map)
+static void	_alloc_points(t_map *map)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ void	_alloc_points(t_map *map)
 	}
 }
 
-void	_set_points_fixed_y(t_map *map, int y, char *line)
+static void	_set_points_fixed_y(t_map *map, int y, char *line)
 {
 	int		x;
 	bool	flag_color;
@@ -71,7 +71,7 @@ void	_set_points_fixed_y(t_map *map, int y, char *line)
 	}
 }
 
-void	_set_points(t_map *map, char **line_array)
+static void	_set_points(t_map *map, char **line_array)
 {
 	int		x;
 	int		y;
