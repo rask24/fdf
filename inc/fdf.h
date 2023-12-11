@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/11 13:15:59 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:30:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	extract_map_info(t_map *map, char *file_path);
 
 void	convert_points_to_isometric(t_map *map);
 
-void	render_image(t_map map);
+void	render_image(t_map map, t_mlx mlx);
 
 void	exit_with_error(char *message);
 
@@ -83,9 +83,9 @@ void	scale_points(t_map *map, double scale_factor, int axis_flag);
 void	rotete_points_x(t_map *map, double theta);
 void	rotete_points_z(t_map *map, double theta);
 
-void	handle_events(t_mlx *mlx);
+void	handle_events(t_mlx mlx);
 
 void	set_mlx(t_mlx *mlx);
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+void	my_mlx_pixel_put(t_mlx mlx, int x, int y, int color);
 
 #endif

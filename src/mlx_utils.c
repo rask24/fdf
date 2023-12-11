@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 22:24:29 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/11 13:15:09 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:29:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	set_mlx(t_mlx *mlx)
 			&mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 }
 
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
+void	my_mlx_pixel_put(t_mlx mlx, int x, int y, int color)
 {
 	char	*dst;
 
 	if (x < 0 || WIN_WIDTH <= x || y < 0 || WIN_HEIGHT <= y)
 		return ;
-	dst = mlx->data_addr
-		+ (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
+	dst = mlx.data_addr
+		+ (y * mlx.line_length + x * (mlx.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

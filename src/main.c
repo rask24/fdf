@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:01:28 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:33:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,15 @@ void	dev(t_map map)
 int	main(int argc, char **argv)
 {
 	t_map	map;
+	t_mlx	mlx;
 
 	check_args(argc, argv);
-	puts("args checked");
 	check_map(argv[1]);
-	puts("map checked");
 	extract_map_info(&map, argv[1]);
-	puts("extracted from map");
 	convert_points_to_isometric(&map);
-	puts("converted");
-	render_image(map);
-	puts("drew");
-	free_points(map);
+	set_mlx(&mlx);
+	render_image(map, mlx);
+	handle_events(mlx);
+	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }
