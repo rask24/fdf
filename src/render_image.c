@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/11 13:03:07 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:16:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ void	render_image(t_map map)
 	set_mlx(&mlx);
 	_connect_points_grid_image(map, &mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
-	mlx_hook(mlx.win_ptr, ON_KEYDOWN, KEY_PRESS_MASK, handle_keydown, NULL);
-	mlx_hook(mlx.win_ptr, ON_DESTROY, NO_EVENT_MASK, exit_window, NULL);
+	handle_events(&mlx);
 	mlx_loop(mlx.mlx_ptr);
 }

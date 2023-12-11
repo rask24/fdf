@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chmin.c                                         :+:      :+:    :+:   */
+/*   handle_events.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 19:54:01 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/11 13:15:16 by reasuke          ###   ########.fr       */
+/*   Created: 2023/12/11 13:13:20 by reasuke           #+#    #+#             */
+/*   Updated: 2023/12/11 13:16:23 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-bool	ft_chmin(int *a, int b)
+int	_exit_window(void)
 {
-	if (b < *a)
-	{
-		*a = b;
-		return (true);
-	}
-	return (false);
+	exit(0);
+	return (0);
+}
+
+int	_handle_keydown(int keycode)
+{
+	if (keycode == KEY_ESCAPE)
+		_exit_window();
+	return (0);
+}
+
+void	handle_events(t_mlx *mlx)
+{
+	mlx_hook(mlx->win_ptr, ON_KEYDOWN, KEY_PRESS_MASK, _handle_keydown, NULL);
+	mlx_hook(mlx->win_ptr, ON_DESTROY, NO_EVENT_MASK, _exit_window, NULL);
 }
