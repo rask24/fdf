@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_points.c                                      :+:      :+:    :+:   */
+/*   render_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 18:51:11 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/28 21:24:28by reasuke          ###   ########.fr       */
+/*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
+/*   Updated: 2023/12/10 14:35:34 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	_plot_point_to_image(t_mlx *mlx, int x, int y, int color)
+{
+	int		center_window_x;
+	int		center_window_y;
+
+	center_window_x = (WIN_WIDTH - 1) / 2;
+	center_window_y = (WIN_HEIGHT - 1) / 2;
+	my_mlx_pixel_put(mlx, x + center_window_x, y + center_window_y, color);
+}
+
+// FIXME: norm
 void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 {
 	bool	steep;
@@ -52,9 +63,9 @@ void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 	while (x <= p1.x)
 	{
 		if (steep)
-			my_mlx_pixel_put(mlx, y, x, color);
+			_plot_point_to_image(mlx, y, x, color);
 		else
-			my_mlx_pixel_put(mlx, x, y, color);
+			_plot_point_to_image(mlx, x, y, color);
 		error -= dy;
 		if (error < 0)
 		{
@@ -65,7 +76,7 @@ void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 	}
 }
 
-void	_draw_line(t_map map, t_mlx *mlx)
+void	_connect_points_grid_image(t_map map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
@@ -94,12 +105,12 @@ void	_draw_line(t_map map, t_mlx *mlx)
 	}
 }
 
-void	draw_points(t_map map)
+void	render_image(t_map map)
 {
 	t_mlx	mlx;
 
 	set_mlx(&mlx);
-	_draw_line(map, &mlx);
+	_connect_points_grid_image(map, &mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
 	mlx_hook(mlx.win_ptr, ON_KEYDOWN, 1L << 0, handle_keydown, NULL);
 	mlx_hook(mlx.win_ptr, ON_DESTROY, 0L, exit_window, NULL);

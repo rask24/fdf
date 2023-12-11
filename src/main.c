@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/24 17:19:06by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:01:28 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	free_points(t_map map)
 	free(map.points);
 }
 
+// TODO: delete
 void	dev(t_map map)
 {
 	int	i;
@@ -59,8 +60,7 @@ int	main(int argc, char **argv)
 	puts("extracted from map");
 	convert_points_to_isometric(&map);
 	puts("converted");
-	// dev(map);
-	draw_points(map);
+	render_image(map);
 	puts("drew");
 	free_points(map);
 	return (0);

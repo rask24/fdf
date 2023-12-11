@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/11/28 22:41:02 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/10 14:35:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define WIN_WIDTH  1080
+# define WIN_WIDTH  1200
 # define WIN_HEIGHT 800
 
 # define NOT_SPECIFIED -1
 
-# define ENLARGE_RATE_XY 40
-# define ENLARGE_RATE_Z 2
-# define ENLARGE_X 0b001
-# define ENLARGE_Y 0b010
-# define ENLARGE_Z 0b100
+# define DEFAULT_MAP_SCALE 0.95
+# define DEFAULT_Z_SCALE 2
+# define SCALE_X 0b001
+# define SCALE_Y 0b010
+# define SCALE_Z 0b100
 
 # define ON_KEYDOWN 2
 # define ON_DESTROY 17
@@ -64,6 +64,8 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
+	int		min_val;
+	int		max_val;
 	t_point	**points;
 }	t_map;
 
@@ -75,9 +77,14 @@ void	extract_map_info(t_map *map, char *file_path);
 
 void	convert_points_to_isometric(t_map *map);
 
-void	draw_points(t_map map);
+void	render_image(t_map map);
 
 void	exit_with_error(char *message);
+
+void	translate_points(t_map *map, int dx, int dy, int dz);
+void	scale_points(t_map *map, double scale_factor, int axis_flag);
+void	rotete_points_x(t_map *map, double theta);
+void	rotete_points_z(t_map *map, double theta);
 
 void	set_mlx(t_mlx *mlx);
 int		exit_window(void);
