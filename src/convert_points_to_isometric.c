@@ -6,13 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:28:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:33:19 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:12:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-double	_calc_map_scale(t_map *map)
+static double	_calc_map_scale(t_map *map)
 {
 	double	x_rate;
 	double	y_rate;
@@ -26,29 +26,29 @@ double	_calc_map_scale(t_map *map)
 	return (y_rate);
 }
 
-double	_calc_z_scale(t_map *map)
-{
-	int		max;
-	int		x;
-	int		y;
-	double	tmp;
+// static double	_calc_z_scale(t_map *map)
+// {
+// 	int		max;
+// 	int		x;
+// 	int		y;
+// 	double	tmp;
 
-	max = INT_MIN;
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			tmp = sin(atan(sqrt(2))) * map->points[y][x].y
-				+ cos(atan(sqrt(2))) * map->points[y][x].z;
-			ft_chmax(&max, tmp);
-			x++;
-		}
-		y++;
-	}
-	return (max);
-}
+// 	max = INT_MIN;
+// 	y = 0;
+// 	while (y < map->height)
+// 	{
+// 		x = 0;
+// 		while (x < map->width)
+// 		{
+// 			tmp = sin(atan(sqrt(2))) * map->points[y][x].y
+// 				+ cos(atan(sqrt(2))) * map->points[y][x].z;
+// 			ft_chmax(&max, tmp);
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	return (max);
+// }
 
 void	convert_points_to_isometric(t_map *map)
 {
@@ -62,6 +62,6 @@ void	convert_points_to_isometric(t_map *map)
 	scale_points(map, map_scale, SCALE_X | SCALE_Y);
 	scale_points(map, DEFAULT_Z_SCALE, SCALE_Z);
 	translate_points(map, -center_map_x, -center_map_y, 0);
-	rotete_points_z(map, M_PI_4);
-	rotete_points_x(map, atan(sqrt(2)));
+	rotate_points_z(map, M_PI_4);
+	rotate_points_x(map, atan(sqrt(2)));
 }

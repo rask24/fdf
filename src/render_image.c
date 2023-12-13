@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:35:34 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:04:33 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,43 +76,37 @@ void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 	}
 }
 
-void	_connect_points_grid_image(t_map map, t_mlx *mlx)
+void	_connect_points_grid_image(t_map *map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < map.height)
+i = 0;
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < map.width - 1)
+		while (j < map->width - 1)
 		{
-			_bresenham(map.points[i][j], map.points[i][j + 1], mlx);
+			_bresenham(map->points[i][j], map->points[i][j + 1], mlx);
 			j++;
 		}
 		i++;
 	}
 	i = 0;
-	while (i < map.width)
+	while (i < map->width)
 	{
 		j = 0;
-		while (j < map.height - 1)
+		while (j < map->height - 1)
 		{
-			_bresenham(map.points[j][i], map.points[j + 1][i], mlx);
+			_bresenham(map->points[j][i], map->points[j + 1][i], mlx);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	render_image(t_map map)
+void	render_image(t_map *map, t_mlx *mlx)
 {
-	t_mlx	mlx;
-
-	set_mlx(&mlx);
-	_connect_points_grid_image(map, &mlx);
-	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
-	mlx_hook(mlx.win_ptr, ON_KEYDOWN, 1L << 0, handle_keydown, NULL);
-	mlx_hook(mlx.win_ptr, ON_DESTROY, 0L, exit_window, NULL);
-	mlx_loop(mlx.mlx_ptr);
+	_connect_points_grid_image(map, mlx);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);
 }

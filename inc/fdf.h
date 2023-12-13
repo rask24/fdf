@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:35:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:12:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include "libft.h"
 # include "mlx.h"
 
+# include "mlx_config.h"
+
 # define WIN_WIDTH  1200
 # define WIN_HEIGHT 800
 
@@ -35,11 +37,6 @@
 # define SCALE_X 0b001
 # define SCALE_Y 0b010
 # define SCALE_Z 0b100
-
-# define ON_KEYDOWN 2
-# define ON_DESTROY 17
-
-# define KEY_ESCAPE 65307
 
 typedef struct s_mlx
 {
@@ -69,6 +66,12 @@ typedef struct s_map
 	t_point	**points;
 }	t_map;
 
+typedef struct s_context
+{
+	t_map	map;
+	t_mlx	mlx;
+}	t_context;
+
 void	check_args(int argc, char **argv);
 
 void	check_map(char *file_path);
@@ -77,18 +80,22 @@ void	extract_map_info(t_map *map, char *file_path);
 
 void	convert_points_to_isometric(t_map *map);
 
-void	render_image(t_map map);
+void	render_image(t_map *map, t_mlx *mlx);
 
 void	exit_with_error(char *message);
 
 void	translate_points(t_map *map, int dx, int dy, int dz);
 void	scale_points(t_map *map, double scale_factor, int axis_flag);
-void	rotete_points_x(t_map *map, double theta);
-void	rotete_points_z(t_map *map, double theta);
+void	rotate_points_x(t_map *map, double theta);
+void	rotate_points_y(t_map *map, double theta);
+void	rotate_points_z(t_map *map, double theta);
+
+void	handle_events(t_context *ctx);
 
 void	set_mlx(t_mlx *mlx);
-int		exit_window(void);
-int		handle_keydown(int keycode);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+
+// TODO: delete
+void	dev(t_map map);
 
 #endif

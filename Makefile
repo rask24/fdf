@@ -10,14 +10,11 @@ SRCS            = $(SRCS_DIR)/main.c \
 					$(SRCS_DIR)/check_map.c \
 					$(SRCS_DIR)/convert_points_to_isometric.c \
 					$(SRCS_DIR)/render_image.c \
+					$(SRCS_DIR)/handle_events.c \
 					$(SRCS_DIR)/point_operations.c \
 					$(SRCS_DIR)/mlx_utils.c \
 					$(SRCS_DIR)/error.c
 OBJS            = $(SRCS:.c=.o)
-
-CDEBUG          = -g3 -fsanitize=address
-DEV_SRCS        = $(patsubst %/main.c, %/dev.c, $(SRCS))
-DEV_OBJS        = $(DEV_SRCS:.c=.o)
 
 ### LIBRARIES ###
 LIBFT_FLAGS     = -lft
@@ -36,7 +33,7 @@ endif
 ### RULES ###
 all: $(NAME)
 
-.c.o:
+%.o: %.c
 	$(CC) -I $(SRCS_INC) -I $(LIBFT_INC) -I $(LIBMLX_INC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
@@ -55,18 +52,7 @@ fclean: clean
 
 re: fclean all
 
-run:
-	./$(NAME) $(SCENE)
-
 norm:
 	$(NORM) $(SRCS_INC) $(SRCS_DIR) $(LIBFT_DIR)
-
-dev: CFLAGS += $(CDEBUG)
-dev: $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
-	$(MAKE) run
-
-valgrind:
-	valgrind --leak-check=full ./$(NAME)
 
 .PHONY: all clean fclean re
