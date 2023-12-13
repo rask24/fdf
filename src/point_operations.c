@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:07:39 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:33:46 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:12:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	scale_points(t_map *map, double scale_factor, int axis_flag)
 	}
 }
 
-void	rotete_points_x(t_map *map, double theta)
+void	rotate_points_x(t_map *map, double theta)
 {
 	int		x;
 	int		y;
@@ -82,7 +82,34 @@ void	rotete_points_x(t_map *map, double theta)
 	}
 }
 
-void	rotete_points_z(t_map *map, double theta)
+void	rotate_points_y(t_map *map, double theta)
+{
+	int		x;
+	int		y;
+	int		tmp_x;
+	double	cos_theta;
+	double	sin_theta;
+
+	cos_theta = cos(theta);
+	sin_theta = sin(theta);
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			tmp_x = map->points[y][x].x;
+			map->points[y][x].x = cos_theta * tmp_x
+				- sin_theta * map->points[y][x].z;
+			map->points[y][x].z = sin_theta * tmp_x
+				+ cos_theta * map->points[y][x].z;
+			x++;
+		}
+		y++;
+	}
+}
+
+void	rotate_points_z(t_map *map, double theta)
 {
 	int		x;
 	int		y;

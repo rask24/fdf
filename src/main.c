@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/11 13:33:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:17:38 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,15 @@ void	dev(t_map map)
 
 int	main(int argc, char **argv)
 {
-	t_map	map;
-	t_mlx	mlx;
+	t_context	ctx;
 
 	check_args(argc, argv);
 	check_map(argv[1]);
-	extract_map_info(&map, argv[1]);
-	convert_points_to_isometric(&map);
-	set_mlx(&mlx);
-	render_image(map, mlx);
-	handle_events(mlx);
-	mlx_loop(mlx.mlx_ptr);
+	extract_map_info(&ctx.map, argv[1]);
+	convert_points_to_isometric(&ctx.map);
+	set_mlx(&ctx.mlx);
+	render_image(&ctx.map, &ctx.mlx);
+	handle_events(&ctx);
+	mlx_loop(ctx.mlx.mlx_ptr);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/11 13:32:33 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:04:33 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	_plot_point_to_image(t_mlx mlx, int x, int y, int color)
+void	_plot_point_to_image(t_mlx *mlx, int x, int y, int color)
 {
 	int		center_window_x;
 	int		center_window_y;
@@ -23,7 +23,7 @@ void	_plot_point_to_image(t_mlx mlx, int x, int y, int color)
 }
 
 // FIXME: norm
-void	_bresenham(t_point p0, t_point p1, t_mlx mlx)
+void	_bresenham(t_point p0, t_point p1, t_mlx *mlx)
 {
 	bool	steep;
 	int		dx;
@@ -76,37 +76,37 @@ void	_bresenham(t_point p0, t_point p1, t_mlx mlx)
 	}
 }
 
-void	_connect_points_grid_image(t_map map, t_mlx mlx)
+void	_connect_points_grid_image(t_map *map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < map.height)
+i = 0;
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < map.width - 1)
+		while (j < map->width - 1)
 		{
-			_bresenham(map.points[i][j], map.points[i][j + 1], mlx);
+			_bresenham(map->points[i][j], map->points[i][j + 1], mlx);
 			j++;
 		}
 		i++;
 	}
 	i = 0;
-	while (i < map.width)
+	while (i < map->width)
 	{
 		j = 0;
-		while (j < map.height - 1)
+		while (j < map->height - 1)
 		{
-			_bresenham(map.points[j][i], map.points[j + 1][i], mlx);
+			_bresenham(map->points[j][i], map->points[j + 1][i], mlx);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	render_image(t_map map, t_mlx mlx)
+void	render_image(t_map *map, t_mlx *mlx)
 {
 	_connect_points_grid_image(map, mlx);
-	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);
 }
