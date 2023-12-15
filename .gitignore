@@ -54,6 +54,7 @@ dkms.conf
 # swift
 *.swiftdoc
 *.swiftmodule
+*.swiftsourceinfo
 
 # Vscode
 .vscode/
