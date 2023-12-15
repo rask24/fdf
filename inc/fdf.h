@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 19:06:40 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/15 19:19:23 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
-	int		min_val;
-	int		max_val;
 	t_point	**points;
 }	t_map;
 
@@ -105,6 +103,8 @@ void	rotate_points_y(t_map *map, double theta);
 void	rotate_points_z(t_map *map, double theta);
 
 void	handle_events(t_context *ctx);
+int		handle_keydown(int keycode, void *param);
+int		exit_window(void);
 
 void	set_mlx(t_mlx *mlx);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);

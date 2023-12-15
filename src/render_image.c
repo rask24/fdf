@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 19:12:45 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/15 19:19:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	_connect_points_grid_image(t_map *map, t_mlx *mlx)
 	int	i;
 	int	j;
 
-i = 0;
+	i = 0;
 	while (i < map->height)
 	{
 		j = 0;
