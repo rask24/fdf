@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:46:52 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/13 21:24:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/15 19:24:58 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,19 @@ enum
 };
 
 # ifdef __linux__
+#  define KEY_A           97
+#  define KEY_D           100
+#  define KEY_W           119
+#  define KEY_S           115
+#  define KEY_COMMNA      44
+#  define KEY_DOT         46
 #  define KEY_ESCAPE      65307
 #  define KEY_ARROW_UP    65362
 #  define KEY_ARROW_DOWN  65364
 #  define KEY_ARROW_LEFT  65361
 #  define KEY_ARROW_RIGHT 65363
+#  define KEY_PLUS        65361
+#  define KEY_MINUS       65363
 # endif
 
 # ifdef __APPLE__
