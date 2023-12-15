@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 18:45:16 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/15 19:06:40 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,18 @@ typedef struct s_context
 	t_mlx	mlx;
 }	t_context;
 
+typedef struct s_line_conf
+{
+	bool	steep;
+	int		dx;
+	int		dy;
+	int		error;
+	int		x;
+	int		y;
+	int		step_y;
+	int		color;
+}	t_line_conf;
+
 void	check_args(int argc, char **argv);
 
 void	check_map(char *file_path);
@@ -79,6 +91,8 @@ void	check_map(char *file_path);
 void	extract_map_info(t_map *map, char *file_path);
 
 void	convert_points_to_isometric(t_map *map);
+
+void	plot_line(t_point p0, t_point p1, t_mlx *mlx);
 
 void	render_image(t_map *map, t_mlx *mlx);
 
