@@ -14,8 +14,8 @@ jobs:
           python3 -m pip install norminette
       - name: Run Norminette
         run: make norm
-  build:
-    name: build
+  linux-build:
+    name: linux-build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,5 +24,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc make xorg libxext-dev libbsd-dev
+      - name: Build fdf
+        run: make
+  macos-build:
+    name: macos-build
+    runs-on: macos-12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Build fdf
         run: make
