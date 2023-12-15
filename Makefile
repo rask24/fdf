@@ -1,49 +1,50 @@
-CFLAGS          = -Werror -Wextra -Wall -O3
-NORM            = norminette
-NAME            = fdf
-SRCS_DIR        = ./src
-SRCS_INC        = ./inc
-SRCS            = $(SRCS_DIR)/main.c \
-					$(SRCS_DIR)/check_args.c \
-					$(SRCS_DIR)/extract_map_info.c \
-					$(SRCS_DIR)/check_map.c \
-					$(SRCS_DIR)/convert_points_to_isometric.c \
-					$(SRCS_DIR)/render_image.c \
-					$(SRCS_DIR)/handle_events.c \
-					$(SRCS_DIR)/point_operations.c \
-					$(SRCS_DIR)/mlx_utils.c \
-					$(SRCS_DIR)/error.c
-OBJS            = $(SRCS:.c=.o)
-DEPS			= $(SRCS:.c=.d)
-DEPFLAGS		= -MT $@ -MMD -MP
+CFLAGS			= -Werror -Wextra -Wall -O3
+NORM			= norminette
 
-LIBFT_FLAGS     = -lft
-LIBFT_DIR       = ./libft
-LIBFT_INC       = ./libft
+NAME			= fdf
+
+SRC_DIR			= ./src
+INC_DIR			= ./inc
+SRC				= $(SRC_DIR)/main.c \
+					$(SRC_DIR)/check_args.c \
+					$(SRC_DIR)/extract_map_info.c \
+					$(SRC_DIR)/check_map.c \
+					$(SRC_DIR)/convert_points_to_isometric.c \
+					$(SRC_DIR)/render_image.c \
+					$(SRC_DIR)/handle_events.c \
+					$(SRC_DIR)/point_operations.c \
+					$(SRC_DIR)/mlx_utils.c \
+					$(SRC_DIR)/error.c
+OBJ				= $(SRC:.c=.o)
+DEP				= $(SRC:.c=.d)
+DEPFLAGS		= -MMD -MP
+
+LIBFT_FLAGS		= -lft
+LIBFT_DIR		= ./libft
 ifeq ($(shell uname), Linux)
 	LIBMLX_DIR   = ./libmlx/linux
-	LIBMLX_INC   = ./libmlx/linux
 	LIBMLX_FLAGS = -lmlx -lXext -lX11 -lm -lz
 else
 	LIBMLX_DIR   = ./libmlx/macos
-	LIBMLX_INC   = ./libmlx/macos
 	LIBMLX_FLAGS = -lmlx -framework openGL -framework AppKit
 endif
+
+INCLUDE = -I $(INC_DIR) -I $(LIBFT_DIR) -I $(LIBMLX_DIR)
 
 all: $(NAME)
 
 %.o: %.c
-	$(CC) -I $(SRCS_INC) -I $(LIBFT_INC) -I $(LIBMLX_INC) $(CFLAGS) $(DEPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) $(DEPFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJ)
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C $(LIBMLX_DIR)
-	$(CC) $(OBJS) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(LIBMLX_DIR) clean
-	$(RM) $(OBJS)
+	$(RM) $(OBJ) $(DEP)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
@@ -52,8 +53,8 @@ fclean: clean
 re: fclean all
 
 norm:
-	$(NORM) $(SRCS_INC) $(SRCS_DIR) $(LIBFT_DIR)
+	$(NORM) $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
 
 .PHONY: all clean fclean re
 
--include $(DEPS)
+-include $(DEP)
