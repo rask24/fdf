@@ -1,4 +1,3 @@
-### VARIABLES ###
 CFLAGS          = -Werror -Wextra -Wall -O3
 NORM            = norminette
 NAME            = fdf
@@ -15,8 +14,9 @@ SRCS            = $(SRCS_DIR)/main.c \
 					$(SRCS_DIR)/mlx_utils.c \
 					$(SRCS_DIR)/error.c
 OBJS            = $(SRCS:.c=.o)
+DEPS			= $(SRCS:.c=.d)
+DEPFLAGS		= -MT $@ -MMD -MP
 
-### LIBRARIES ###
 LIBFT_FLAGS     = -lft
 LIBFT_DIR       = ./libft
 LIBFT_INC       = ./libft
@@ -30,16 +30,15 @@ else
 	LIBMLX_FLAGS = -lmlx -framework openGL -framework AppKit
 endif
 
-### RULES ###
 all: $(NAME)
 
 %.o: %.c
-	$(CC) -I $(SRCS_INC) -I $(LIBFT_INC) -I $(LIBMLX_INC) $(CFLAGS) -c $< -o $@
+	$(CC) -I $(SRCS_INC) -I $(LIBFT_INC) -I $(LIBMLX_INC) $(CFLAGS) $(DEPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C $(LIBMLX_DIR)
-	$(CC) -g3 $(OBJS) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
+	$(CC) $(OBJS) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
@@ -56,3 +55,5 @@ norm:
 	$(NORM) $(SRCS_INC) $(SRCS_DIR) $(LIBFT_DIR)
 
 .PHONY: all clean fclean re
+
+-include $(DEPS)
