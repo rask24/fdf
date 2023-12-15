@@ -115,11 +115,11 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "$(RED)delete objs$(RESET)"
+	@echo "$(RED)libft: delete objs$(RESET)"
 	@$(RM) $(OBJS)
 
 fclean: clean
-	@echo "$(RED)delete libft$(RESET)"
+	@echo "$(RED)libft: delete libft$(RESET)"
 	@$(RM) $(NAME)
 
 re: fclean all

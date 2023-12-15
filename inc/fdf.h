@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 18:22:21 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/15 18:45:16 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "mlx_config.h"
 
 # define WIN_WIDTH  1200
-# define WIN_HEIGHT 1000
+# define WIN_HEIGHT 800
 
 # define NOT_SPECIFIED -1
 

@@ -37,11 +37,11 @@ $(NAME): $(MODULE_OBJ) $(OBJ) $(C_OBJ)
 	@swiftc $(INC) -parse-as-library -c $< -emit-module -module-name $(patsubst %.swift,%,$<) -module-link-name $(patsubst %.swift,%,$<)
 
 clean:
-	@echo "$(RED)delete libmlx$(RESET)"
+	@echo "$(RED)libmlx: delete libmlx$(RESET)"
 	@$(RM) $(OBJ) $(MODULE_OBJ) $(C_OBJ) *.swiftdoc *~
 
 fclean: clean
-	@echo "$(RED)delete libmlx$(RESET)"
+	@echo "$(RED)libmlx: delete libmlx$(RESET)"
 	@$(RM) $(NAME)
 
 re: clean all
