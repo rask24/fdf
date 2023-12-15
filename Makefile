@@ -1,7 +1,9 @@
+NAME			= fdf
+
+UNAME			= $(shell uname)
+
 CFLAGS			= -Werror -Wextra -Wall -O3
 NORM			= norminette
-
-NAME			= fdf
 
 SRC_DIR			= ./src
 BUILD_DIR		= ./build
@@ -24,7 +26,7 @@ DEPFLAGS		= -MMD -MP
 
 LIBFT_FLAGS		= -lft
 LIBFT_DIR		= ./libft
-ifeq ($(shell uname), Linux)
+ifeq ($(UNAME), Linux)
 	LIBMLX_DIR   = ./libmlx/linux
 	LIBMLX_FLAGS = -lmlx -lXext -lX11 -lm -lz
 else
@@ -45,6 +47,7 @@ $(NAME): $(OBJ)
 	@echo "\ncomplied [$(GREEN)✔︎$(RESET)]"
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBMLX_DIR)
+	@if [ $(UNAME) = "Darwin" ]; then cp $(LIBMLX_DIR)/libmlx.dylib .; fi
 	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -55,6 +58,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(LIBMLX_DIR) clean
+	@if [ $(UNAME) = "Darwin" ]; then $(RM) libmlx.dylib ; fi
 	@$(RM) $(OBJ) $(DEP)
 	@echo "$(RED)fdf: delete objs deps$(RESET)"
 
