@@ -1,7 +1,5 @@
 NAME			= fdf
-
 UNAME			= $(shell uname)
-
 CFLAGS			= -Werror -Wextra -Wall -O3
 NORM			= norminette
 
@@ -29,7 +27,7 @@ LIBFT_DIR		= ./libft
 ifeq ($(UNAME), Linux)
 	LIBMLX_DIR   = ./libmlx/linux
 	LIBMLX_FLAGS = -lmlx -lXext -lX11 -lm -lz
-else
+else ifeq ($(UNAME), Darwin)
 	LIBMLX_DIR   = ./libmlx/macos
 	LIBMLX_FLAGS = -lmlx -framework openGL -framework AppKit
 endif
