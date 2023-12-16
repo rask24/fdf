@@ -47,7 +47,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ github.sha }}
       - name: Run tests
         run: |
-          ./fdf test/test.sh
+          test/test.sh
   macos-build:
     name: macos-build
     runs-on: macos-12
