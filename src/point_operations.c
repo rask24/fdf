@@ -6,13 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:07:39 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/13 21:12:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 17:53:09 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	translate_points(t_map *map, int dx, int dy, int dz)
+void	translate_points(t_map *map, double dx, double dy, double dz)
 {
 	int	x;
 	int	y;
@@ -59,7 +59,7 @@ void	rotate_points_x(t_map *map, double theta)
 {
 	int		x;
 	int		y;
-	int		tmp_y;
+	double	tmp_y;
 	double	cos_theta;
 	double	sin_theta;
 
@@ -86,7 +86,7 @@ void	rotate_points_y(t_map *map, double theta)
 {
 	int		x;
 	int		y;
-	int		tmp_x;
+	double	tmp_x;
 	double	cos_theta;
 	double	sin_theta;
 
@@ -113,7 +113,7 @@ void	rotate_points_z(t_map *map, double theta)
 {
 	int		x;
 	int		y;
-	int		tmp_x;
+	double	tmp_x;
 	double	cos_theta;
 	double	sin_theta;
 

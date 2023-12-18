@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 19:12:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 17:49:37 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ void	_set_color(t_line_conf *lc, int p0_color, int p1_color)
 
 void	_set_line_conf(t_line_conf *lc, t_point *p0, t_point *p1)
 {
-	lc->steep = abs(p1->y - p0->y) > abs(p1->x - p0->x);
+	lc->steep = fabs(p1->y - p0->y) > fabs(p1->x - p0->x);
 	if (lc->steep)
 	{
-		ft_swap(&p0->x, &p0->y);
-		ft_swap(&p1->x, &p1->y);
+		ft_fswap(&p0->x, &p0->y);
+		ft_fswap(&p1->x, &p1->y);
 	}
 	if (p0->x > p1->x)
 	{
-		ft_swap(&p0->x, &p1->x);
-		ft_swap(&p0->y, &p1->y);
+		ft_fswap(&p0->x, &p1->x);
+		ft_fswap(&p0->y, &p1->y);
 	}
 	lc->dx = p1->x - p0->x;
-	lc->dy = abs(p1->y - p0->y);
+	lc->dy = fabs(p1->y - p0->y);
 	lc->error = lc->dx / 2;
 	lc->y = p0->y;
 	lc->x = p0->x;
