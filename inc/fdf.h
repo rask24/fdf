@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 18:17:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 18:20:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define SCALE_Z 0b100
 
 # define TRANSLATE_STEP 10
-# define ROTATE_STEP 0.1
+# define ROTATE_STEP 0.05
 # define SCALE_STEP 0.1
 
 typedef struct s_mlx
