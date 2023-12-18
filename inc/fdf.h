@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 18:01:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:50:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@
 # define WIN_WIDTH  1200
 # define WIN_HEIGHT 800
 
-# define NOT_SPECIFIED -1
+# define NO_COLOR_SPEC -1
+# define DEFAULT_COLOR_TOP    0xAABBC
+# define DEFAULT_COLOR_BOTTOM 0xDDDDDD
 
 # define DEFAULT_MAP_SCALE 0.95
 # define DEFAULT_Z_SCALE 2
@@ -39,7 +41,7 @@
 # define SCALE_Z 0b100
 
 # define TRANSLATE_STEP 10
-# define ROTATE_STEP 0.1
+# define ROTATE_STEP 0.05
 # define SCALE_STEP 0.1
 
 typedef struct s_mlx
@@ -83,7 +85,8 @@ typedef struct s_line_conf
 	int		x;
 	int		y;
 	int		step_y;
-	int		color;
+	int		color_start;
+	int		color_end;
 }	t_line_conf;
 
 void	check_args(int argc, char **argv);
@@ -109,6 +112,8 @@ void	rotate_points_z(t_map *map, double theta);
 void	handle_events(t_context *ctx);
 int		handle_keydown(int keycode, void *param);
 int		exit_window(void);
+
+int		color_gradient(int color1, int color2, double ratio);
 
 void	set_mlx(t_mlx *mlx);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
