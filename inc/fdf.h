@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 18:20:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:50:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ typedef struct s_line_conf
 	int		x;
 	int		y;
 	int		step_y;
-	int		color;
+	int		color_start;
+	int		color_end;
 }	t_line_conf;
 
 void	check_args(int argc, char **argv);
@@ -111,6 +112,8 @@ void	rotate_points_z(t_map *map, double theta);
 void	handle_events(t_context *ctx);
 int		handle_keydown(int keycode, void *param);
 int		exit_window(void);
+
+int		color_gradient(int color1, int color2, double ratio);
 
 void	set_mlx(t_mlx *mlx);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);

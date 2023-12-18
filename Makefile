@@ -17,6 +17,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/handle_events.c \
 					$(SRC_DIR)/point_operations.c \
 					$(SRC_DIR)/mlx_utils.c \
+					$(SRC_DIR)/color_gradient.c \
 					$(SRC_DIR)/error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
