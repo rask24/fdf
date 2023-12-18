@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:16:41 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 19:18:28 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 17:58:41 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	_handle_translation(int keycode, t_context *ctx)
 	ft_bzero(ctx->mlx.data_addr,
 		WIN_HEIGHT * WIN_WIDTH * (ctx->mlx.bits_per_pixel / 8));
 	if (keycode == KEY_S)
-		translate_points(&ctx->map, 0, 5, 0);
+		translate_points(&ctx->map, 0, TRANSLATE_STEP, 0);
 	else if (keycode == KEY_W)
-		translate_points(&ctx->map, 0, -5, 0);
+		translate_points(&ctx->map, 0, -TRANSLATE_STEP, 0);
 	else if (keycode == KEY_A)
-		translate_points(&ctx->map, -5, 0, 0);
+		translate_points(&ctx->map, -TRANSLATE_STEP, 0, 0);
 	else if (keycode == KEY_D)
-		translate_points(&ctx->map, 5, 0, 0);
+		translate_points(&ctx->map, TRANSLATE_STEP, 0, 0);
 	render_image(&ctx->map, &ctx->mlx);
 }
 
@@ -32,9 +32,9 @@ static void	_handle_scale(int keycode, t_context *ctx)
 	ft_bzero(ctx->mlx.data_addr,
 		WIN_HEIGHT * WIN_WIDTH * (ctx->mlx.bits_per_pixel / 8));
 	if (keycode == KEY_PLUS)
-		scale_points(&ctx->map, 1.1, SCALE_X | SCALE_Y);
+		scale_points(&ctx->map, 1 + SCALE_STEP, SCALE_X | SCALE_Y);
 	else if (keycode == KEY_MINUS)
-		scale_points(&ctx->map, 0.9, SCALE_X | SCALE_Y);
+		scale_points(&ctx->map, 1 - SCALE_STEP, SCALE_X | SCALE_Y);
 	render_image(&ctx->map, &ctx->mlx);
 }
 
@@ -43,17 +43,17 @@ static void	_handle_rotation(int keycode, t_context *ctx)
 	ft_bzero(ctx->mlx.data_addr,
 		WIN_HEIGHT * WIN_WIDTH * (ctx->mlx.bits_per_pixel / 8));
 	if (keycode == KEY_ARROW_UP)
-		rotate_points_x(&ctx->map, 0.1);
+		rotate_points_x(&ctx->map, ROTATE_STEP);
 	else if (keycode == KEY_ARROW_DOWN)
-		rotate_points_x(&ctx->map, -0.1);
+		rotate_points_x(&ctx->map, -ROTATE_STEP);
 	else if (keycode == KEY_ARROW_LEFT)
-		rotate_points_y(&ctx->map, 0.1);
+		rotate_points_y(&ctx->map, ROTATE_STEP);
 	else if (keycode == KEY_ARROW_RIGHT)
-		rotate_points_y(&ctx->map, -0.1);
+		rotate_points_y(&ctx->map, -ROTATE_STEP);
 	else if (keycode == KEY_COMMNA)
-		rotate_points_z(&ctx->map, 0.1);
+		rotate_points_z(&ctx->map, ROTATE_STEP);
 	else if (keycode == KEY_DOT)
-		rotate_points_z(&ctx->map, -0.1);
+		rotate_points_z(&ctx->map, -ROTATE_STEP);
 	render_image(&ctx->map, &ctx->mlx);
 }
 

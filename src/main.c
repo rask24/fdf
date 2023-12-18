@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/13 19:17:38 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 17:34:51 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	dev(t_map map)
 		j = 0;
 		while (j < map.width)
 		{
-			printf("(%d, %d, %d) #%#X\n",
+			printf("(%f, %f, %f) #%#X\n",
 				map.points[i][j].x,
 				map.points[i][j].y,
 				map.points[i][j].z,

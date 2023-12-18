@@ -89,6 +89,14 @@ SRCS	+=	$(addprefix integer/, \
 				ft_swap.c \
 			)
 
+SRCS	+=	$(addprefix float/, \
+				ft_fmax.c \
+				ft_fmin.c \
+				ft_fchmax.c \
+				ft_fchmin.c \
+				ft_fswap.c \
+			)
+
 OBJS = $(SRCS:.c=.o)
 
 GTESTDIR		=	gtest

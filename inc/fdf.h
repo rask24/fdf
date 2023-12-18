@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 19:19:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 18:01:29 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@
 # define SCALE_Y 0b010
 # define SCALE_Z 0b100
 
+# define TRANSLATE_STEP 10
+# define ROTATE_STEP 0.1
+# define SCALE_STEP 0.1
+
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
@@ -51,10 +55,10 @@ typedef struct s_mlx
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
+	double	x;
+	double	y;
+	double	z;
+	int		color;
 }	t_point;
 
 typedef struct s_map
@@ -96,7 +100,7 @@ void	render_image(t_map *map, t_mlx *mlx);
 
 void	exit_with_error(char *message);
 
-void	translate_points(t_map *map, int dx, int dy, int dz);
+void	translate_points(t_map *map, double dx, double dy, double dz);
 void	scale_points(t_map *map, double scale_factor, int axis_flag);
 void	rotate_points_x(t_map *map, double theta);
 void	rotate_points_y(t_map *map, double theta);
