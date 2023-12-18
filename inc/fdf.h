@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 18:01:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 18:17:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@
 # define WIN_WIDTH  1200
 # define WIN_HEIGHT 800
 
-# define NOT_SPECIFIED -1
+# define NO_COLOR_SPEC -1
+# define DEFAULT_COLOR_TOP    0xAABBC
+# define DEFAULT_COLOR_BOTTOM 0xDDDDDD
 
 # define DEFAULT_MAP_SCALE 0.95
 # define DEFAULT_Z_SCALE 2

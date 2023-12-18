@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 17:49:37 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 18:16:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	_set_color(t_line_conf *lc, int p0_color, int p1_color)
 {
-	if (p0_color != 0xDDDDDD)
+	if (p0_color != DEFAULT_COLOR_BOTTOM)
 		lc->color = p0_color;
-	else if (p1_color != 0xDDDDDD)
+	else if (p1_color != DEFAULT_COLOR_BOTTOM)
 		lc->color = p1_color;
 	else
-		lc->color = 0xDDDDDD;
+		lc->color = DEFAULT_COLOR_BOTTOM;
 }
 
 void	_set_line_conf(t_line_conf *lc, t_point *p0, t_point *p1)

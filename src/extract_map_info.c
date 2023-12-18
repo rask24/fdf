@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:18:59 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/15 19:14:52 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/18 18:16:32 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	_set_points_fixed_y(t_map *map, int y, char *line)
 	{
 		map->points[y][x].x = x;
 		map->points[y][x].y = y;
-		map->points[y][x].color = NOT_SPECIFIED;
+		map->points[y][x].color = NO_COLOR_SPEC;
 		if (flag_color)
 			map->points[y][x].color = ft_strtol(line, &line, 16);
 		else
@@ -88,11 +88,11 @@ static void	_set_points(t_map *map, char **line_array)
 		x = 0;
 		while (x < map->width)
 		{
-			if (map->points[y][x].color == NOT_SPECIFIED
+			if (map->points[y][x].color == NO_COLOR_SPEC
 				&& map->points[y][x].z)
-				map->points[y][x].color = 0xAABBC;
-			else if (map->points[y][x].color == NOT_SPECIFIED)
-				map->points[y][x].color = 0xDDDDDD;
+				map->points[y][x].color = DEFAULT_COLOR_TOP;
+			else if (map->points[y][x].color == NO_COLOR_SPEC)
+				map->points[y][x].color = DEFAULT_COLOR_BOTTOM;
 			x++;
 		}
 		y++;
