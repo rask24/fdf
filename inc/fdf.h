@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/19 16:41:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:27:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define WIN_HEIGHT 800
 
 # define NO_COLOR_SPEC -1
-# define DEFAULT_COLOR_TOP    0x50F0E0
-# define DEFAULT_COLOR_BOTTOM 0x3f5f5f
+# define DEFAULT_COLOR_TOP    0xFFFFFF
+# define DEFAULT_COLOR_BOTTOM 0x292929
 
 # define DEFAULT_MAP_SCALE 0.95
 # define DEFAULT_Z_SCALE 2
@@ -79,12 +79,12 @@ typedef struct s_context
 typedef struct s_line_conf
 {
 	bool	steep;
-	int		dx;
-	int		dy;
-	int		error;
-	int		x;
-	int		y;
-	int		step_y;
+	double	gradient;
+	double	x_pxl1;
+	double	y_pxl1;
+	double	x_pxl2;
+	double	y_pxl2;
+	double	intery;
 	int		color_start;
 	int		color_end;
 }	t_line_conf;
@@ -100,6 +100,11 @@ void	convert_points_to_isometric(t_map *map);
 void	plot_line(t_point p0, t_point p1, t_mlx *mlx);
 
 void	render_image(t_map *map, t_mlx *mlx);
+
+void	plot_point_to_image(t_mlx *mlx, int x, int y, int color);
+double	calc_ratio(t_point p0, t_point p1, double x, double y);
+double	fpart(double x);
+double	rfpart(double x);
 
 void	exit_with_error(char *message);
 
