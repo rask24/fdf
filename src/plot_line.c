@@ -6,25 +6,17 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 21:01:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/19 16:52:11 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	_set_color(t_line_conf *lc, int p0_color, int p1_color)
-// {
-// 	if (p0_color != DEFAULT_COLOR_BOTTOM)
-// 		lc->color_start = p0_color;
-// 	else if (p1_color != DEFAULT_COLOR_BOTTOM)
-// 		lc->color_start = p1_color;
-// 	else
-// 		lc->color_start = DEFAULT_COLOR_BOTTOM;
-// }
-
 void	_set_line_conf(t_line_conf *lc, t_point *p0, t_point *p1)
 {
 	lc->steep = fabs(p1->y - p0->y) > fabs(p1->x - p0->x);
+	lc->color_start = p0->color;
+	lc->color_end = p1->color;
 	if (lc->steep)
 	{
 		ft_fswap(&p0->x, &p0->y);
@@ -34,6 +26,7 @@ void	_set_line_conf(t_line_conf *lc, t_point *p0, t_point *p1)
 	{
 		ft_fswap(&p0->x, &p1->x);
 		ft_fswap(&p0->y, &p1->y);
+		ft_swap(&lc->color_start, &lc->color_end);
 	}
 	lc->dx = p1->x - p0->x;
 	lc->dy = fabs(p1->y - p0->y);
@@ -44,8 +37,6 @@ void	_set_line_conf(t_line_conf *lc, t_point *p0, t_point *p1)
 		lc->step_y = 1;
 	else
 		lc->step_y = -1;
-	lc->color_start = p0->color;
-	lc->color_end = p1->color;
 }
 
 void	_plot_point_to_image(t_mlx *mlx, int x, int y, int color)
