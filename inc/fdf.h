@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/19 17:56:05reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:23:28 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ void	convert_points_to_isometric(t_map *map);
 void	plot_line(t_point p0, t_point p1, t_mlx *mlx);
 
 void	render_image(t_map *map, t_mlx *mlx);
+
+void	plot_point_to_image(t_mlx *mlx, int x, int y, int color);
+double	calc_ratio(t_point p0, t_point p1, double x, double y);
+double	fpart(double x);
+double	rfpart(double x);
 
 void	exit_with_error(char *message);
 

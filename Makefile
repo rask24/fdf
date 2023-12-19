@@ -10,15 +10,18 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/check_args.c \
 					$(SRC_DIR)/extract_map_info.c \
 					$(SRC_DIR)/check_map.c \
-					$(SRC_DIR)/plot_line.c \
 					$(SRC_DIR)/keydown_events.c \
 					$(SRC_DIR)/convert_points_to_isometric.c \
-					$(SRC_DIR)/render_image.c \
 					$(SRC_DIR)/handle_events.c \
 					$(SRC_DIR)/point_operations.c \
 					$(SRC_DIR)/mlx_utils.c \
-					$(SRC_DIR)/color_gradient.c \
-					$(SRC_DIR)/error.c
+					$(SRC_DIR)/error.c \
+					$(SRC_DIR)/render_image/render_image.c \
+					$(SRC_DIR)/render_image/plot_line.c \
+					$(SRC_DIR)/render_image/color_gradient.c \
+					$(SRC_DIR)/render_image/calc_ratio.c \
+					$(SRC_DIR)/render_image/frac_utils.c \
+					$(SRC_DIR)/render_image/plot_point_to_image.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 DEPFLAGS		= -MMD -MP
