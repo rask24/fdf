@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/19 19:23:28 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:27:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,6 @@ typedef struct s_context
 typedef struct s_line_conf
 {
 	bool	steep;
-	int		dx;
-	int		dy;
-	int		error;
-	int		x;
-	int		y;
-	int		step_y;
-	int		color_start;
-	int		color_end;
-}	t_line_conf;
-
-typedef struct s_xw
-{
-	bool	steep;
-	double	dx;
-	double	dy;
 	double	gradient;
 	double	x_pxl1;
 	double	y_pxl1;
@@ -102,7 +87,7 @@ typedef struct s_xw
 	double	intery;
 	int		color_start;
 	int		color_end;
-}	t_xw;
+}	t_line_conf;
 
 void	check_args(int argc, char **argv);
 
