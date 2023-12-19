@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/19 16:51:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:56:05reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define WIN_HEIGHT 800
 
 # define NO_COLOR_SPEC -1
-# define DEFAULT_COLOR_TOP    0x50F0E0
-# define DEFAULT_COLOR_BOTTOM 0x3f5f5f
+# define DEFAULT_COLOR_TOP    0xFFFFFF
+# define DEFAULT_COLOR_BOTTOM 0x292929
 
 # define DEFAULT_MAP_SCALE 0.95
 # define DEFAULT_Z_SCALE 2
@@ -88,6 +88,21 @@ typedef struct s_line_conf
 	int		color_start;
 	int		color_end;
 }	t_line_conf;
+
+typedef struct s_xw
+{
+	bool	steep;
+	double	dx;
+	double	dy;
+	double	gradient;
+	double	x_pxl1;
+	double	y_pxl1;
+	double	x_pxl2;
+	double	y_pxl2;
+	double	intery;
+	int		color_start;
+	int		color_end;
+}	t_xw;
 
 void	check_args(int argc, char **argv);
 
