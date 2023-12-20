@@ -6,28 +6,28 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 22:24:29 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/13 19:02:18 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:18:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	set_mlx(t_mlx *mlx)
+void	set_mlx(t_ctx *ctx)
 {
-	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "FDF");
-	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	mlx->data_addr = mlx_get_data_addr(mlx->img_ptr,
-			&mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
+	ctx->mlx_ptr = mlx_init();
+	ctx->win_ptr = mlx_new_window(ctx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "FDF");
+	ctx->img_ptr = mlx_new_image(ctx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
+	ctx->data_addr = mlx_get_data_addr(ctx->img_ptr,
+			&ctx->bits_per_pixel, &ctx->line_length, &ctx->endian);
 }
 
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
+void	my_mlx_pixel_put(t_ctx *ctx, int x, int y, int color)
 {
 	char	*dst;
 
 	if (x < 0 || WIN_WIDTH <= x || y < 0 || WIN_HEIGHT <= y)
 		return ;
-	dst = mlx->data_addr
-		+ (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
+	dst = ctx->data_addr
+		+ (y * ctx->line_length + x * (ctx->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

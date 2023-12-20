@@ -6,27 +6,27 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:28:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/13 21:12:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:35:09 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static double	_calc_map_scale(t_map *map)
+static double	_calc_map_scale(t_ctx *ctx)
 {
 	double	x_rate;
 	double	y_rate;
 
 	x_rate = (WIN_WIDTH * DEFAULT_MAP_SCALE * sqrt(2))
-		/ (map->width + map->height);
+		/ (ctx->map_witdh + ctx->map_height);
 	y_rate = (WIN_HEIGHT * DEFAULT_MAP_SCALE * sqrt(6))
-		/ (map->width + map->height);
+		/ (ctx->map_witdh + ctx->map_height);
 	if (x_rate < y_rate)
 		return (x_rate);
 	return (y_rate);
 }
 
-// static double	_calc_z_scale(t_map *map)
+// static double	_calc_z_scale(t_map *ctx)
 // {
 // 	int		max;
 // 	int		x;
@@ -35,13 +35,13 @@ static double	_calc_map_scale(t_map *map)
 
 // 	max = INT_MIN;
 // 	y = 0;
-// 	while (y < map->height)
+// 	while (y < ctx->height)
 // 	{
 // 		x = 0;
-// 		while (x < map->width)
+// 		while (x < ctx->map_witdh)
 // 		{
-// 			tmp = sin(atan(sqrt(2))) * map->points[y][x].y
-// 				+ cos(atan(sqrt(2))) * map->points[y][x].z;
+// 			tmp = sin(atan(sqrt(2))) * ctx->points[y][x].y
+// 				+ cos(atan(sqrt(2))) * ctx->points[y][x].z;
 // 			ft_chmax(&max, tmp);
 // 			x++;
 // 		}
@@ -50,18 +50,20 @@ static double	_calc_map_scale(t_map *map)
 // 	return (max);
 // }
 
-void	convert_points_to_isometric(t_map *map)
+void	convert_points_to_isometric(t_ctx *ctx)
 {
 	int		center_map_x;
 	int		center_map_y;
 	double	map_scale;
 
-	map_scale = _calc_map_scale(map);
-	center_map_x = (map->width - 1) * map_scale / 2;
-	center_map_y = (map->height - 1) * map_scale / 2;
-	scale_points(map, map_scale, SCALE_X | SCALE_Y);
-	scale_points(map, DEFAULT_Z_SCALE, SCALE_Z);
-	translate_points(map, -center_map_x, -center_map_y, 0);
-	rotate_points_z(map, M_PI_4);
-	rotate_points_x(map, atan(sqrt(2)));
+	ctx->offset_x = 0;
+	ctx->offset_y = 0;
+	map_scale = _calc_map_scale(ctx);
+	center_map_x = (ctx->map_witdh - 1) * map_scale / 2;
+	center_map_y = (ctx->map_height - 1) * map_scale / 2;
+	scale_points(ctx, map_scale, SCALE_X | SCALE_Y);
+	scale_points(ctx, DEFAULT_Z_SCALE, SCALE_Z);
+	translate_points(ctx, -center_map_x, -center_map_y, 0);
+	rotate_points_z(ctx, M_PI_4);
+	rotate_points_x(ctx, atan(sqrt(2)));
 }
