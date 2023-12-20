@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/19 19:27:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:25:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,6 @@
 # define ROTATE_STEP 0.05
 # define SCALE_STEP 0.1
 
-typedef struct s_mlx
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	char	*data_addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_mlx;
-
 typedef struct s_point
 {
 	double	x;
@@ -63,18 +52,19 @@ typedef struct s_point
 	int		color;
 }	t_point;
 
-typedef struct s_map
+typedef struct s_ctx
 {
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_ptr;
+	char	*data_addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	int		width;
 	int		height;
 	t_point	**points;
-}	t_map;
-
-typedef struct s_context
-{
-	t_map	map;
-	t_mlx	mlx;
-}	t_context;
+}	t_ctx;
 
 typedef struct s_line_conf
 {
@@ -93,37 +83,37 @@ void	check_args(int argc, char **argv);
 
 void	check_map(char *file_path);
 
-void	extract_map_info(t_map *map, char *file_path);
+void	extract_map_info(t_ctx *ctx, char *file_path);
 
-void	convert_points_to_isometric(t_map *map);
+void	convert_points_to_isometric(t_ctx *ctx);
 
-void	plot_line(t_point p0, t_point p1, t_mlx *mlx);
+void	plot_line(t_point p0, t_point p1, t_ctx *ctx);
 
-void	render_image(t_map *map, t_mlx *mlx);
+void	render_image(t_ctx *ctx);
 
-void	plot_point_to_image(t_mlx *mlx, int x, int y, int color);
+void	plot_point_to_image(t_ctx *ctx, int x, int y, int color);
 double	calc_ratio(t_point p0, t_point p1, double x, double y);
 double	fpart(double x);
 double	rfpart(double x);
 
 void	exit_with_error(char *message);
 
-void	translate_points(t_map *map, double dx, double dy, double dz);
-void	scale_points(t_map *map, double scale_factor, int axis_flag);
-void	rotate_points_x(t_map *map, double theta);
-void	rotate_points_y(t_map *map, double theta);
-void	rotate_points_z(t_map *map, double theta);
+void	translate_points(t_ctx *ctx, double dx, double dy, double dz);
+void	scale_points(t_ctx *ctx, double scale_factor, int axis_flag);
+void	rotate_points_x(t_ctx *ctx, double theta);
+void	rotate_points_y(t_ctx *ctx, double theta);
+void	rotate_points_z(t_ctx *ctx, double theta);
 
-void	handle_events(t_context *ctx);
+void	handle_events(t_ctx *ctx);
 int		handle_keydown(int keycode, void *param);
 int		exit_window(void);
 
 int		color_gradient(int color1, int color2, double ratio);
 
-void	set_mlx(t_mlx *mlx);
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+void	set_mlx(t_ctx *ctx);
+void	my_mlx_pixel_put(t_ctx *mlx, int x, int y, int color);
 
 // TODO: delete
-void	dev(t_map map);
+void	dev(t_ctx ctx);
 
 #endif

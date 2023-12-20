@@ -6,42 +6,42 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 17:34:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:24:47 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_points(t_map map)
+void	free_points(t_ctx ctx)
 {
 	int	i;
 
 	i = 0;
-	while (i < map.height)
+	while (i < ctx.height)
 	{
-		free(map.points[i]);
+		free(ctx.points[i]);
 		i++;
 	}
-	free(map.points);
+	free(ctx.points);
 }
 
 // TODO: delete
-void	dev(t_map map)
+void	dev(t_ctx ctx)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < map.height)
+	while (i < ctx.height)
 	{
 		j = 0;
-		while (j < map.width)
+		while (j < ctx.width)
 		{
 			printf("(%f, %f, %f) #%#X\n",
-				map.points[i][j].x,
-				map.points[i][j].y,
-				map.points[i][j].z,
-				map.points[i][j].color);
+				ctx.points[i][j].x,
+				ctx.points[i][j].y,
+				ctx.points[i][j].z,
+				ctx.points[i][j].color);
 			j++;
 		}
 		i++;
@@ -50,15 +50,15 @@ void	dev(t_map map)
 
 int	main(int argc, char **argv)
 {
-	t_context	ctx;
+	t_ctx	ctx;
 
 	check_args(argc, argv);
 	check_map(argv[1]);
-	extract_map_info(&ctx.map, argv[1]);
-	convert_points_to_isometric(&ctx.map);
-	set_mlx(&ctx.mlx);
-	render_image(&ctx.map, &ctx.mlx);
+	extract_map_info(&ctx, argv[1]);
+	convert_points_to_isometric(&ctx);
+	set_mlx(&ctx);
+	render_image(&ctx);
 	handle_events(&ctx);
-	mlx_loop(ctx.mlx.mlx_ptr);
+	mlx_loop(ctx.mlx_ptr);
 	return (0);
 }
