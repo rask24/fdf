@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:28:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:35:09 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	convert_points_to_isometric(t_ctx *ctx)
 	int		center_map_y;
 	double	map_scale;
 
+	ctx->offset_x = 0;
+	ctx->offset_y = 0;
 	map_scale = _calc_map_scale(ctx);
 	center_map_x = (ctx->map_witdh - 1) * map_scale / 2;
 	center_map_y = (ctx->map_height - 1) * map_scale / 2;

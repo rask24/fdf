@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:34:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_ctx
 	int		map_witdh;
 	int		map_height;
 	t_point	**points;
+	int		offset_x;
+	int		offset_y;
 }	t_ctx;
 
 typedef struct s_line_conf

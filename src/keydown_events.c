@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:16:41 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:27:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:37:10 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void	_handle_translation(int keycode, t_ctx *ctx)
 {
 	ft_bzero(ctx->data_addr,
 		WIN_HEIGHT * WIN_WIDTH * (ctx->bits_per_pixel / 8));
-	if (keycode == KEY_S)
-		translate_points(ctx, 0, TRANSLATE_STEP, 0);
+	if (keycode == KEY_D)
+		ctx->offset_x += TRANSLATE_STEP;
 	else if (keycode == KEY_W)
-		translate_points(ctx, 0, -TRANSLATE_STEP, 0);
+		ctx->offset_y -= TRANSLATE_STEP;
 	else if (keycode == KEY_A)
-		translate_points(ctx, -TRANSLATE_STEP, 0, 0);
-	else if (keycode == KEY_D)
-		translate_points(ctx, TRANSLATE_STEP, 0, 0);
+		ctx->offset_x -= TRANSLATE_STEP;
+	else if (keycode == KEY_S)
+		ctx->offset_y += TRANSLATE_STEP;
 	render_image(ctx);
 }
 
