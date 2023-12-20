@@ -6,64 +6,64 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:18:59 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/18 18:16:32 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	_set_map_size(t_map *map, char **line_array)
+static void	_set_map_size(t_ctx *ctx, char **line_array)
 {
 	char	*first_line;
 
 	first_line = *line_array;
-	map->width = 0;
+	ctx->map_witdh = 0;
 	while (*first_line)
 	{
 		if (ft_isalnum(*first_line)
 			&& (first_line[1] == ' '
 				|| first_line[1] == '\n' || first_line[1] == '\t'))
-			map->width++;
+			ctx->map_witdh++;
 		first_line++;
 	}
-	map->height = 0;
-	while (line_array[map->height])
-		map->height++;
+	ctx->map_height = 0;
+	while (line_array[ctx->map_height])
+		ctx->map_height++;
 }
 
-static void	_alloc_points(t_map *map)
+static void	_alloc_points(t_ctx *ctx)
 {
 	int	i;
 
-	map->points = malloc(sizeof(t_point) * map->height);
-	if (!map->points)
+	ctx->points = malloc(sizeof(t_point) * ctx->map_height);
+	if (!ctx->points)
 		exit_with_error(strerror(errno));
 	i = 0;
-	while (i < map->height)
+	while (i < ctx->map_height)
 	{
-		map->points[i] = malloc(sizeof(t_point) * map->width);
-		if (!map->points[i])
+		ctx->points[i] = malloc(sizeof(t_point) * ctx->map_witdh);
+		if (!ctx->points[i])
 			exit_with_error(strerror(errno));
 		i++;
 	}
 }
 
-static void	_set_points_fixed_y(t_map *map, int y, char *line)
+static void	_set_points_fixed_y(t_ctx *ctx, int y, char *line)
 {
 	int		x;
 	bool	flag_color;
 
 	x = 0;
 	flag_color = false;
-	while (x < map->width)
+	while (x < ctx->map_witdh)
 	{
-		map->points[y][x].x = x;
-		map->points[y][x].y = y;
-		map->points[y][x].color = NO_COLOR_SPEC;
+		ctx->points[y][x].x = x;
+		ctx->points[y][x].y = y;
+		ctx->points[y][x].color = NO_COLOR_SPEC;
 		if (flag_color)
-			map->points[y][x].color = ft_strtol(line, &line, 16);
+			ctx->points[y][x].color = ft_strtol(line, &line, 16);
 		else
-			map->points[y][x].z = ft_strtol(line, &line, 10);
+			ctx->points[y][x].z = ft_strtol(line, &line, 10);
 		flag_color = *line == ',';
 		line++;
 		if (!flag_color)
@@ -71,43 +71,43 @@ static void	_set_points_fixed_y(t_map *map, int y, char *line)
 	}
 }
 
-static void	_set_points(t_map *map, char **line_array)
+static void	_set_points(t_ctx *ctx, char **line_array)
 {
 	int		x;
 	int		y;
 
 	y = 0;
-	while (y < map->height)
+	while (y < ctx->map_height)
 	{
-		_set_points_fixed_y(map, y, line_array[y]);
+		_set_points_fixed_y(ctx, y, line_array[y]);
 		y++;
 	}
 	y = 0;
-	while (y < map->height)
+	while (y < ctx->map_height)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x < ctx->map_witdh)
 		{
-			if (map->points[y][x].color == NO_COLOR_SPEC
-				&& map->points[y][x].z)
-				map->points[y][x].color = DEFAULT_COLOR_TOP;
-			else if (map->points[y][x].color == NO_COLOR_SPEC)
-				map->points[y][x].color = DEFAULT_COLOR_BOTTOM;
+			if (ctx->points[y][x].color == NO_COLOR_SPEC
+				&& ctx->points[y][x].z)
+				ctx->points[y][x].color = DEFAULT_COLOR_TOP;
+			else if (ctx->points[y][x].color == NO_COLOR_SPEC)
+				ctx->points[y][x].color = DEFAULT_COLOR_BOTTOM;
 			x++;
 		}
 		y++;
 	}
 }
 
-void	extract_map_info(t_map *map, char *file_path)
+void	extract_map_info(t_ctx *ctx, char *file_path)
 {
 	char	**line_array;
 
 	line_array = file_to_line_array(file_path);
 	if (!line_array)
 		exit_with_error(strerror(errno));
-	_set_map_size(map, line_array);
-	_alloc_points(map);
-	_set_points(map, line_array);
+	_set_map_size(ctx, line_array);
+	_alloc_points(ctx);
+	_set_points(ctx, line_array);
 	ft_free_strs(line_array);
 }
