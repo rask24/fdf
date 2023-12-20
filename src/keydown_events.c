@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:16:41 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:37:10 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 16:20:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	_handle_scale(int keycode, t_ctx *ctx)
 	ft_bzero(ctx->data_addr,
 		WIN_HEIGHT * WIN_WIDTH * (ctx->bits_per_pixel / 8));
 	if (keycode == KEY_PLUS)
-		scale_points(ctx, 1 + SCALE_STEP, SCALE_X | SCALE_Y);
+		scale_points(ctx, 1 + SCALE_STEP, SCALE_X | SCALE_Y | SCALE_Z);
 	else if (keycode == KEY_MINUS)
-		scale_points(ctx, 1 - SCALE_STEP, SCALE_X | SCALE_Y);
+		scale_points(ctx, 1 - SCALE_STEP, SCALE_X | SCALE_Y | SCALE_Z);
 	render_image(ctx);
 }
 
