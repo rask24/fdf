@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:07:39 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:24:09 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	translate_points(t_ctx *ctx, double dx, double dy, double dz)
 	int	y;
 
 	y = 0;
-	while (y < ctx->height)
+	while (y < ctx->map_height)
 	{
 		x = 0;
-		while (x < ctx->width)
+		while (x < ctx->map_witdh)
 		{
 			ctx->points[y][x].x += dx;
 			ctx->points[y][x].y += dy;
@@ -38,10 +38,10 @@ void	scale_points(t_ctx *ctx, double scale_factor, int axis_flag)
 	int	y;
 
 	y = 0;
-	while (y < ctx->height)
+	while (y < ctx->map_height)
 	{
 		x = 0;
-		while (x < ctx->width)
+		while (x < ctx->map_witdh)
 		{
 			if (axis_flag & SCALE_X)
 				ctx->points[y][x].x *= scale_factor;
@@ -66,10 +66,10 @@ void	rotate_points_x(t_ctx *ctx, double theta)
 	cos_theta = cos(theta);
 	sin_theta = sin(theta);
 	y = 0;
-	while (y < ctx->height)
+	while (y < ctx->map_height)
 	{
 		x = 0;
-		while (x < ctx->width)
+		while (x < ctx->map_witdh)
 		{
 			tmp_y = ctx->points[y][x].y;
 			ctx->points[y][x].y = cos_theta * tmp_y
@@ -93,10 +93,10 @@ void	rotate_points_y(t_ctx *ctx, double theta)
 	cos_theta = cos(theta);
 	sin_theta = sin(theta);
 	y = 0;
-	while (y < ctx->height)
+	while (y < ctx->map_height)
 	{
 		x = 0;
-		while (x < ctx->width)
+		while (x < ctx->map_witdh)
 		{
 			tmp_x = ctx->points[y][x].x;
 			ctx->points[y][x].x = cos_theta * tmp_x
@@ -120,10 +120,10 @@ void	rotate_points_z(t_ctx *ctx, double theta)
 	cos_theta = cos(theta);
 	sin_theta = sin(theta);
 	y = 0;
-	while (y < ctx->height)
+	while (y < ctx->map_height)
 	{
 		x = 0;
-		while (x < ctx->width)
+		while (x < ctx->map_witdh)
 		{
 			tmp_x = ctx->points[y][x].x;
 			ctx->points[y][x].x = cos_theta * tmp_x

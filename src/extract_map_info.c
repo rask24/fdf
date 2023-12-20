@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:18:59 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:15:53 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,31 @@ static void	_set_map_size(t_ctx *ctx, char **line_array)
 	char	*first_line;
 
 	first_line = *line_array;
-	ctx->width = 0;
+	ctx->map_witdh = 0;
 	while (*first_line)
 	{
 		if (ft_isalnum(*first_line)
 			&& (first_line[1] == ' '
 				|| first_line[1] == '\n' || first_line[1] == '\t'))
-			ctx->width++;
+			ctx->map_witdh++;
 		first_line++;
 	}
-	ctx->height = 0;
-	while (line_array[ctx->height])
-		ctx->height++;
+	ctx->map_height = 0;
+	while (line_array[ctx->map_height])
+		ctx->map_height++;
 }
 
 static void	_alloc_points(t_ctx *ctx)
 {
 	int	i;
 
-	ctx->points = malloc(sizeof(t_point) * ctx->height);
+	ctx->points = malloc(sizeof(t_point) * ctx->map_height);
 	if (!ctx->points)
 		exit_with_error(strerror(errno));
 	i = 0;
-	while (i < ctx->height)
+	while (i < ctx->map_height)
 	{
-		ctx->points[i] = malloc(sizeof(t_point) * ctx->width);
+		ctx->points[i] = malloc(sizeof(t_point) * ctx->map_witdh);
 		if (!ctx->points[i])
 			exit_with_error(strerror(errno));
 		i++;
@@ -55,7 +55,7 @@ static void	_set_points_fixed_y(t_ctx *ctx, int y, char *line)
 
 	x = 0;
 	flag_color = false;
-	while (x < ctx->width)
+	while (x < ctx->map_witdh)
 	{
 		ctx->points[y][x].x = x;
 		ctx->points[y][x].y = y;
@@ -77,16 +77,16 @@ static void	_set_points(t_ctx *ctx, char **line_array)
 	int		y;
 
 	y = 0;
-	while (y < ctx->height)
+	while (y < ctx->map_height)
 	{
 		_set_points_fixed_y(ctx, y, line_array[y]);
 		y++;
 	}
 	y = 0;
-	while (y < ctx->height)
+	while (y < ctx->map_height)
 	{
 		x = 0;
-		while (x < ctx->width)
+		while (x < ctx->map_witdh)
 		{
 			if (ctx->points[y][x].color == NO_COLOR_SPEC
 				&& ctx->points[y][x].z)

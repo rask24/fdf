@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:24:47 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_points(t_ctx ctx)
 	int	i;
 
 	i = 0;
-	while (i < ctx.height)
+	while (i < ctx.map_height)
 	{
 		free(ctx.points[i]);
 		i++;
@@ -32,10 +32,10 @@ void	dev(t_ctx ctx)
 	int	j;
 
 	i = 0;
-	while (i < ctx.height)
+	while (i < ctx.map_height)
 	{
 		j = 0;
-		while (j < ctx.width)
+		while (j < ctx.map_witdh)
 		{
 			printf("(%f, %f, %f) #%#X\n",
 				ctx.points[i][j].x,

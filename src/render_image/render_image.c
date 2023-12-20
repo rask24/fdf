@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:00:48 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:20:42 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	_connect_points_grid_image(t_ctx *ctx)
 	int	j;
 
 	i = 0;
-	while (i < ctx->height)
+	while (i < ctx->map_height)
 	{
 		j = 0;
-		while (j < ctx->width - 1)
+		while (j < ctx->map_witdh - 1)
 		{
 			plot_line(ctx->points[i][j], ctx->points[i][j + 1], ctx);
 			j++;
@@ -29,10 +29,10 @@ void	_connect_points_grid_image(t_ctx *ctx)
 		i++;
 	}
 	i = 0;
-	while (i < ctx->width)
+	while (i < ctx->map_witdh)
 	{
 		j = 0;
-		while (j < ctx->height - 1)
+		while (j < ctx->map_height - 1)
 		{
 			plot_line(ctx->points[j][i], ctx->points[j + 1][i], ctx);
 			j++;

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:28:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:17:40 by reasuke          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static double	_calc_map_scale(t_ctx *ctx)
 	double	y_rate;
 
 	x_rate = (WIN_WIDTH * DEFAULT_MAP_SCALE * sqrt(2))
-		/ (ctx->width + ctx->height);
+		/ (ctx->map_witdh + ctx->map_height);
 	y_rate = (WIN_HEIGHT * DEFAULT_MAP_SCALE * sqrt(6))
-		/ (ctx->width + ctx->height);
+		/ (ctx->map_witdh + ctx->map_height);
 	if (x_rate < y_rate)
 		return (x_rate);
 	return (y_rate);
@@ -38,7 +38,7 @@ static double	_calc_map_scale(t_ctx *ctx)
 // 	while (y < ctx->height)
 // 	{
 // 		x = 0;
-// 		while (x < ctx->width)
+// 		while (x < ctx->map_witdh)
 // 		{
 // 			tmp = sin(atan(sqrt(2))) * ctx->points[y][x].y
 // 				+ cos(atan(sqrt(2))) * ctx->points[y][x].z;
@@ -57,8 +57,8 @@ void	convert_points_to_isometric(t_ctx *ctx)
 	double	map_scale;
 
 	map_scale = _calc_map_scale(ctx);
-	center_map_x = (ctx->width - 1) * map_scale / 2;
-	center_map_y = (ctx->height - 1) * map_scale / 2;
+	center_map_x = (ctx->map_witdh - 1) * map_scale / 2;
+	center_map_y = (ctx->map_height - 1) * map_scale / 2;
 	scale_points(ctx, map_scale, SCALE_X | SCALE_Y);
 	scale_points(ctx, DEFAULT_Z_SCALE, SCALE_Z);
 	translate_points(ctx, -center_map_x, -center_map_y, 0);
