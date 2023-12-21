@@ -42,8 +42,8 @@ enum
 #  define KEY_ARROW_DOWN  65364
 #  define KEY_ARROW_LEFT  65361
 #  define KEY_ARROW_RIGHT 65363
-#  define KEY_PLUS        65361
-#  define KEY_MINUS       65363
+#  define KEY_PLUS        59
+#  define KEY_MINUS       45
 # endif
 
 # ifdef __APPLE__
