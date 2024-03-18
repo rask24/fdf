@@ -6,16 +6,21 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:16:41 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 16:20:21 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/18 20:02:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	_handle_translation(int keycode, t_ctx *ctx)
+static void	_clear_window(t_ctx *ctx)
 {
 	ft_bzero(ctx->data_addr,
 		WIN_HEIGHT * WIN_WIDTH * (ctx->bits_per_pixel / 8));
+}
+
+static void	_handle_translation(int keycode, t_ctx *ctx)
+{
+	_clear_window(ctx);
 	if (keycode == KEY_D)
 		ctx->offset_x += TRANSLATE_STEP;
 	else if (keycode == KEY_W)
@@ -29,8 +34,7 @@ static void	_handle_translation(int keycode, t_ctx *ctx)
 
 static void	_handle_scale(int keycode, t_ctx *ctx)
 {
-	ft_bzero(ctx->data_addr,
-		WIN_HEIGHT * WIN_WIDTH * (ctx->bits_per_pixel / 8));
+	_clear_window(ctx);
 	if (keycode == KEY_PLUS)
 		scale_points(ctx, 1 + SCALE_STEP, SCALE_X | SCALE_Y | SCALE_Z);
 	else if (keycode == KEY_MINUS)
@@ -40,8 +44,7 @@ static void	_handle_scale(int keycode, t_ctx *ctx)
 
 static void	_handle_rotation(int keycode, t_ctx *ctx)
 {
-	ft_bzero(ctx->data_addr,
-		WIN_HEIGHT * WIN_WIDTH * (ctx->bits_per_pixel / 8));
+	_clear_window(ctx);
 	if (keycode == KEY_ARROW_UP)
 		rotate_points_x(ctx, ROTATE_STEP);
 	else if (keycode == KEY_ARROW_DOWN)

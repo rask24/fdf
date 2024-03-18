@@ -10,16 +10,17 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/validate/validate_args.c \
 					$(SRC_DIR)/validate/validate_map.c \
 					$(SRC_DIR)/extract_map_info.c \
-					$(SRC_DIR)/keydown_events.c \
+					$(SRC_DIR)/events/handle_events.c \
+					$(SRC_DIR)/events/keydown_events.c \
+					$(SRC_DIR)/events/exit_window.c \
 					$(SRC_DIR)/convert_points_to_isometric.c \
-					$(SRC_DIR)/handle_events.c \
 					$(SRC_DIR)/point_operations/rotate_points_x.c \
 					$(SRC_DIR)/point_operations/rotate_points_y.c \
 					$(SRC_DIR)/point_operations/rotate_points_z.c \
 					$(SRC_DIR)/point_operations/translate_points.c \
 					$(SRC_DIR)/point_operations/scale_points.c \
-					$(SRC_DIR)/mlx_utils.c \
-					$(SRC_DIR)/error.c \
+					$(SRC_DIR)/utils/mlx_utils.c \
+					$(SRC_DIR)/utils/exit_with_error.c \
 					$(SRC_DIR)/render_image/render_image.c \
 					$(SRC_DIR)/render_image/plot_line.c \
 					$(SRC_DIR)/render_image/color_gradient.c \
