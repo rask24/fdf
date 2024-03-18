@@ -30,7 +30,7 @@ run_test_check_status "map/42.fd" "fdf: wrong file extension"
 run_test_check_status "map/42.fdfd" "fdf: wrong file extension"
 
 # hidden file named .fdf
-run_test_check_status "test/.fdf" "fdf: wrong filename(.fdf)"
+run_test_check_status "map/error/.fdf" "fdf: wrong filename(.fdf)"
 
 # file does not exist
 run_test_check_status "map/error/does_not_exist.fdf" "fdf: No such file or directory"
