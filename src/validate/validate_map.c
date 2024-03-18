@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:15:56 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/16 15:16:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/18 19:41:34 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	_check_format(char **line_array)
+static void	_validate_format(char **line_array)
 {
 	char	*line;
 	bool	flag_comma;
@@ -55,7 +55,7 @@ static int	_calc_map_width(char *line)
 	return (width);
 }
 
-static void	_check_rectangle(char **line_array)
+static void	_validate_rectangle(char **line_array)
 {
 	int	width;
 	int	prev;
@@ -72,14 +72,14 @@ static void	_check_rectangle(char **line_array)
 	}
 }
 
-void	check_map(char *file_path)
+void	validate_map(char *file_path)
 {
 	char	**line_array;
 
 	line_array = file_to_line_array(file_path);
 	if (!line_array)
 		exit_with_error(strerror(errno));
-	_check_format(line_array);
-	_check_rectangle(line_array);
+	_validate_format(line_array);
+	_validate_rectangle(line_array);
 	ft_free_strs(line_array);
 }

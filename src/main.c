@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/18 19:39:22 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	main(int argc, char **argv)
 {
 	t_ctx	ctx;
 
-	check_args(argc, argv);
-	check_map(argv[1]);
+	validate_args(argc, argv);
+	validate_map(argv[1]);
 	extract_map_info(&ctx, argv[1]);
 	convert_points_to_isometric(&ctx);
 	set_mlx(&ctx);

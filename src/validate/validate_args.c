@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   validate_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:58:46 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/10 14:35:00 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/18 19:41:11 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	_check_arg_num(int argc)
+static void	_validate_arg_num(int argc)
 {
 	if (argc != 2)
 		exit_with_error("number of arguments is invalid");
@@ -28,7 +28,7 @@ static char	*_extract_filename(char *path)
 	return (path);
 }
 
-static void	_check_filename(char *path)
+static void	_validate_filename(char *path)
 {
 	char	*file_name;
 	char	*extension;
@@ -43,8 +43,8 @@ static void	_check_filename(char *path)
 		exit_with_error("wrong file extension");
 }
 
-void	check_args(int argc, char **argv)
+void	validate_args(int argc, char **argv)
 {
-	_check_arg_num(argc);
-	_check_filename(argv[1]);
+	_validate_arg_num(argc);
+	_validate_filename(argv[1]);
 }
