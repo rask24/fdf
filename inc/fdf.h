@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:34:25 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/18 19:39:22 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 
 # define NO_COLOR_SPEC -1
 # define DEFAULT_COLOR_TOP    0xFFFFFF
-# define DEFAULT_COLOR_BOTTOM 0x292929
+# define DEFAULT_COLOR_BOTTOM 0x555555
 
 # define DEFAULT_MAP_SCALE 0.95
-# define DEFAULT_Z_SCALE 2
+# define DEFAULT_Z_SCALE 20
 # define SCALE_X 0b001
 # define SCALE_Y 0b010
 # define SCALE_Z 0b100
@@ -81,9 +81,9 @@ typedef struct s_line_conf
 	int		color_end;
 }	t_line_conf;
 
-void	check_args(int argc, char **argv);
+void	validate_args(int argc, char **argv);
 
-void	check_map(char *file_path);
+void	validate_map(char *file_path);
 
 void	extract_map_info(t_ctx *ctx, char *file_path);
 
