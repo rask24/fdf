@@ -3,9 +3,9 @@ UNAME			= $(shell uname)
 CFLAGS			= -Werror -Wextra -Wall -O3
 NORM			= norminette
 
-SRC_DIR			= ./src
-BUILD_DIR		= ./build
-INC_DIR			= ./inc
+SRC_DIR			= src
+BUILD_DIR		= build
+INC_DIR			= inc
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/validate/validate_args.c \
 					$(SRC_DIR)/validate/validate_map.c \
@@ -41,7 +41,7 @@ else ifeq ($(UNAME), Darwin)
 	LIBMLX_FLAGS = -lmlx -framework openGL -framework AppKit
 endif
 
-INCLUDE = -I $(INC_DIR) -I $(LIBFT_DIR) -I $(LIBMLX_DIR)
+INCLUDE = -I $(INC_DIR) -I $(LIBFT_DIR)/include -I $(LIBMLX_DIR)
 
 GREEN	=	\033[0;32m
 BLUE	=	\033[0;34m

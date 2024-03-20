@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:18:59 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:31:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/20 23:09:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	extract_map_info(t_ctx *ctx, char *file_path)
 {
 	char	**line_array;
 
-	line_array = file_to_line_array(file_path);
+	line_array = file_to_lines(file_path);
 	if (!line_array)
 		exit_with_error(strerror(errno));
 	_set_map_size(ctx, line_array);
