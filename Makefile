@@ -1,11 +1,34 @@
-NAME			= fdf
-UNAME			= $(shell uname)
-CFLAGS			= -Werror -Wextra -Wall -O3
-NORM			= norminette
+# shell
+SHELL		= /bin/bash
+UNAME		= $(shell uname)
 
-SRC_DIR			= src
-BUILD_DIR		= build
-INC_DIR			= inc
+# executable and archive files
+NAME		= fdf
+
+# compiler options
+CFLAGS		= -Werror -Wextra -Wall
+PROD_FLAGS	= -O3
+DEV_FLAGS	= -O0 -g -fsanitize=address,undefined,integer
+DEP_FLAGS	= -MMD -MP
+INCLUDE		= -I $(INC_DIR) -I $(LIBFT_DIR)/include -I $(LIBMLX_DIR)
+LD_FLAGS	= -L $(LIBFT_DIR) -L $(LIBMLX_DIR)
+LD_LIBS		= -lft
+
+# directories
+SRC_DIR		= src
+BUILD_DIR	= build
+INC_DIR		= inc
+LIBFT_DIR	= ./libft
+
+ifeq ($(UNAME), Linux)
+	LIBMLX_DIR	= ./libmlx/linux
+	LD_LIBS		+= -lmlx -lXext -lX11 -lm -lz
+else ifeq ($(UNAME), Darwin)
+	LIBMLX_DIR	= ./libmlx/macos
+	LD_LIBS		+= -lmlx -framework openGL -framework AppKit
+endif
+
+# files
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/validate/validate_args.c \
 					$(SRC_DIR)/validate/validate_map.c \
@@ -29,25 +52,21 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/render_image/plot_point_to_image.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
-DEPFLAGS		= -MMD -MP
 
-LIBFT_FLAGS		= -lft
-LIBFT_DIR		= ./libft
-ifeq ($(UNAME), Linux)
-	LIBMLX_DIR   = ./libmlx/linux
-	LIBMLX_FLAGS = -lmlx -lXext -lX11 -lm -lz
-else ifeq ($(UNAME), Darwin)
-	LIBMLX_DIR   = ./libmlx/macos
-	LIBMLX_FLAGS = -lmlx -framework openGL -framework AppKit
-endif
+# colors
+RESET			= \033[0m
+ORANGE			= \033[0;33m
+GRAY			= \033[0;90m
+RED				= \033[0;91m
+GREEN			= \033[1;92m
+YELLOW			= \033[1;93m
+BLUE			= \033[0;94m
+MAGENTA			= \033[0;95m
+CYAN			= \033[0;96m
+WHITE			= \033[0;97m
 
-INCLUDE = -I $(INC_DIR) -I $(LIBFT_DIR)/include -I $(LIBMLX_DIR)
-
-GREEN	=	\033[0;32m
-BLUE	=	\033[0;34m
-RED		=	\033[0;31m
-RESET	=	\033[0m
-
+# rules
+.PHONY: all
 all: title $(NAME)
 
 $(NAME): $(OBJ)
@@ -55,13 +74,16 @@ $(NAME): $(OBJ)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBMLX_DIR)
 	@if [ $(UNAME) = "Darwin" ]; then cp $(LIBMLX_DIR)/libmlx.dylib .; fi
-	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
+	@$(CC) $(OBJ) $(CFLAGS) $(LD_LIBS) $(LD_FLAGS) -o $(NAME)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDE) $(DEPFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) $(DEP_FLAGS) -c $< -o $@
 	@printf "$(GREEN).$(RESET)"
 
+-include $(DEP)
+
+.PHONY: clean
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(LIBMLX_DIR) clean
@@ -69,19 +91,19 @@ clean:
 	@$(RM) $(OBJ) $(DEP)
 	@echo "$(RED)fdf: delete objs deps$(RESET)"
 
+.PHONY: fclean
 fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(RM) $(NAME)
 	@echo "$(RED)fdf: delete fdf$(RESET)"
 
+.PHONY: re
 re: fclean all
 
+.PHONY: norm
 norm:
-	$(NORM) $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
+	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
 
+.PHONY: title
 title:
 	@echo "$(BLUE)fdf$(RESET)"
-
-.PHONY: all clean fclean re
-
--include $(DEP)
