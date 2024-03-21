@@ -17,8 +17,8 @@ LD_LIBS		= -lft
 # directories
 SRC_DIR		= src
 BUILD_DIR	= build
-INC_DIR		= inc
-LIBFT_DIR	= ./libft
+INC_DIR		= include
+LIBFT_DIR	= libft
 
 ifeq ($(UNAME), Linux)
 	LIBMLX_DIR	= ./libmlx/linux
