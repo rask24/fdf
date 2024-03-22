@@ -108,17 +108,15 @@ $(LIBMLX):
 clean:
 	@make clean -C $(LIBFT_DIR)
 	@make clean -C $(LIBMLX_DIR)
+	@if [ $(UNAME) = "Darwin" ]; then \
+		$(RM) $(shell basename $(LIBMLX)) ; \
+	fi
 	@$(RM) $(OBJ) $(DEP)
 	@printf "$(BLUE)[$(NAME)]\t\tobject files$(RESET)\t$(GREEN)deleted ✔$(RESET)\n"
 
 .PHONY: fclean
 fclean: clean
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@make clean -C $(LIBFT_DIR)
-	@make fclean -C $(LIBMLX_DIR)
-	@if [ $(UNAME) = "Darwin" ]; then \
-		$(RM) $(shell basename $(LIBMLX)) ; \
-	fi
+	@make fclean -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
 	@printf "$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(GREEN)deleted ✔$(RESET)\n"
 
