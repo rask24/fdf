@@ -28,8 +28,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: check version
-        run: swiftc -v
+      - name: Set up Swift
+        uses: swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf
+        with:
+          swift-version: "5.9.2"
+      - name: Get Swift version
+        run: swift --version
       - name: Build fdf
         run: make
       - name: Run tests
