@@ -16,7 +16,7 @@ jobs:
         run: make norm
   build:
     name: build
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,16 +24,10 @@ jobs:
         run: make
   test:
     name: run tests
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Set up Swift
-        uses: swift-actions/setup-swift@v2
-        with:
-          swift-version: "5.9.2"
-      - name: Get Swift version
-        run: swift --version
       - name: Build fdf
         run: make
       - name: Run tests
