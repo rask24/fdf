@@ -28,5 +28,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Build fdf
+        run: make
       - name: Run tests
         run: test/test.sh
