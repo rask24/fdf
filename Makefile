@@ -106,7 +106,7 @@ $(LIBMLX):
 
 .PHONY: clean
 clean:
-	@make clean -C $(LIBFT_DIR)
+	-@make clean -C $(LIBFT_DIR)
 	@make clean -C $(LIBMLX_DIR)
 	@if [ $(UNAME) = "Darwin" ]; then \
 		$(RM) $(shell basename $(LIBMLX)) ; \
@@ -116,7 +116,7 @@ clean:
 
 .PHONY: fclean
 fclean: clean
-	@make fclean -C $(LIBFT_DIR)
+	-@make fclean -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
 	@printf "$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(GREEN)deleted ✔$(RESET)\n"
 
@@ -126,7 +126,3 @@ re: fclean all
 .PHONY: norm
 norm:
 	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
-
-.PHONY: title
-title:
-	@printf "$(BLUE)fdf$(RESET)\n"
