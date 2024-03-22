@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:57 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:22:06 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:40:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
 
 static void	_set_line_conf(t_line_conf *lc, t_point *p0, t_point *p1)
 {

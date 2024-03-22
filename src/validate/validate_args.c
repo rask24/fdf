@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:58:46 by reasuke           #+#    #+#             */
-/*   Updated: 2024/03/18 19:41:11 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:38:57 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
 
 static void	_validate_arg_num(int argc)
 {

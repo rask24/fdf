@@ -6,11 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:20:07 by reasuke           #+#    #+#             */
-/*   Updated: 2024/03/18 20:00:27 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:41:00 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx.h"
+#include "mlx_config.h"
 
 void	handle_events(t_ctx *ctx)
 {

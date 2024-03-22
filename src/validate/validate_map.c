@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:15:56 by reasuke           #+#    #+#             */
-/*   Updated: 2024/03/20 23:09:48 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:39:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
 
 static void	_validate_format(char **line_array)
 {

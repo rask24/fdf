@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:59:13 by reasuke           #+#    #+#             */
-/*   Updated: 2024/03/18 19:39:22 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:40:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <unistd.h>
-
-# include "libft.h"
-# include "mlx.h"
-
-# include "mlx_config.h"
 
 # define WIN_WIDTH  1200
 # define WIN_HEIGHT 800

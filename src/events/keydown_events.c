@@ -6,11 +6,14 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:16:41 by reasuke           #+#    #+#             */
-/*   Updated: 2024/03/18 20:02:06 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:41:10 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
+#include "mlx.h"
+#include "mlx_config.h"
 
 static void	_clear_window(t_ctx *ctx)
 {

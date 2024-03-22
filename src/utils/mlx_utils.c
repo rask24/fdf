@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 22:24:29 by reasuke           #+#    #+#             */
-/*   Updated: 2023/12/20 15:18:25 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:39:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx.h"
 
 void	set_mlx(t_ctx *ctx)
 {

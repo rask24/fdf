@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/03/18 20:07:25 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:38:44 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx.h"
 
 #ifdef DEV
 
