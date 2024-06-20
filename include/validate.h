@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 00:32:48 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 00:31:28 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 00:32:19 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate.h"
+#ifndef VALIDATE_H
+#define VALIDATE_H
 
-int	main(int argc, char **argv)
-{
-	validate_arguments(argc, argv);
-	return (0);
-}
+void	validate_arguments(int argc, char **argv);
+
+#endif

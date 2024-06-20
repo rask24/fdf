@@ -32,7 +32,8 @@ else ifeq ($(UNAME), Darwin)
 endif
 
 # files
-SRC			= $(SRC_DIR)/main.c
+SRC			= $(SRC_DIR)/main.c \
+			  $(SRC_DIR)/validate/validate_arguments.c
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 HEADER		= $(wildcard $(INC_DIR)/*.h)
