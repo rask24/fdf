@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_internal.h                                :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 00:33:59 by reasuke           #+#    #+#             */
+/*   Created: 2024/06/21 01:02:08 by reasuke           #+#    #+#             */
 /*   Updated: 2024/06/21 02:27:53 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_INTERNAL_H
-# define VALIDATE_INTERNAL_H
+#include <errno.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-# define EXE_NAME "fdf"
+#include "libft.h"
 
-# define INV_ARGS_ERR_MSG "Invalid number of arguments"
-# define INV_FILE_FORMAT_ERR_MSG "Invalid file format"
-# define MAP_NOT_RECT_ERR_MSG "Map is not a rectangle"
+#include "validate_internal.h"
 
-void	validate_rectangle_map(char **map);
+void	validate_map(char *file_path)
+{
+	char	**map;
 
-#endif
+	map = file_to_lines(file_path);
+	if (map == NULL)
+	{
+		ft_dprintf(STDERR_FILENO, "%s: %s\n", EXE_NAME, strerror(errno));
+		exit(1);
+	}
+	validate_rectangle_map(map);
+	ft_free_strs(map);
+}
