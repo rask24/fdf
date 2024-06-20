@@ -32,27 +32,7 @@ else ifeq ($(UNAME), Darwin)
 endif
 
 # files
-SRC			= $(SRC_DIR)/main.c \
-				$(SRC_DIR)/validate/validate_args.c \
-				$(SRC_DIR)/validate/validate_map.c \
-				$(SRC_DIR)/init/extract_map_info.c \
-				$(SRC_DIR)/init/convert_points_to_isometric.c \
-				$(SRC_DIR)/events/handle_events.c \
-				$(SRC_DIR)/events/keydown_events.c \
-				$(SRC_DIR)/events/exit_window.c \
-				$(SRC_DIR)/point_operations/rotate_points_x.c \
-				$(SRC_DIR)/point_operations/rotate_points_y.c \
-				$(SRC_DIR)/point_operations/rotate_points_z.c \
-				$(SRC_DIR)/point_operations/translate_points.c \
-				$(SRC_DIR)/point_operations/scale_points.c \
-				$(SRC_DIR)/utils/mlx_utils.c \
-				$(SRC_DIR)/utils/exit_with_error.c \
-				$(SRC_DIR)/render_image/render_image.c \
-				$(SRC_DIR)/render_image/plot_line.c \
-				$(SRC_DIR)/render_image/color_gradient.c \
-				$(SRC_DIR)/render_image/calc_ratio.c \
-				$(SRC_DIR)/render_image/frac_utils.c \
-				$(SRC_DIR)/render_image/plot_point_to_image.c
+SRC			= $(SRC_DIR)/main.c
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 HEADER		= $(wildcard $(INC_DIR)/*.h)
