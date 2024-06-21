@@ -6,7 +6,7 @@
 - The number of elements in each line remains consistent, forming a well-defined rectangular shape.
 - A newline character, space, or tab at the end of the file is optional.
 
-### Sample Format:
+### Sample Format
 
 ```plaintext
 0  0  0  0  0  0  0  0  0  0

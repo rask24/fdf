@@ -9,9 +9,18 @@ extern "C" {
 }
 
 // ./fdf test.fdf
-TEST(validate_arguments, valid) {
+TEST(validate_arguments, valid1) {
   int argc = 2;
   char *argv[] = {const_cast<char *>("./fdf"), const_cast<char *>("test.fdf")};
+
+  EXPECT_NO_FATAL_FAILURE(validate_arguments(argc, argv));
+}
+
+// ./fdf ./maps/test.fdf
+TEST(validate_arguments, valid2) {
+  int argc = 2;
+  char *argv[] = {const_cast<char *>("./fdf"),
+                  const_cast<char *>("./maps/test.fdf")};
 
   EXPECT_NO_FATAL_FAILURE(validate_arguments(argc, argv));
 }
