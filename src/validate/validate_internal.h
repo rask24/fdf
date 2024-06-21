@@ -6,12 +6,14 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:33:59 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:17:22 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 19:38:51 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALIDATE_INTERNAL_H
 # define VALIDATE_INTERNAL_H
+
+# include <stdbool.h>
 
 # define EXE_NAME "fdf"
 

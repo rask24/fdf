@@ -33,11 +33,12 @@ endif
 
 # files
 SRC			= $(SRC_DIR)/main.c \
-			  $(SRC_DIR)/validate/is_delimiter.c \
-			  $(SRC_DIR)/validate/validate_arguments.c \
-			  $(SRC_DIR)/validate/validate_map.c \
-			  $(SRC_DIR)/validate/validate_map_format.c \
-			  $(SRC_DIR)/validate/validate_rectangle_map.c
+				$(SRC_DIR)/utils/error_exit.c \
+				$(SRC_DIR)/validate/is_delimiter.c \
+				$(SRC_DIR)/validate/validate_arguments.c \
+				$(SRC_DIR)/validate/validate_map.c \
+				$(SRC_DIR)/validate/validate_map_format.c \
+				$(SRC_DIR)/validate/validate_rectangle_map.c
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 HEADER		= $(wildcard $(INC_DIR)/*.h)

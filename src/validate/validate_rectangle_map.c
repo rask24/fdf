@@ -6,14 +6,14 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 02:05:29 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 15:13:54 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 19:39:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include <stddef.h>
 
 #include "libft.h"
+#include "utils.h"
 
 #include "validate_internal.h"
 
@@ -43,11 +43,7 @@ void	validate_rectangle_map(char **map)
 	while (map[i])
 	{
 		if (_count_elements(map[i]) != init_cnt)
-		{
-			ft_dprintf(STDERR_FILENO,
-				"%s: %s\n", EXE_NAME, MAP_NOT_RECT_ERR_MSG);
-			exit(1);
-		}
+			error_exit(MAP_NOT_RECT_ERR_MSG);
 		i++;
 	}
 }
