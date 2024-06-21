@@ -6,14 +6,14 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 21:51:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 23:20:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
 
-typedef struct	s_point
+typedef struct s_point
 {
 	double	x;
 	double	y;
@@ -21,7 +21,7 @@ typedef struct	s_point
 	int		color;
 }	t_point;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_point	**points;
 	int		rows;

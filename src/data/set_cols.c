@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 22:45:15 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:47:05 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 23:20:10 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ void	set_cols(t_data *data, char **map)
 	}
 	data->cols = cnt;
 }
-

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 23:12:00 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 23:19:26 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 static t_point	**_alloc_points(int row, int col)
 {
 	t_point	**points;
-	int	i;
+	int		i;
 
 	points = malloc(sizeof(t_point *) * row);
 	if (points == NULL)
