@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 23:42:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 01:44:19 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 02:00:00 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "mlx.h"
 #include "mlx_conf.h"
 #include "utils.h"
 
