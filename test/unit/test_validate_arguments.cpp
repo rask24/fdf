@@ -9,7 +9,7 @@ extern "C" {
 }
 
 // ./fdf test.fdf
-TEST(validate_arguments, valid1) {
+TEST(validate_arguments, validNormalPath) {
   int argc = 2;
   char *argv[] = {const_cast<char *>("./fdf"), const_cast<char *>("test.fdf")};
 
@@ -17,11 +17,27 @@ TEST(validate_arguments, valid1) {
 }
 
 // ./fdf ./maps/test.fdf
-TEST(validate_arguments, valid2) {
+TEST(validate_arguments, validRelativePath) {
   int argc = 2;
   char *argv[] = {const_cast<char *>("./fdf"),
                   const_cast<char *>("./maps/test.fdf")};
 
+  EXPECT_NO_FATAL_FAILURE(validate_arguments(argc, argv));
+}
+
+// ./fdf test\@\#\$.fdf
+TEST(validate_arguments, validSpecialChars) {
+  int argc = 2;
+  char *argv[] = {const_cast<char *>("./fdf"),
+                  const_cast<char *>("test@#$.fdf")};
+  EXPECT_NO_FATAL_FAILURE(validate_arguments(argc, argv));
+}
+
+// ./fdf /usr/local/maps/test.fdf
+TEST(validate_arguments, validAbsolutePath) {
+  int argc = 2;
+  char *argv[] = {const_cast<char *>("./fdf"),
+                  const_cast<char *>("/usr/local/maps/test.fdf")};
   EXPECT_NO_FATAL_FAILURE(validate_arguments(argc, argv));
 }
 
