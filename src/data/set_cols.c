@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   set_cols.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:47:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 22:45:15 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 22:47:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "data.h"
+#include "utils.h"
 
-# include <stdbool.h>
+void	set_cols(t_data *data, char **map)
+{
+	int		cnt;
+	int		i;
+	char	*str;
 
-# define EXE_NAME "fdf"
+	cnt = 0;
+	i = 0;
+	str = map[0];
+	while (str[i])
+	{
+		if (!is_delimiter(str[i]) && is_delimiter(str[i + 1]))
+			cnt++;
+		i++;
+	}
+	data->cols = cnt;
+}
 
-void	error_exit(char *msg);
-bool	is_delimiter(char c);
-
-#endif

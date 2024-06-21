@@ -33,8 +33,12 @@ endif
 
 # files
 SRC			= $(SRC_DIR)/main.c \
+				$(SRC_DIR)/data/construct_data.c \
+				$(SRC_DIR)/data/set_cols.c \
+				$(SRC_DIR)/data/set_points.c \
+				$(SRC_DIR)/data/set_rows.c \
+				$(SRC_DIR)/utils/is_delimiter.c \
 				$(SRC_DIR)/utils/error_exit.c \
-				$(SRC_DIR)/validate/is_delimiter.c \
 				$(SRC_DIR)/validate/validate_arguments.c \
 				$(SRC_DIR)/validate/validate_map_format.c \
 				$(SRC_DIR)/validate/validate_map_values.c \
