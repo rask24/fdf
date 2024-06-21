@@ -14,7 +14,8 @@ TEST_BUILD_DIR	= test/build
 OBJ_EXCLUDE_MAIN= $(filter-out $(BUILD_DIR)/main.o, $(OBJ))
 
 # test files
-TEST_SRC		= $(TEST_DIR)/test_validate_arguments.cpp \
+TEST_SRC		= $(TEST_DIR)/test_construct_data_setter.cpp \
+					$(TEST_DIR)/test_validate_arguments.cpp \
 					$(TEST_DIR)/test_validate_map_values.cpp \
 					$(TEST_DIR)/test_validate_rectangle_map.cpp \
 					$(TEST_DIR)/test_validate_map_format.cpp

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:44:50 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 23:12:00 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	_set_z_and_color(t_data *data, char *str, int row)
 		}
 		else
 			data->points[row][j].color = DEFAULT_COLOR_FLAG;
+		str = endptr;
 		j++;
 	}
 }
@@ -75,10 +76,10 @@ void	set_points(t_data *data, char **map)
 		while (j < data->cols)
 		{
 			data->points[i][j].x = j;
-			data->points[i][j].y = data->rows - 1 - i;
+			data->points[i][j].y = i;
 			j++;
 		}
-		_set_z_and_color(data, map[i], data->rows - i - 1);
+		_set_z_and_color(data, map[i], i);
 		i++;
 	}
 }
