@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 01:56:21 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 03:38:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ typedef struct s_view_conf
 	int		offset_y;
 	int		offset_z;
 	double	scale;
-	double	rot_matrix[3][3];
 }	t_view_conf;
 
 t_view_conf	*construct_view_conf(void);
