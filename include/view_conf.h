@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   view_conf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:47:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/22 01:51:34 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/22 01:56:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef VIEW_CONF_H
+# define VIEW_CONF_H
 
-# include <stdbool.h>
+typedef struct s_view_conf
+{
+	int		offset_x;
+	int		offset_y;
+	int		offset_z;
+	double	scale;
+	double	rot_matrix[3][3];
+}	t_view_conf;
 
-# define EXE_NAME "fdf"
-
-void	error_exit(char *msg);
-bool	is_delimiter(char c);
+t_view_conf	*construct_view_conf(void);
 
 #endif

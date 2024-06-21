@@ -33,13 +33,19 @@ endif
 
 # files
 SRC			= $(SRC_DIR)/main.c \
+				$(SRC_DIR)/data/construct_data.c \
+				$(SRC_DIR)/data/set_cols.c \
+				$(SRC_DIR)/data/set_points.c \
+				$(SRC_DIR)/data/set_rows.c \
+				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
+				$(SRC_DIR)/utils/is_delimiter.c \
 				$(SRC_DIR)/utils/error_exit.c \
-				$(SRC_DIR)/validate/is_delimiter.c \
 				$(SRC_DIR)/validate/validate_arguments.c \
 				$(SRC_DIR)/validate/validate_map_format.c \
 				$(SRC_DIR)/validate/validate_map_values.c \
 				$(SRC_DIR)/validate/validate_map.c \
-				$(SRC_DIR)/validate/validate_rectangle_map.c
+				$(SRC_DIR)/validate/validate_rectangle_map.c \
+				$(SRC_DIR)/view_conf/construct_view_conf.c
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 HEADER		= $(wildcard $(INC_DIR)/*.h)

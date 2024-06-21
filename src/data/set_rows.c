@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   set_rows.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:47:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 22:45:51 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 22:46:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "data.h"
 
-# include <stdbool.h>
+void	set_rows(t_data *data, char **map)
+{
+	int	cnt;
 
-# define EXE_NAME "fdf"
-
-void	error_exit(char *msg);
-bool	is_delimiter(char c);
-
-#endif
+	cnt = 0;
+	while (map[cnt])
+		cnt++;
+	data->rows = cnt;
+}

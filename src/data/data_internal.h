@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   data_internal.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:47:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 22:47:12 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef DATA_INTERNAL_H
+# define DATA_INTERNAL_H
 
-# include <stdbool.h>
+# include "data.h"
 
-# define EXE_NAME "fdf"
+# define DEFAULT_COLOR_FLAG -1
 
-void	error_exit(char *msg);
-bool	is_delimiter(char c);
+void	set_cols(t_data *data, char **map);
+void	set_rows(t_data *data, char **map);
+void	set_points(t_data *data, char **map);
 
 #endif

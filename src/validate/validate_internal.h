@@ -6,14 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:33:59 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 20:30:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 21:44:23 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALIDATE_INTERNAL_H
 # define VALIDATE_INTERNAL_H
 
-# include <stdbool.h>
 # include <limits.h>
 
 # define INV_ARGS_ERR_MSG "Invalid number of arguments"
@@ -31,6 +30,5 @@
 void	validate_rectangle_map(char **map);
 void	validate_map_format(char **map);
 void	validate_map_values(char **map);
-bool	is_delimiter(char c);
 
 #endif

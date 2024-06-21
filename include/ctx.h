@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ctx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:47:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/22 02:02:16 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/22 02:03:10 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef CTX_H
+# define CTX_H
 
-# include <stdbool.h>
+# include "data.h"
+# include "mlx_conf.h"
+# include "view_conf.h"
 
-# define EXE_NAME "fdf"
-
-void	error_exit(char *msg);
-bool	is_delimiter(char c);
+typedef struct s_ctx
+{
+	t_data		*data;
+	t_view_conf	*view_conf;
+	t_mlx_conf	*mlx_conf;
+}	t_ctx;
 
 #endif
