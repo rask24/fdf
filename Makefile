@@ -35,7 +35,7 @@ endif
 SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/data/construct_data.c \
 				$(SRC_DIR)/data/set_cols.c \
-				$(SRC_DIR)/data/set_points.c \
+				$(SRC_DIR)/data/set_orig_points.c \
 				$(SRC_DIR)/data/set_rows.c \
 				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
 				$(SRC_DIR)/utils/is_delimiter.c \

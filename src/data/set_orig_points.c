@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_points.c                                       :+:      :+:    :+:   */
+/*   set_orig_points.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 02:51:18 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 03:54:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 #include "data_internal.h"
 
-static t_point	**_alloc_points(int row, int col)
+static const t_point	**_alloc_orig_points(int row, int col)
 {
-	t_point	**points;
-	int		i;
+	const t_point	**points;
+	int				i;
 
 	points = malloc(sizeof(t_point *) * row);
 	if (points == NULL)
@@ -50,33 +50,34 @@ static void	_set_z_and_color(t_data *data, char *str, int row)
 	{
 		while (ft_isblank(*str))
 			str++;
-		data->points[row][j].z = ft_strtol(str, &endptr, 10);
+		((t_point **)data->orig_points)[row][j].z = ft_strtol(str, &endptr, 10);
 		if (*endptr == ',')
 		{
 			str = endptr + 1;
-			data->points[row][j].color = ft_strtol(str, &endptr, 16);
+			((t_point **)data->orig_points)[row][j].color
+				= ft_strtol(str, &endptr, 16);
 		}
 		else
-			data->points[row][j].color = DEFAULT_COLOR_FLAG;
+			((t_point **)data->orig_points)[row][j].color = DEFAULT_COLOR_FLAG;
 		str = endptr;
 		j++;
 	}
 }
 
-void	set_points(t_data *data, char **map)
+void	set_orig_points(t_data *data, char **map)
 {
 	int	i;
 	int	j;
 
-	data->points = _alloc_points(data->rows, data->cols);
+	data->orig_points = _alloc_orig_points(data->rows, data->cols);
 	i = 0;
 	while (i < data->rows)
 	{
 		j = 0;
 		while (j < data->cols)
 		{
-			data->points[i][j].x = j;
-			data->points[i][j].y = data->rows - i - 1;
+			((t_point **)data->orig_points)[i][j].x = j;
+			((t_point **)data->orig_points)[i][j].y = data->rows - i - 1;
 			j++;
 		}
 		_set_z_and_color(data, map[i], i);

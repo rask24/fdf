@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 23:20:05 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 03:44:41 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ typedef struct s_point
 
 typedef struct s_data
 {
-	t_point	**points;
-	int		rows;
-	int		cols;
+	const t_point	**orig_points;
+	int				rows;
+	int				cols;
 }	t_data;
 
 t_data	*construct_data(char *file_path);
