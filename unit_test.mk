@@ -15,6 +15,7 @@ OBJ_EXCLUDE_MAIN= $(filter-out $(BUILD_DIR)/main.o, $(OBJ))
 
 # test files
 TEST_SRC		= $(TEST_DIR)/test_validate_arguments.cpp \
+					$(TEST_DIR)/test_validate_map_values.cpp \
 					$(TEST_DIR)/test_validate_rectangle_map.cpp \
 					$(TEST_DIR)/test_validate_map_format.cpp
 TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(TEST_BUILD_DIR)/%.o, $(TEST_SRC))

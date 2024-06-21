@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:33:59 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:56:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 20:03:28 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define EMPTY_MAP_ERR_MSG "Empty map"
 # define MAP_NOT_RECT_ERR_MSG "Map is not a rectangle"
 # define INV_MAP_FORMAT_ERR_MSG "Invalid map format"
-# define INV_MAP_VALUE_ERR_MSG "Invalid map values"
+# define INV_MAP_VALUE_ERR_MSG "Invalid map value"
 
 # define Z_LOWER_BOUND INT_MIN
 # define Z_UPPER_BOUND INT_MAX
