@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 02:00:41 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 19:31:03 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 19:37:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-int	main(int argc, char **argv)
+#include "libft.h"
+#include "utils.h"
+
+void	error_exit(char *msg)
 {
-	validate_arguments(argc, argv);
-	validate_map(argv[1]);
-	return (0);
+	ft_dprintf(STDERR_FILENO, "%s: %s\n", EXE_NAME, msg);
+	exit(EXIT_FAILURE);
 }

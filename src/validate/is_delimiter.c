@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_delimiter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 02:00:41 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 15:13:17 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 15:13:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate.h"
+#include <stdbool.h>
 
-int	main(int argc, char **argv)
+bool	is_delimiter(char c)
 {
-	validate_arguments(argc, argv);
-	validate_map(argv[1]);
-	return (0);
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\0');
 }

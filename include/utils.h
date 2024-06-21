@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 02:00:41 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 19:33:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	main(int argc, char **argv)
-{
-	validate_arguments(argc, argv);
-	validate_map(argv[1]);
-	return (0);
-}
+# define EXE_NAME "fdf"
+
+void	error_exit(char *msg);
+
+#endif
