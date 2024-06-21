@@ -132,3 +132,24 @@ TEST(validate_map_format, invalidFormatWithHex7) {
   EXPECT_EXIT(validate_map_format(map), ::testing::ExitedWithCode(1),
               "fdf: Invalid map format\n");
 }
+
+TEST(validate_map_format, invalidFormatWithHex8) {
+  char *map[] = {const_cast<char *>("0 0 0,0x-123 0\n"), nullptr};
+
+  EXPECT_EXIT(validate_map_format(map), ::testing::ExitedWithCode(1),
+              "fdf: Invalid map format\n");
+}
+
+TEST(validate_map_format, invalidFormatWithHex9) {
+  char *map[] = {const_cast<char *>("0 0 0,0x+123\n"), nullptr};
+
+  EXPECT_EXIT(validate_map_format(map), ::testing::ExitedWithCode(1),
+              "fdf: Invalid map format\n");
+}
+
+TEST(validate_map_format, invalidFormatWithHex10) {
+  char *map[] = {const_cast<char *>("0 0 0,0xz123 0\n"), nullptr};
+
+  EXPECT_EXIT(validate_map_format(map), ::testing::ExitedWithCode(1),
+              "fdf: Invalid map format\n");
+}

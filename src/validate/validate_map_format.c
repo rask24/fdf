@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:02:21 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:39:06 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 20:18:26 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	_validate_map_format_internal(char *str)
 		ft_strtol(str, &endptr, 10);
 		if (str != endptr && ft_strncmp(endptr, ",0x", 3) == 0)
 		{
-			str = endptr + 3;
-			if (is_delimiter(*str))
+			str = endptr + 1;
+			if (is_delimiter(str[2]))
 				error_exit(INV_MAP_FORMAT_ERR_MSG);
 			ft_strtol(str, &endptr, 16);
 		}
