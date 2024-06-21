@@ -29,15 +29,15 @@ TEST(construct_data, normal) {
   EXPECT_EQ(data->points[2][1].x, 1);
   EXPECT_EQ(data->points[2][2].x, 2);
 
-  EXPECT_EQ(data->points[0][0].y, 0);
-  EXPECT_EQ(data->points[0][1].y, 0);
-  EXPECT_EQ(data->points[0][2].y, 0);
+  EXPECT_EQ(data->points[0][0].y, 2);
+  EXPECT_EQ(data->points[0][1].y, 2);
+  EXPECT_EQ(data->points[0][2].y, 2);
   EXPECT_EQ(data->points[1][0].y, 1);
   EXPECT_EQ(data->points[1][1].y, 1);
   EXPECT_EQ(data->points[1][2].y, 1);
-  EXPECT_EQ(data->points[2][0].y, 2);
-  EXPECT_EQ(data->points[2][1].y, 2);
-  EXPECT_EQ(data->points[2][2].y, 2);
+  EXPECT_EQ(data->points[2][0].y, 0);
+  EXPECT_EQ(data->points[2][1].y, 0);
+  EXPECT_EQ(data->points[2][2].y, 0);
 
   EXPECT_EQ(data->points[0][0].z, 1);
   EXPECT_EQ(data->points[0][1].z, 2);
@@ -79,12 +79,12 @@ TEST(construct_data, withColor) {
   EXPECT_EQ(data->points[1][1].x, 1);
   EXPECT_EQ(data->points[1][2].x, 2);
 
-  EXPECT_EQ(data->points[0][0].y, 0);
-  EXPECT_EQ(data->points[0][1].y, 0);
-  EXPECT_EQ(data->points[0][2].y, 0);
-  EXPECT_EQ(data->points[1][0].y, 1);
-  EXPECT_EQ(data->points[1][1].y, 1);
-  EXPECT_EQ(data->points[1][2].y, 1);
+  EXPECT_EQ(data->points[0][0].y, 1);
+  EXPECT_EQ(data->points[0][1].y, 1);
+  EXPECT_EQ(data->points[0][2].y, 1);
+  EXPECT_EQ(data->points[1][0].y, 0);
+  EXPECT_EQ(data->points[1][1].y, 0);
+  EXPECT_EQ(data->points[1][2].y, 0);
 
   EXPECT_EQ(data->points[0][0].z, 1);
   EXPECT_EQ(data->points[0][1].z, 2);

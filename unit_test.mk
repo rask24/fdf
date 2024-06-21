@@ -33,7 +33,7 @@ GTEST_FUSE		= fuse_gtest_files.py
 # rules for test
 .PHONY: test
 test: all $(GTEST_OBJ) $(TEST_OBJ)
-	@$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_EXCLUDE_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
+	@$(CXX) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -lft -lmlx -lpthread $(OBJ_EXCLUDE_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
 	@echo "\n$(BLUE)[gtest]\t\t./$(TEST_NAME)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
 	./$(TEST_NAME)
 
