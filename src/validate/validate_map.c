@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 01:02:08 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:39:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 19:44:38 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	validate_map(char *file_path)
 		error_exit(EMPTY_MAP_ERR_MSG);
 	validate_rectangle_map(map);
 	validate_map_format(map);
+	validate_map_values(map);
 	ft_free_strs(map);
 }
