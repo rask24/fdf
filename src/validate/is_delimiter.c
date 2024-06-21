@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   is_delimiter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 01:02:08 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 15:00:22 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 15:13:17 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 15:13:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include <stdbool.h>
 
-#include "libft.h"
-
-#include "validate_internal.h"
-
-void	validate_map(char *file_path)
+bool	is_delimiter(char c)
 {
-	char	**map;
-
-	map = file_to_lines(file_path);
-	if (map == NULL)
-	{
-		ft_dprintf(STDERR_FILENO, "%s: %s\n", EXE_NAME, strerror(errno));
-		exit(1);
-	}
-	validate_rectangle_map(map);
-	validate_map_format(map);
-	ft_free_strs(map);
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\0');
 }
