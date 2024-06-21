@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:33:59 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 20:03:28 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/21 20:30:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define Z_UPPER_BOUND INT_MAX
 # define COLOR_LOWER_BOUND 0
 # define COLOR_UPPER_BOUND 0xFFFFFF
-
 
 void	validate_rectangle_map(char **map);
 void	validate_map_format(char **map);
