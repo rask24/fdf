@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_points.c                                       :+:      :+:    :+:   */
+/*   init_points.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 21:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 23:19:26 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/22 15:40:43 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/22 16:04:27 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "data.h"
-#include "libft.h"
 #include "utils.h"
-
-#include "data_internal.h"
 
 static t_point	**_alloc_points(int row, int col)
 {
@@ -40,46 +36,46 @@ static t_point	**_alloc_points(int row, int col)
 	return (points);
 }
 
-static void	_set_z_and_color(t_data *data, char *str, int row)
+static void	_copy_orig_points(t_data *data)
 {
+	int		i;
 	int		j;
-	char	*endptr;
 
-	j = 0;
-	while (j < data->cols)
-	{
-		while (ft_isblank(*str))
-			str++;
-		data->points[row][j].z = ft_strtol(str, &endptr, 10);
-		if (*endptr == ',')
-		{
-			str = endptr + 1;
-			data->points[row][j].color = ft_strtol(str, &endptr, 16);
-		}
-		else
-			data->points[row][j].color = DEFAULT_COLOR_FLAG;
-		str = endptr;
-		j++;
-	}
-}
-
-void	set_points(t_data *data, char **map)
-{
-	int	i;
-	int	j;
-
-	data->points = _alloc_points(data->rows, data->cols);
 	i = 0;
 	while (i < data->rows)
 	{
 		j = 0;
 		while (j < data->cols)
 		{
-			data->points[i][j].x = j;
-			data->points[i][j].y = i;
+			data->points[i][j] = data->orig_points[i][j];
 			j++;
 		}
-		_set_z_and_color(data, map[i], i);
 		i++;
 	}
+}
+
+static void	_centering_points(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->cols)
+		{
+			data->points[i][j].x -= (data->cols - 1.0) / 2.0;
+			data->points[i][j].y -= (data->rows - 1.0) / 2.0;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	init_points(t_data *data)
+{
+	data->points = _alloc_points(data->rows, data->cols);
+	_copy_orig_points(data);
+	_centering_points(data);
 }

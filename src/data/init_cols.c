@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_rows.c                                         :+:      :+:    :+:   */
+/*   init_cols.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 22:45:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:46:46 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 22:45:15 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/22 16:13:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
+#include "utils.h"
 
-void	set_rows(t_data *data, char **map)
+void	init_cols(t_data *data, char **map)
 {
-	int	cnt;
+	int		cnt;
+	int		i;
+	char	*str;
 
 	cnt = 0;
-	while (map[cnt])
-		cnt++;
-	data->rows = cnt;
+	i = 0;
+	str = map[0];
+	while (str[i])
+	{
+		if (!is_delimiter(str[i]) && is_delimiter(str[i + 1]))
+			cnt++;
+		i++;
+	}
+	data->cols = cnt;
 }
