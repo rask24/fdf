@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 23:39:27 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 00:42:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ t_point	translate_x(t_point p, double param);
 t_point	translate_y(t_point p, double param);
 t_point	scale_x(t_point p, double param);
 t_point	scale_y(t_point p, double param);
+t_point	rotate_x(t_point p, double angle);
+t_point	rotate_y(t_point p, double angle);
+t_point	rotate_z(t_point p, double angle);
 
 #endif
