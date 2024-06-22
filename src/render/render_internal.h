@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   render_internal.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 00:09:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 00:24:34 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 00:24:54 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 00:25:19 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef RENDER_INTERNAL_H
+# define RENDER_INTERNAL_H
 
 # include "ctx.h"
 
-void	render(t_ctx *ctx);
+void	plot_pixel(t_ctx *ctx, int x, int y, int color);
 
 #endif

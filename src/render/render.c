@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 00:09:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 00:24:34 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 00:23:11 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 00:27:13 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "render.h"
 
-# include "ctx.h"
+#include "render_internal.h"
 
-void	render(t_ctx *ctx);
+void	render(t_ctx *ctx)
+{
+	int	i;
+	int	j;
 
-#endif
+	i = 0;
+	while (i < ctx->data->rows)
+	{
+		j = 0;
+		while (j < ctx->data->cols)
+		{
+			plot_pixel(ctx, ctx->data->points[i][j].x,
+				ctx->data->points[i][j].y, 0xFFFFFF);
+			j++;
+		}
+		i++;
+	}
+}
