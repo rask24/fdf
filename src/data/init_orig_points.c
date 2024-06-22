@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_orig_points.c                                  :+:      :+:    :+:   */
+/*   init_orig_points.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -64,7 +64,7 @@ static void	_set_z_and_color(t_data *data, char *str, int row)
 	}
 }
 
-void	set_orig_points(t_data *data, char **map)
+void	init_orig_points(t_data *data, char **map)
 {
 	int	i;
 	int	j;

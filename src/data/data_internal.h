@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 03:51:44 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 15:24:10 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 # define DEFAULT_COLOR_FLAG -1
 
-void	set_cols(t_data *data, char **map);
-void	set_rows(t_data *data, char **map);
-void	set_orig_points(t_data *data, char **map);
+void	init_cols(t_data *data, char **map);
+void	init_rows(t_data *data, char **map);
+void	init_orig_points(t_data *data, char **map);
 
 #endif

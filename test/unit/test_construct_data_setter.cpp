@@ -12,9 +12,9 @@ TEST(construct_data, normal) {
                  const_cast<char *>("7 8 9\n"), nullptr};
 
   t_data *data = new t_data;
-  set_cols(data, map);
-  set_rows(data, map);
-  set_orig_points(data, map);
+  init_cols(data, map);
+  init_rows(data, map);
+  init_orig_points(data, map);
 
   EXPECT_EQ(data->cols, 3);
   EXPECT_EQ(data->rows, 3);
@@ -65,9 +65,9 @@ TEST(construct_data, withColor) {
                  const_cast<char *>("4,0xAAA 5,0xFFF 6,0xFFFFFF\n"), nullptr};
 
   t_data *data = new t_data;
-  set_cols(data, map);
-  set_rows(data, map);
-  set_orig_points(data, map);
+  init_cols(data, map);
+  init_rows(data, map);
+  init_orig_points(data, map);
 
   EXPECT_EQ(data->cols, 3);
   EXPECT_EQ(data->rows, 2);
