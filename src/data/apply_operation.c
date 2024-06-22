@@ -6,13 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:21:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 22:30:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 23:13:34 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
-
-#include "data_internal.h"
 
 void	apply_operation(t_data *data, t_operation op, double param)
 {

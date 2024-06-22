@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 15:44:12 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 23:13:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ typedef struct s_data
 	int				cols;
 }	t_data;
 
+typedef t_point	(*t_operation)(t_point p, double param);
+
+
 t_data	*construct_data(char *file_path);
+
+void	init_points(t_data *data);
+
+void	apply_operation(t_data *data, t_operation op, double param);
+t_point	translate_x(t_point p, double param);
+t_point	translate_y(t_point p, double param);
 
 #endif

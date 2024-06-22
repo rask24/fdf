@@ -33,6 +33,7 @@ endif
 
 # files
 SRC			= $(SRC_DIR)/main.c \
+				$(SRC_DIR)/data/operation/translation.c \
 				$(SRC_DIR)/data/apply_operation.c \
 				$(SRC_DIR)/data/construct_data.c \
 				$(SRC_DIR)/data/init_cols.c \
