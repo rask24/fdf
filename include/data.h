@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 23:13:06 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/22 23:30:56 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_data
 }	t_data;
 
 typedef t_point	(*t_operation)(t_point p, double param);
-
 
 t_data	*construct_data(char *file_path);
 
