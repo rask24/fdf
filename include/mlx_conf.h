@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 23:43:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 01:02:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 00:28:53 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_mlx_conf
 }	t_mlx_conf;
 
 # define WIN_TITLE  "fdf"
-# define WIN_HEIGHT 1080
-# define WIN_WIDTH  1920
+# define WIN_HEIGHT 800
+# define WIN_WIDTH  1080
 
 t_mlx_conf	*construct_mlx_conf(void);
 
