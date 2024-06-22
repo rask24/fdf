@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_internal.h                                    :+:      :+:    :+:   */
+/*   apply_operation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 22:30:31 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/22 22:21:11 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/22 22:30:29 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_INTERNAL_H
-# define DATA_INTERNAL_H
+#include "data.h"
 
-# include "data.h"
+#include "data_internal.h"
 
-# define DEFAULT_COLOR_FLAG -1
+void	apply_operation(t_data *data, t_operation op, double param)
+{
+	int	i;
+	int	j;
 
-typedef t_point	(*t_operation)(t_point p, double param);
-
-void	init_cols(t_data *data, char **map);
-void	init_rows(t_data *data, char **map);
-void	init_orig_points(t_data *data, char **map);
-void	init_points(t_data *data);
-
-#endif
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->cols)
+		{
+			data->points[i][j] = op(data->points[i][j], param);
+			j++;
+		}
+		i++;
+	}
+}
