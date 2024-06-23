@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 00:26:12 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 15:19:12 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
+#include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -42,6 +43,8 @@ int	main(int argc, char **argv)
 	ctx = _construct_ctx(argv[1]);
 	mlx_put_image_to_window(ctx->mlx_conf->p_mlx,
 		ctx->mlx_conf->p_win, ctx->mlx_conf->p_img, 0, 0);
+	apply_operation(ctx->data, rotate_z, M_PI_4);
+	apply_operation(ctx->data, rotate_x, atan(1 / sqrt(2)));
 	render(ctx);
 	mlx_loop(ctx->mlx_conf->p_mlx);
 	return (EXIT_SUCCESS);
