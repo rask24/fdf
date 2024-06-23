@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   interpolate_color.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:01:16 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 16:58:39 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 17:01:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+int	interpolate_color(int color1, int color2, double ratio)
+{
+	int	red;
+	int	green;
+	int	blue;
 
-# include <stdbool.h>
-
-# define EXE_NAME "fdf"
-
-void	error_exit(char *msg);
-int		interpolate_color(int color1, int color2, double ratio);
-bool	is_delimiter(char c);
-
-#endif
+	red = (int)(((color2 >> 16) & 0xFF) * ratio
+			+ ((color1 >> 16) & 0xFF) * (1 - ratio));
+	green = (int)(((color2 >> 8) & 0xFF) * ratio
+			+ ((color1 >> 8) & 0xFF) * (1 - ratio));
+	blue = (int)((color2 & 0xFF) * ratio
+			+ (color1 & 0xFF) * (1 - ratio));
+	return ((red << 16) | (green << 8) | blue);
+}
