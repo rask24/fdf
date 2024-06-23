@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:00:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 16:11:24 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 18:17:30 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdbool.h>
 
 #include "libft.h"
+#include "utils.h"
 
 #include "render_internal.h"
 
@@ -37,12 +38,17 @@ static void	_init_line_vars(t_line_vars *line, t_point p1, t_point p2)
 	line->y0 = (int)p1.y;
 	line->x1 = (int)p2.x;
 	line->y1 = (int)p2.y;
+	line->c1 = p1.color;
+	line->c2 = p2.color;
 	line->color = p1.color;
 }
 
 static void	_update_line_vars(t_line_vars *line)
 {
-	int	e2;
+	int		e2;
+	double	total_distance;
+	double	current_distance;
+	double	ratio;
 
 	e2 = line->err;
 	if (e2 > -line->dx)
@@ -55,6 +61,11 @@ static void	_update_line_vars(t_line_vars *line)
 		line->err += line->dx;
 		line->y0 += line->sy;
 	}
+	total_distance = sqrt((line->dx * line->dx) + (line->dy * line->dy));
+	current_distance = sqrt(((line->x0 - line->x1) * (line->x0 - line->x1))
+			+ ((line->y0 - line->y1) * (line->y0 - line->y1)));
+	ratio = 1 - (current_distance / total_distance);
+	line->color = interpolate_color(line->c1, line->c2, ratio);
 }
 
 void	plot_line(t_ctx *ctx, t_point p1, t_point p2)

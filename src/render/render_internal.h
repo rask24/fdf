@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:24:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:17:20 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:54:01 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_line_vars
 	int	y0;
 	int	x1;
 	int	y1;
+	int	c1;
+	int	c2;
 	int	color;
 }	t_line_vars;
 
