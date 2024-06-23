@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:29:49 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:16:08 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 00:04:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "data.h"
 #include "libft.h"
 #include "utils.h"
+#include "view_conf.h"
 
 #include "data_internal.h"
 
@@ -36,7 +37,7 @@ t_data	*construct_data(char *file_path)
 	init_orig_points(data, map);
 	init_points(data);
 	init_z_min_max(data);
-	init_colors(data);
+	init_colors(data, DARK);
 	ft_free_strs(map);
 	return (data);
 }

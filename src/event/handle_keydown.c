@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:41:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 21:55:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 01:07:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,11 @@ int	handle_keydown(int keycode, t_ctx *ctx)
 		|| keycode == KEY_R || keycode == KEY_V
 		|| keycode == KEY_Z || keycode == KEY_C)
 		_handle_rotation(keycode, ctx);
+	else if (keycode == KEY_X)
+	{
+		ctx->view_conf->preset = (ctx->view_conf->preset + 1) % NUM_PRESETS;
+		init_colors(ctx->data, ctx->view_conf->preset);
+		render(ctx, true, false);
+	}
 	return (0);
 }

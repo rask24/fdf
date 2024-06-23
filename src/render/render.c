@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:23:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 23:39:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 00:55:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	_render_instructions(t_ctx *ctx)
 	_render_instruction(ctx, &y, color, "V - Rotate Down (X-axis)");
 	_render_instruction(ctx, &y, color, "Z - Rotate Counterclockwise (Z-axis)");
 	_render_instruction(ctx, &y, color, "C - Rotate Clockwise (Z-axis)");
+	_render_instruction(ctx, &y, color, "X - Cange Color");
 	_render_instruction(ctx, &y, color, "ESC - Exit");
 }
 
@@ -62,7 +63,7 @@ static void	_reset_points(t_ctx *ctx)
 	ctx->view_conf->offset_x = 0;
 	ctx->view_conf->offset_y = 0;
 	init_points(ctx->data);
-	init_colors(ctx->data);
+	init_colors(ctx->data, ctx->view_conf->preset);
 }
 
 void	render(t_ctx *ctx, bool only_render, bool is_clean)
