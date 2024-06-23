@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 20:41:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 20:48:30 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_data	*construct_data(char *file_path);
 
 void	init_points(t_data *data);
 void	init_colors(t_data *data);
+void	clean_points(t_data *data);
 
 void	apply_operation(t_data *data, t_operation op, double param);
 t_point	translate_x(t_point p, double param);

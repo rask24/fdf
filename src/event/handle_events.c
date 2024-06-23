@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:04:44 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 20:45:18 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 20:48:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	_handle_keydown(int keycode, t_ctx *ctx)
 	{
 		ft_bzero(ctx->mlx_conf->p_data,
 			WIN_WIDTH * WIN_HEIGHT * (ctx->mlx_conf->bits_per_pixel / 8));
+		clean_points(ctx->data);
 		init_points(ctx->data);
 		init_colors(ctx->data);
 		apply_operation(ctx->data, rotate_z, M_PI_4);
@@ -54,6 +55,7 @@ static int	_handle_keydown(int keycode, t_ctx *ctx)
 	{
 		ft_bzero(ctx->mlx_conf->p_data,
 			WIN_WIDTH * WIN_HEIGHT * (ctx->mlx_conf->bits_per_pixel / 8));
+		clean_points(ctx->data);
 		init_points(ctx->data);
 		init_colors(ctx->data);
 		render(ctx);
