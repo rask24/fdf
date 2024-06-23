@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 01:01:31 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:46:20 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ typedef struct s_view_conf
 {
 	int			offset_x;
 	int			offset_y;
-	int			offset_z;
-	double		scale;
 	t_type		type;
 	t_preset	preset;
 }	t_view_conf;
