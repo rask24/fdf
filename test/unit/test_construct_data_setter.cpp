@@ -16,7 +16,7 @@ TEST(construct_data, normal) {
   init_rows(data, map);
   init_orig_points(data, map);
   init_points(data);
-  init_z_min_max(data);
+  init_orig_z_min_max(data);
 
   EXPECT_EQ(data->cols, 3);
   EXPECT_EQ(data->rows, 3);
@@ -101,8 +101,8 @@ TEST(construct_data, normal) {
   EXPECT_EQ(data->points[2][1].color, DEFAULT_COLOR_FLAG);
   EXPECT_EQ(data->points[2][2].color, DEFAULT_COLOR_FLAG);
 
-  EXPECT_EQ(data->z_min, 1 * DEFAULT_Z_SCALE);
-  EXPECT_EQ(data->z_max, 9 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->orig_z_min, 1 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->orig_z_max, 9 * DEFAULT_Z_SCALE);
 }
 
 TEST(construct_data, withColor) {
@@ -114,7 +114,7 @@ TEST(construct_data, withColor) {
   init_rows(data, map);
   init_orig_points(data, map);
   init_points(data);
-  init_z_min_max(data);
+  init_orig_z_min_max(data);
 
   EXPECT_EQ(data->cols, 3);
   EXPECT_EQ(data->rows, 2);
@@ -175,6 +175,6 @@ TEST(construct_data, withColor) {
   EXPECT_EQ(data->points[1][1].color, 0xFFF);
   EXPECT_EQ(data->points[1][2].color, 0xFFFFFF);
 
-  EXPECT_EQ(data->z_min, 1 * DEFAULT_Z_SCALE);
-  EXPECT_EQ(data->z_max, 6 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->orig_z_min, 1 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->orig_z_max, 6 * DEFAULT_Z_SCALE);
 }

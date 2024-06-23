@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 14:35:58 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 01:46:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ static void	_set_z_and_color(t_data *data, char *str, int row)
 		if (*endptr == ',')
 		{
 			str = endptr + 1;
-			((t_point **)data->orig_points)[row][j].color
+			((t_point **)data->orig_points)[row][j].orig_color
 				= ft_strtol(str, &endptr, 16);
 		}
 		else
-			((t_point **)data->orig_points)[row][j].color = DEFAULT_COLOR_FLAG;
+			((t_point **)data->orig_points)[row][j].orig_color
+				= DEFAULT_COLOR_FLAG;
 		str = endptr;
 		j++;
 	}

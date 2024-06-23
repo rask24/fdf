@@ -42,9 +42,9 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/data/init_colors.c \
 				$(SRC_DIR)/data/init_cols.c \
 				$(SRC_DIR)/data/init_orig_points.c \
+				$(SRC_DIR)/data/init_orig_z_min_max.c \
 				$(SRC_DIR)/data/init_points.c \
 				$(SRC_DIR)/data/init_rows.c \
-				$(SRC_DIR)/data/init_z_min_max.c \
 				$(SRC_DIR)/event/exit_window.c \
 				$(SRC_DIR)/event/handle_events.c \
 				$(SRC_DIR)/event/handle_keydown.c \
