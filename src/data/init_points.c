@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:40:43 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:26:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:41:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #include "data.h"
 #include "utils.h"
+
+#include "data_internal.h"
 
 static t_point	**_alloc_points(int row, int col)
 {
@@ -54,10 +56,30 @@ static void	_copy_orig_points(t_data *data)
 	}
 }
 
+static void	_init_colors(t_data *data)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->cols)
+		{
+			if (data->points[i][j].color == DEFAULT_COLOR_FLAG)
+				data->points[i][j].color = DEFAULT_COLOR;
+			j++;
+		}
+		i++;
+	}
+}
+
 void	init_points(t_data *data)
 {
 	data->points = _alloc_points(data->rows, data->cols);
 	_copy_orig_points(data);
+	_init_colors(data);
 	apply_operation(data, translate_x, -(data->cols - 1.0) / 2.0);
 	apply_operation(data, translate_y, -(data->rows - 1.0) / 2.0);
 	apply_operation(data, scale_x, DEFAULT_XY_SCALE);

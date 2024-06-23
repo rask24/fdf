@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:00:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:17:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:11:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	_init_line_vars(t_line_vars *line, t_point p1, t_point p2)
 	line->y0 = (int)p1.y;
 	line->x1 = (int)p2.x;
 	line->y1 = (int)p2.y;
-	line->color = 0x00FFFFFF;
+	line->color = p1.color;
 }
 
 static void	_update_line_vars(t_line_vars *line)
