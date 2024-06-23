@@ -38,6 +38,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/data/operation/translation.c \
 				$(SRC_DIR)/data/apply_operation.c \
 				$(SRC_DIR)/data/construct_data.c \
+				$(SRC_DIR)/data/init_colors.c \
 				$(SRC_DIR)/data/init_cols.c \
 				$(SRC_DIR)/data/init_orig_points.c \
 				$(SRC_DIR)/data/init_points.c \

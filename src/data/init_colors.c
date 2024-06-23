@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_internal.h                                    :+:      :+:    :+:   */
+/*   init_colors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:03:11 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 17:02:42 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 17:03:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_INTERNAL_H
-# define DATA_INTERNAL_H
+#include "data.h"
 
-# include "data.h"
+#include "data_internal.h"
 
-# define DEFAULT_COLOR_FLAG -1
+void	init_colors(t_data *data)
+{
+	int		i;
+	int		j;
 
-void	init_cols(t_data *data, char **map);
-void	init_rows(t_data *data, char **map);
-void	init_orig_points(t_data *data, char **map);
-void	init_colors(t_data *data);
-
-#endif
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->cols)
+		{
+			if (data->points[i][j].color == DEFAULT_COLOR_FLAG)
+				data->points[i][j].color = DEFAULT_COLOR;
+			j++;
+		}
+		i++;
+	}
+}

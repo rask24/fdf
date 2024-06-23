@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:29:49 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 15:52:33 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:03:23 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_data	*construct_data(char *file_path)
 	init_rows(data, map);
 	init_orig_points(data, map);
 	init_points(data);
+	init_colors(data);
 	ft_free_strs(map);
 	return (data);
 }
