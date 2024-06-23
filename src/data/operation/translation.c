@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_internal.h                                    :+:      :+:    :+:   */
+/*   translation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 23:13:01 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/22 22:32:52 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/22 23:06:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_INTERNAL_H
-# define DATA_INTERNAL_H
+#include "data.h"
 
-# include "data.h"
+t_point	translate_x(t_point p, double param)
+{
+	p.x += param;
+	return (p);
+}
 
-# define DEFAULT_COLOR_FLAG -1
-
-void	init_cols(t_data *data, char **map);
-void	init_rows(t_data *data, char **map);
-void	init_orig_points(t_data *data, char **map);
-
-#endif
+t_point	translate_y(t_point p, double param)
+{
+	p.y += param;
+	return (p);
+}
