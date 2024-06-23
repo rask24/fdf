@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_internal.h                                  :+:      :+:    :+:   */
+/*   init_z_min_max.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 00:24:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:54:01 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 17:09:46 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 17:41:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_INTERNAL_H
-# define RENDER_INTERNAL_H
+#include <limits.h>
 
-# include "ctx.h"
+#include "data.h"
+#include "libft.h"
 
-typedef struct s_line_vars
+#include "data_internal.h"
+
+void	init_z_min_max(t_data *data)
 {
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	c1;
-	int	c2;
-	int	color;
-}	t_line_vars;
+	int	i;
+	int	j;
+	int	z;
 
-void	plot_pixel(t_ctx *ctx, int x, int y, int color);
-void	plot_line(t_ctx *ctx, t_point p1, t_point p2);
-
-#endif
+	data->z_min = INT_MAX;
+	data->z_max = INT_MIN;
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->cols)
+		{
+			z = (int)data->points[i][j].z;
+			ft_chmin(&data->z_min, z);
+			ft_chmax(&data->z_max, z);
+			j++;
+		}
+		i++;
+	}
+}

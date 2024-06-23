@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:40:43 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:26:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:02:38 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #include "data.h"
 #include "utils.h"
+
+#include "data_internal.h"
 
 static t_point	**_alloc_points(int row, int col)
 {

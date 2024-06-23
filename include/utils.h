@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:33:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 22:47:38 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:01:16 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define EXE_NAME "fdf"
 
 void	error_exit(char *msg);
+int		interpolate_color(int color1, int color2, double ratio);
 bool	is_delimiter(char c);
 
 #endif

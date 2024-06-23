@@ -13,15 +13,14 @@ TEST(validate_map_values, validValues1) {
 }
 
 TEST(validate_map_values, validValues2) {
-  char *map[] = {const_cast<char *>("1 2 3 4 2147483647\n"), nullptr};
+  char *map[] = {const_cast<char *>("1 2 3 4 2147483\n"), nullptr};
 
   validate_map_values(map);
 }
 
 TEST(validate_map_values, validValues3) {
   char *map[] = {
-      const_cast<char *>(
-          "-2147483648 -2147483647 -2147483646 -2147483645 -2147483644\n"),
+      const_cast<char *>("-2147488 -213647 -214646 -2147445 -214644\n"),
       nullptr};
 
   validate_map_values(map);

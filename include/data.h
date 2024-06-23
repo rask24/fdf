@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:24:57 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:22:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # define DEFAULT_XY_SCALE 40
 # define DEFAULT_Z_SCALE  20
+
+# define DEFAULT_BOTTOM_COLOR 0xFFFFFF
+# define DEFAULT_TOP_COLOR    0x00FF00
 
 typedef struct s_point
 {
@@ -30,6 +33,8 @@ typedef struct s_data
 	t_point			**points;
 	int				rows;
 	int				cols;
+	int				z_min;
+	int				z_max;
 }	t_data;
 
 typedef t_point	(*t_operation)(t_point p, double param);

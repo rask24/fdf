@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_internal.h                                  :+:      :+:    :+:   */
+/*   interpolate_color.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 00:24:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:54:01 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 16:58:39 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 17:01:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_INTERNAL_H
-# define RENDER_INTERNAL_H
-
-# include "ctx.h"
-
-typedef struct s_line_vars
+int	interpolate_color(int color1, int color2, double ratio)
 {
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	c1;
-	int	c2;
-	int	color;
-}	t_line_vars;
+	int	red;
+	int	green;
+	int	blue;
 
-void	plot_pixel(t_ctx *ctx, int x, int y, int color);
-void	plot_line(t_ctx *ctx, t_point p1, t_point p2);
-
-#endif
+	red = (int)(((color2 >> 16) & 0xFF) * ratio
+			+ ((color1 >> 16) & 0xFF) * (1 - ratio));
+	green = (int)(((color2 >> 8) & 0xFF) * ratio
+			+ ((color1 >> 8) & 0xFF) * (1 - ratio));
+	blue = (int)((color2 & 0xFF) * ratio
+			+ (color1 & 0xFF) * (1 - ratio));
+	return ((red << 16) | (green << 8) | blue);
+}
