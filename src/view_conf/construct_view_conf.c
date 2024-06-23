@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:50:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 02:46:26 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:48:28 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,8 @@ t_view_conf	*construct_view_conf(void)
 	view_conf->offset_y = 0;
 	view_conf->type = ISOMETRIC;
 	view_conf->preset = DEFAULT;
+	view_conf->click_x = 0;
+	view_conf->click_y = 0;
+	view_conf->click_btn = 0;
 	return (view_conf);
 }

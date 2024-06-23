@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 02:46:20 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:48:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_view_conf
 	int			offset_y;
 	t_type		type;
 	t_preset	preset;
+	int			click_x;
+	int			click_y;
+	int			click_btn;
 }	t_view_conf;
 
 t_view_conf	*construct_view_conf(void);

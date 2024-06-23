@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:04:44 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 02:25:44 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:53:12 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	handle_events(t_ctx *ctx)
 		handle_keydown, ctx);
 	mlx_hook(ctx->mlx_conf->p_win, ON_MOUSEDOWN, NO_EVENT_MASK,
 		handle_mousedown, ctx);
+	mlx_hook(ctx->mlx_conf->p_win, ON_MOUSEMOVE, NO_EVENT_MASK,
+		handle_mousemove, ctx);
+	mlx_hook(ctx->mlx_conf->p_win, ON_MOUSEUP, NO_EVENT_MASK,
+		handle_mouseup, ctx);
 	mlx_hook(ctx->mlx_conf->p_win, ON_DESTROY, NO_EVENT_MASK,
 		exit_window, ctx);
 }

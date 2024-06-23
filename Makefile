@@ -48,7 +48,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/event/exit_window.c \
 				$(SRC_DIR)/event/handle_events.c \
 				$(SRC_DIR)/event/handle_keydown.c \
-				$(SRC_DIR)/event/handle_mousedown.c \
+				$(SRC_DIR)/event/handle_mouse.c \
 				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
 				$(SRC_DIR)/render/plot_line.c \
 				$(SRC_DIR)/render/plot_pixel.c \
