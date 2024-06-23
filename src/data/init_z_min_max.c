@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:09:46 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:11:46 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:27:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_z_min_max(t_data *data)
 	{
 		for (j = 0; j < data->cols; j++)
 		{
-			z = (int)data->orig_points[i][j].z;
+			z = (int)data->points[i][j].z;
 			ft_chmin(&data->z_min, z);
 			ft_chmax(&data->z_max, z);
 		}
