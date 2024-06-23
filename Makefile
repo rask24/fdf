@@ -43,6 +43,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/data/init_orig_points.c \
 				$(SRC_DIR)/data/init_points.c \
 				$(SRC_DIR)/data/init_rows.c \
+				$(SRC_DIR)/data/init_z_min_max.c \
 				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
 				$(SRC_DIR)/render/plot_line.c \
 				$(SRC_DIR)/render/plot_pixel.c \

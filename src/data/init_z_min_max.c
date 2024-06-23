@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_internal.h                                    :+:      :+:    :+:   */
+/*   init_z_min_max.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:12:36 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 17:09:46 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 17:11:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_INTERNAL_H
-# define DATA_INTERNAL_H
 
-# include "data.h"
+#include <limits.h>
 
-# define DEFAULT_COLOR_FLAG -1
+#include "data.h"
+#include "libft.h"
 
-void	init_cols(t_data *data, char **map);
-void	init_rows(t_data *data, char **map);
-void	init_orig_points(t_data *data, char **map);
-void	init_z_min_max(t_data *data);
-void	init_colors(t_data *data);
+#include "data_internal.h"
 
-#endif
+void	init_z_min_max(t_data *data)
+{
+	int	i;
+	int	j;
+	int	z;
+
+	data->z_min = INT_MAX;
+	data->z_max = INT_MIN;
+	for (i = 0; i < data->rows; i++)
+	{
+		for (j = 0; j < data->cols; j++)
+		{
+			z = (int)data->orig_points[i][j].z;
+			ft_chmin(&data->z_min, z);
+			ft_chmax(&data->z_max, z);
+		}
+	}
+}

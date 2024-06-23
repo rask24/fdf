@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 16:49:42 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:05:27 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_data
 	t_point			**points;
 	int				rows;
 	int				cols;
+	int				z_min;
+	int				z_max;
 }	t_data;
 
 typedef t_point	(*t_operation)(t_point p, double param);
