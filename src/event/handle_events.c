@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:04:44 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 21:32:42 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:37:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ static void	_handle_translation(int keycode, t_ctx *ctx)
 	render(ctx, true, false);
 }
 
+static void	_handle_scale(int keycode, t_ctx *ctx)
+{
+	if (keycode == KEY_F)
+		apply_operation(ctx->data, scale, 1.1);
+	else if (keycode == KEY_G)
+		apply_operation(ctx->data, scale, 0.9);
+	render(ctx, true, false);
+}
+
 static int	_handle_keydown(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_ESCAPE)
@@ -56,6 +65,8 @@ static int	_handle_keydown(int keycode, t_ctx *ctx)
 	else if (keycode == KEY_D || keycode == KEY_A
 		|| keycode == KEY_W || keycode == KEY_S)
 		_handle_translation(keycode, ctx);
+	else if (keycode == KEY_F || keycode == KEY_G)
+		_handle_scale(keycode, ctx);
 	return (0);
 }
 
