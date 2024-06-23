@@ -16,15 +16,15 @@ TEST(apply_operation, translate) {
   points[1] = (t_point *)malloc(sizeof(t_point) * 3);
   points[2] = (t_point *)malloc(sizeof(t_point) * 3);
 
-  points[0][0] = (t_point){0, 2, 1, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[0][1] = (t_point){1, 2, 2, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[0][2] = (t_point){2, 2, 3, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][0] = (t_point){0, 1, 4, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][1] = (t_point){1, 1, 5, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][2] = (t_point){2, 1, 6, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][0] = (t_point){0, 0, 7, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][1] = (t_point){1, 0, 8, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][2] = (t_point){2, 0, 9, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
+  points[0][0] = (t_point){0, 2, 1, DEFAULT_COLOR_FLAG};
+  points[0][1] = (t_point){1, 2, 2, DEFAULT_COLOR_FLAG};
+  points[0][2] = (t_point){2, 2, 3, DEFAULT_COLOR_FLAG};
+  points[1][0] = (t_point){0, 1, 4, DEFAULT_COLOR_FLAG};
+  points[1][1] = (t_point){1, 1, 5, DEFAULT_COLOR_FLAG};
+  points[1][2] = (t_point){2, 1, 6, DEFAULT_COLOR_FLAG};
+  points[2][0] = (t_point){0, 0, 7, DEFAULT_COLOR_FLAG};
+  points[2][1] = (t_point){1, 0, 8, DEFAULT_COLOR_FLAG};
+  points[2][2] = (t_point){2, 0, 9, DEFAULT_COLOR_FLAG};
 
   data->cols = 3;
   data->rows = 3;
@@ -71,15 +71,15 @@ TEST(apply_operation, scale) {
   points[1] = (t_point *)malloc(sizeof(t_point) * 3);
   points[2] = (t_point *)malloc(sizeof(t_point) * 3);
 
-  points[0][0] = (t_point){0, 2, 1, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[0][1] = (t_point){1, 2, 2, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[0][2] = (t_point){2, 2, 3, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][0] = (t_point){0, 1, 4, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][1] = (t_point){1, 1, 5, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][2] = (t_point){2, 1, 6, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][0] = (t_point){0, 0, 7, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][1] = (t_point){1, 0, 8, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][2] = (t_point){2, 0, 9, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
+  points[0][0] = (t_point){0, 2, 1, DEFAULT_COLOR_FLAG};
+  points[0][1] = (t_point){1, 2, 2, DEFAULT_COLOR_FLAG};
+  points[0][2] = (t_point){2, 2, 3, DEFAULT_COLOR_FLAG};
+  points[1][0] = (t_point){0, 1, 4, DEFAULT_COLOR_FLAG};
+  points[1][1] = (t_point){1, 1, 5, DEFAULT_COLOR_FLAG};
+  points[1][2] = (t_point){2, 1, 6, DEFAULT_COLOR_FLAG};
+  points[2][0] = (t_point){0, 0, 7, DEFAULT_COLOR_FLAG};
+  points[2][1] = (t_point){1, 0, 8, DEFAULT_COLOR_FLAG};
+  points[2][2] = (t_point){2, 0, 9, DEFAULT_COLOR_FLAG};
 
   data->cols = 3;
   data->rows = 3;
@@ -126,15 +126,15 @@ TEST(apply_operation, rotate) {
   points[1] = (t_point *)malloc(sizeof(t_point) * 3);
   points[2] = (t_point *)malloc(sizeof(t_point) * 3);
 
-  points[0][0] = (t_point){0, 2, 1, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[0][1] = (t_point){1, 2, 2, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[0][2] = (t_point){2, 2, 3, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][0] = (t_point){0, 1, 4, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][1] = (t_point){1, 1, 5, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[1][2] = (t_point){2, 1, 6, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][0] = (t_point){0, 0, 7, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][1] = (t_point){1, 0, 8, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
-  points[2][2] = (t_point){2, 0, 9, DEFAULT_COLOR_FLAG, DEFAULT_COLOR_FLAG};
+  points[0][0] = (t_point){0, 2, 1, DEFAULT_COLOR_FLAG};
+  points[0][1] = (t_point){1, 2, 2, DEFAULT_COLOR_FLAG};
+  points[0][2] = (t_point){2, 2, 3, DEFAULT_COLOR_FLAG};
+  points[1][0] = (t_point){0, 1, 4, DEFAULT_COLOR_FLAG};
+  points[1][1] = (t_point){1, 1, 5, DEFAULT_COLOR_FLAG};
+  points[1][2] = (t_point){2, 1, 6, DEFAULT_COLOR_FLAG};
+  points[2][0] = (t_point){0, 0, 7, DEFAULT_COLOR_FLAG};
+  points[2][1] = (t_point){1, 0, 8, DEFAULT_COLOR_FLAG};
+  points[2][2] = (t_point){2, 0, 9, DEFAULT_COLOR_FLAG};
 
   data->cols = 3;
   data->rows = 3;
