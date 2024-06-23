@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 23:43:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 19:56:31 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:37:33 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ typedef enum e_mask
 	NO_EVENT_MASK = 0L,
 	KEY_PRESS_MASK = 1L << 0,
 }	t_mask;
+
+typedef enum e_mouse
+{
+	MOUSE_LEFT = 1,
+	MOUSE_RIGHT = 2,
+	MOUSE_MIDDLE = 3,
+	MOUSE_SCROLL_UP = 4,
+	MOUSE_SCROLL_DOWN = 5,
+}	t_mouse;
 
 t_mlx_conf	*construct_mlx_conf(void);
 

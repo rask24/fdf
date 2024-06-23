@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_events.c                                    :+:      :+:    :+:   */
+/*   handle_mousedown.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 19:04:44 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 02:25:44 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/24 02:29:56 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/24 02:40:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
 #include "ctx.h"
-#include "data.h"
-#include "mlx.h"
-#include "libft.h"
+#include "mlx_conf.h"
 #include "render.h"
 
-#include "event_internal.h"
-
-void	handle_events(t_ctx *ctx)
+int	handle_mousedown(int button, int x, int y, t_ctx *ctx)
 {
-	mlx_hook(ctx->mlx_conf->p_win, ON_KEYDOWN, KEY_PRESS_MASK,
-		handle_keydown, ctx);
-	mlx_hook(ctx->mlx_conf->p_win, ON_MOUSEDOWN, NO_EVENT_MASK,
-		handle_mousedown, ctx);
-	mlx_hook(ctx->mlx_conf->p_win, ON_DESTROY, NO_EVENT_MASK,
-		exit_window, ctx);
+	(void)x;
+	(void)y;
+	if (button == MOUSE_RIGHT)
+	{
+		ctx->view_conf->preset = (ctx->view_conf->preset + 1) % NUM_PRESETS;
+		init_colors(ctx->data, ctx->view_conf->preset);
+		render(ctx, true, false);
+	}
+	return (0);
 }
