@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:41:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 21:48:22 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:55:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,23 @@ static void	_handle_scale(int keycode, t_ctx *ctx)
 	render(ctx, true, false);
 }
 
+static void	_handle_rotation(int keycode, t_ctx *ctx)
+{
+	if (keycode == KEY_Q)
+		apply_operation(ctx->data, rotate_y, -0.1);
+	else if (keycode == KEY_E)
+		apply_operation(ctx->data, rotate_y, 0.1);
+	else if (keycode == KEY_R)
+		apply_operation(ctx->data, rotate_x, 0.1);
+	else if (keycode == KEY_V)
+		apply_operation(ctx->data, rotate_x, -0.1);
+	else if (keycode == KEY_Z)
+		apply_operation(ctx->data, rotate_z, -0.1);
+	else if (keycode == KEY_C)
+		apply_operation(ctx->data, rotate_z, 0.1);
+	render(ctx, true, false);
+}
+
 int	handle_keydown(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_ESCAPE)
@@ -61,5 +78,9 @@ int	handle_keydown(int keycode, t_ctx *ctx)
 		_handle_translation(keycode, ctx);
 	else if (keycode == KEY_F || keycode == KEY_G)
 		_handle_scale(keycode, ctx);
+	else if (keycode == KEY_Q || keycode == KEY_E
+		|| keycode == KEY_R || keycode == KEY_V
+		|| keycode == KEY_Z || keycode == KEY_C)
+		_handle_rotation(keycode, ctx);
 	return (0);
 }
