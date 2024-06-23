@@ -6,10 +6,9 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:09:46 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:27:21 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:41:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <limits.h>
 
@@ -26,13 +25,17 @@ void	init_z_min_max(t_data *data)
 
 	data->z_min = INT_MAX;
 	data->z_max = INT_MIN;
-	for (i = 0; i < data->rows; i++)
+	i = 0;
+	while (i < data->rows)
 	{
-		for (j = 0; j < data->cols; j++)
+		j = 0;
+		while (j < data->cols)
 		{
 			z = (int)data->points[i][j].z;
 			ft_chmin(&data->z_min, z);
 			ft_chmax(&data->z_max, z);
+			j++;
 		}
+		i++;
 	}
 }

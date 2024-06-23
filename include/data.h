@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:05:27 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:22:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define DEFAULT_XY_SCALE 40
 # define DEFAULT_Z_SCALE  20
 
-# define DEFAULT_COLOR 0xFFFFFF
+# define DEFAULT_BOTTOM_COLOR 0xFFFFFF
+# define DEFAULT_TOP_COLOR    0x00FF00
 
 typedef struct s_point
 {
