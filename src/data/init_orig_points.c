@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 16:13:15 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 14:35:58 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	init_orig_points(t_data *data, char **map)
 		while (j < data->cols)
 		{
 			((t_point **)data->orig_points)[i][j].x = j;
-			((t_point **)data->orig_points)[i][j].y = data->rows - i - 1;
+			((t_point **)data->orig_points)[i][j].y = i;
 			j++;
 		}
 		_set_z_and_color(data, map[i], i);

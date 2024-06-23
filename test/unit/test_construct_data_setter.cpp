@@ -30,15 +30,15 @@ TEST(construct_data, normal) {
   EXPECT_EQ(data->orig_points[2][1].x, 1);
   EXPECT_EQ(data->orig_points[2][2].x, 2);
 
-  EXPECT_EQ(data->orig_points[0][0].y, 2);
-  EXPECT_EQ(data->orig_points[0][1].y, 2);
-  EXPECT_EQ(data->orig_points[0][2].y, 2);
+  EXPECT_EQ(data->orig_points[0][0].y, 0);
+  EXPECT_EQ(data->orig_points[0][1].y, 0);
+  EXPECT_EQ(data->orig_points[0][2].y, 0);
   EXPECT_EQ(data->orig_points[1][0].y, 1);
   EXPECT_EQ(data->orig_points[1][1].y, 1);
   EXPECT_EQ(data->orig_points[1][2].y, 1);
-  EXPECT_EQ(data->orig_points[2][0].y, 0);
-  EXPECT_EQ(data->orig_points[2][1].y, 0);
-  EXPECT_EQ(data->orig_points[2][2].y, 0);
+  EXPECT_EQ(data->orig_points[2][0].y, 2);
+  EXPECT_EQ(data->orig_points[2][1].y, 2);
+  EXPECT_EQ(data->orig_points[2][2].y, 2);
 
   EXPECT_EQ(data->orig_points[0][0].z, 1);
   EXPECT_EQ(data->orig_points[0][1].z, 2);
@@ -60,35 +60,35 @@ TEST(construct_data, normal) {
   EXPECT_EQ(data->orig_points[2][1].color, DEFAULT_COLOR_FLAG);
   EXPECT_EQ(data->orig_points[2][2].color, DEFAULT_COLOR_FLAG);
 
-  EXPECT_EQ(data->points[0][0].x, -1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][1].x, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][2].x, 1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][0].x, -1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][1].x, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][2].x, 1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[2][0].x, -1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[2][1].x, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[2][2].x, 1 * DEFAULT_SCALE);
+  EXPECT_EQ(data->points[0][0].x, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][1].x, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][2].x, 1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][0].x, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][1].x, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][2].x, 1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[2][0].x, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[2][1].x, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[2][2].x, 1 * DEFAULT_XY_SCALE);
 
-  EXPECT_EQ(data->points[0][0].y, 1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][1].y, 1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][2].y, 1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][0].y, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][1].y, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][2].y, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[2][0].y, -1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[2][1].y, -1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[2][2].y, -1 * DEFAULT_SCALE);
+  EXPECT_EQ(data->points[0][0].y, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][1].y, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][2].y, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][0].y, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][1].y, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][2].y, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[2][0].y, 1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[2][1].y, 1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[2][2].y, 1 * DEFAULT_XY_SCALE);
 
-  EXPECT_EQ(data->points[0][0].z, 1);
-  EXPECT_EQ(data->points[0][1].z, 2);
-  EXPECT_EQ(data->points[0][2].z, 3);
-  EXPECT_EQ(data->points[1][0].z, 4);
-  EXPECT_EQ(data->points[1][1].z, 5);
-  EXPECT_EQ(data->points[1][2].z, 6);
-  EXPECT_EQ(data->points[2][0].z, 7);
-  EXPECT_EQ(data->points[2][1].z, 8);
-  EXPECT_EQ(data->points[2][2].z, 9);
+  EXPECT_EQ(data->points[0][0].z, 1 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[0][1].z, 2 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[0][2].z, 3 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[1][0].z, 4 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[1][1].z, 5 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[1][2].z, 6 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[2][0].z, 7 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[2][1].z, 8 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[2][2].z, 9 * DEFAULT_Z_SCALE);
 
   EXPECT_EQ(data->points[0][0].color, DEFAULT_COLOR_FLAG);
   EXPECT_EQ(data->points[0][1].color, DEFAULT_COLOR_FLAG);
@@ -121,12 +121,12 @@ TEST(construct_data, withColor) {
   EXPECT_EQ(data->orig_points[1][1].x, 1);
   EXPECT_EQ(data->orig_points[1][2].x, 2);
 
-  EXPECT_EQ(data->orig_points[0][0].y, 1);
-  EXPECT_EQ(data->orig_points[0][1].y, 1);
-  EXPECT_EQ(data->orig_points[0][2].y, 1);
-  EXPECT_EQ(data->orig_points[1][0].y, 0);
-  EXPECT_EQ(data->orig_points[1][1].y, 0);
-  EXPECT_EQ(data->orig_points[1][2].y, 0);
+  EXPECT_EQ(data->orig_points[0][0].y, 0);
+  EXPECT_EQ(data->orig_points[0][1].y, 0);
+  EXPECT_EQ(data->orig_points[0][2].y, 0);
+  EXPECT_EQ(data->orig_points[1][0].y, 1);
+  EXPECT_EQ(data->orig_points[1][1].y, 1);
+  EXPECT_EQ(data->orig_points[1][2].y, 1);
 
   EXPECT_EQ(data->orig_points[0][0].z, 1);
   EXPECT_EQ(data->orig_points[0][1].z, 2);
@@ -142,26 +142,26 @@ TEST(construct_data, withColor) {
   EXPECT_EQ(data->orig_points[1][1].color, 0xFFF);
   EXPECT_EQ(data->orig_points[1][2].color, 0xFFFFFF);
 
-  EXPECT_EQ(data->points[0][0].x, -1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][1].x, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][2].x, 1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][0].x, -1 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][1].x, 0 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[1][2].x, 1 * DEFAULT_SCALE);
+  EXPECT_EQ(data->points[0][0].x, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][1].x, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][2].x, 1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][0].x, -1 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][1].x, 0 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][2].x, 1 * DEFAULT_XY_SCALE);
 
-  EXPECT_EQ(data->points[0][0].y, 0.5 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][0].y, 0.5 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][0].y, 0.5 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][0].y, 0.5 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][0].y, 0.5 * DEFAULT_SCALE);
-  EXPECT_EQ(data->points[0][0].y, 0.5 * DEFAULT_SCALE);
+  EXPECT_EQ(data->points[0][0].y, -0.5 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][1].y, -0.5 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[0][2].y, -0.5 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][0].y, 0.5 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][1].y, 0.5 * DEFAULT_XY_SCALE);
+  EXPECT_EQ(data->points[1][2].y, 0.5 * DEFAULT_XY_SCALE);
 
-  EXPECT_EQ(data->points[0][0].z, 1);
-  EXPECT_EQ(data->points[0][1].z, 2);
-  EXPECT_EQ(data->points[0][2].z, 3);
-  EXPECT_EQ(data->points[1][0].z, 4);
-  EXPECT_EQ(data->points[1][1].z, 5);
-  EXPECT_EQ(data->points[1][2].z, 6);
+  EXPECT_EQ(data->points[0][0].z, 1 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[0][1].z, 2 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[0][2].z, 3 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[1][0].z, 4 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[1][1].z, 5 * DEFAULT_Z_SCALE);
+  EXPECT_EQ(data->points[1][2].z, 6 * DEFAULT_Z_SCALE);
 
   EXPECT_EQ(data->points[0][0].color, 0x2);
   EXPECT_EQ(data->points[0][1].color, 0x3);

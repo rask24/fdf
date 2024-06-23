@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_conf.h                                         :+:      :+:    :+:   */
+/*   render_internal.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 23:43:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 00:28:53 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 00:24:54 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 15:17:20 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_CONF_H
-# define MLX_CONF_H
+#ifndef RENDER_INTERNAL_H
+# define RENDER_INTERNAL_H
 
-typedef struct s_mlx_conf
+# include "ctx.h"
+
+typedef struct s_line_vars
 {
-	void	*p_mlx;
-	void	*p_win;
-	void	*p_img;
-	char	*p_data;
-	int		line_length;
-	int		bits_per_pixel;
-	int		endian;
-}	t_mlx_conf;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+	int	color;
+}	t_line_vars;
 
-# define WIN_TITLE  "fdf"
-# define WIN_HEIGHT 800
-# define WIN_WIDTH  1080
-
-t_mlx_conf	*construct_mlx_conf(void);
+void	plot_pixel(t_ctx *ctx, int x, int y, int color);
+void	plot_line(t_ctx *ctx, t_point p1, t_point p2);
 
 #endif

@@ -33,6 +33,7 @@ endif
 
 # files
 SRC			= $(SRC_DIR)/main.c \
+				$(SRC_DIR)/data/operation/rotation.c \
 				$(SRC_DIR)/data/operation/scale.c \
 				$(SRC_DIR)/data/operation/translation.c \
 				$(SRC_DIR)/data/apply_operation.c \
@@ -42,6 +43,9 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/data/init_points.c \
 				$(SRC_DIR)/data/init_rows.c \
 				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
+				$(SRC_DIR)/render/plot_line.c \
+				$(SRC_DIR)/render/plot_pixel.c \
+				$(SRC_DIR)/render/render.c \
 				$(SRC_DIR)/utils/is_delimiter.c \
 				$(SRC_DIR)/utils/error_exit.c \
 				$(SRC_DIR)/validate/validate_arguments.c \

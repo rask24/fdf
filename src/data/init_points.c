@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:40:43 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/22 23:39:52 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 15:26:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	init_points(t_data *data)
 	_copy_orig_points(data);
 	apply_operation(data, translate_x, -(data->cols - 1.0) / 2.0);
 	apply_operation(data, translate_y, -(data->rows - 1.0) / 2.0);
-	apply_operation(data, scale_x, DEFAULT_SCALE);
-	apply_operation(data, scale_y, DEFAULT_SCALE);
+	apply_operation(data, scale_x, DEFAULT_XY_SCALE);
+	apply_operation(data, scale_y, DEFAULT_XY_SCALE);
+	apply_operation(data, scale_z, DEFAULT_Z_SCALE);
 }
