@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:35:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 01:38:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:08:13 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_point	rotate_x(t_point p, double angle)
 		.y = p.y * cos(angle) - p.z * sin(angle),
 		.z = p.y * sin(angle) + p.z * cos(angle),
 		.color = p.color,
-		.orig_color = p.orig_color,
 	};
 	return (new);
 }
@@ -39,7 +38,6 @@ t_point	rotate_y(t_point p, double angle)
 		.y = p.y,
 		.z = -p.x * sin(angle) + p.z * cos(angle),
 		.color = p.color,
-		.orig_color = p.orig_color,
 	};
 	return (new);
 }
@@ -54,7 +52,6 @@ t_point	rotate_z(t_point p, double angle)
 		.y = p.x * sin(angle) + p.y * cos(angle),
 		.z = p.z,
 		.color = p.color,
-		.orig_color = p.orig_color,
 	};
 	return (new);
 }

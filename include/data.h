@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 01:39:56 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:05:09 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_point
 	double	x;
 	double	y;
 	double	z;
-	int		orig_color;
 	int		color;
 }	t_point;
 

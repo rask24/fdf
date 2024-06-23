@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:02:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 01:48:07 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:08:26 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,21 @@ static void	_set_preset(int *bottom, int *top, t_preset preset)
 	}
 }
 
-static void	_set_default_color(t_point *p)
-{
-	if (p->orig_color == DEFAULT_COLOR_FLAG)
-		p->color = 0xFFFFFF;
-	else if (p->orig_color != DEFAULT_COLOR_FLAG)
-		p->color = p->orig_color;
-}
-
 static void	_set_color(t_point *p, t_point *orig_p, t_data *data, int preset)
 {
 	double	ratio;
 	int		bottom;
 	int		top;
 
+	_set_preset(&bottom, &top, preset);
 	if (preset == DEFAULT)
 	{
-		_set_default_color(p);
-		return ;
+		if (orig_p->color == DEFAULT_COLOR_FLAG)
+			p->color = 0xFFFFFF;
+		else if (orig_p->color != DEFAULT_COLOR_FLAG)
+			p->color = orig_p->color;
 	}
-	_set_preset(&bottom, &top, preset);
-	if (data->orig_z_min != data->orig_z_max)
+	else if (data->orig_z_min != data->orig_z_max)
 	{
 		ratio = (orig_p->z - data->orig_z_min)
 			/ (data->orig_z_max - data->orig_z_min);
