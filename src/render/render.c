@@ -6,10 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:23:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:14:33 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 20:15:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx.h"
 #include "render.h"
 
 #include "render_internal.h"
@@ -55,4 +56,6 @@ void	render(t_ctx *ctx)
 		}
 		i++;
 	}
+	mlx_put_image_to_window(ctx->mlx_conf->p_mlx,
+		ctx->mlx_conf->p_win, ctx->mlx_conf->p_img, 0, 0);
 }

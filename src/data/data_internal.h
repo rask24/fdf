@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:12:36 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 20:01:55 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ void	init_cols(t_data *data, char **map);
 void	init_rows(t_data *data, char **map);
 void	init_orig_points(t_data *data, char **map);
 void	init_z_min_max(t_data *data);
-void	init_colors(t_data *data);
 
 #endif
