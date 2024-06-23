@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:24:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:54:01 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:03:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ typedef struct s_line_vars
 
 void	plot_pixel(t_ctx *ctx, int x, int y, int color);
 void	plot_line(t_ctx *ctx, t_point p1, t_point p2);
+void	render_image(t_ctx *ctx);
 
 #endif

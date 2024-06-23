@@ -50,6 +50,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/render/plot_line.c \
 				$(SRC_DIR)/render/plot_pixel.c \
 				$(SRC_DIR)/render/render.c \
+				$(SRC_DIR)/render/render_image.c \
 				$(SRC_DIR)/utils/is_delimiter.c \
 				$(SRC_DIR)/utils/interpolate_color.c \
 				$(SRC_DIR)/utils/error_exit.c \

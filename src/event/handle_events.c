@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:04:44 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 20:48:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:04:48 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,40 +26,19 @@ static int	_exit_window(t_ctx *ctx)
 	return (0);
 }
 
-static void	draw_test_string(t_ctx *ctx, int x, int y, char *str)
-{
-	int	color;
-
-	color = 0xFFFFFF;
-	mlx_string_put(ctx->mlx_conf->p_mlx, ctx->mlx_conf->p_win,
-		x, y, color, str);
-}
-
 static int	_handle_keydown(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_ESCAPE)
 		_exit_window(ctx);
 	else if (keycode == KEY_1)
 	{
-		ft_bzero(ctx->mlx_conf->p_data,
-			WIN_WIDTH * WIN_HEIGHT * (ctx->mlx_conf->bits_per_pixel / 8));
-		clean_points(ctx->data);
-		init_points(ctx->data);
-		init_colors(ctx->data);
-		apply_operation(ctx->data, rotate_z, M_PI_4);
-		apply_operation(ctx->data, rotate_x, atan(1 / sqrt(2)));
-		render(ctx);
-		draw_test_string(ctx, 20, 20, "isometric view");
+		ctx->view_conf->type = ISOMETRIC;
+		render(ctx, true);
 	}
 	else if (keycode == KEY_2)
 	{
-		ft_bzero(ctx->mlx_conf->p_data,
-			WIN_WIDTH * WIN_HEIGHT * (ctx->mlx_conf->bits_per_pixel / 8));
-		clean_points(ctx->data);
-		init_points(ctx->data);
-		init_colors(ctx->data);
-		render(ctx);
-		draw_test_string(ctx, 20, 20, "top view");
+		ctx->view_conf->type = TOPVIEW;
+		render(ctx, true);
 	}
 	return (0);
 }

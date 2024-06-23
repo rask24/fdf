@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 20:25:09 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:05:52 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int	main(int argc, char **argv)
 	validate_arguments(argc, argv);
 	validate_map(argv[1]);
 	ctx = _construct_ctx(argv[1]);
-	apply_operation(ctx->data, rotate_z, M_PI_4);
-	apply_operation(ctx->data, rotate_x, atan(1 / sqrt(2)));
-	render(ctx);
+	render(ctx, false);
 	handle_events(ctx);
 	mlx_loop(ctx->mlx_conf->p_mlx);
 	return (EXIT_SUCCESS);
