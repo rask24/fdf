@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:04:44 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 21:04:48 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:32:42 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ static int	_exit_window(t_ctx *ctx)
 	return (0);
 }
 
+static void	_handle_translation(int keycode, t_ctx *ctx)
+{
+	if (keycode == KEY_D)
+		ctx->view_conf->offset_x += 10;
+	else if (keycode == KEY_A)
+		ctx->view_conf->offset_x -= 10;
+	else if (keycode == KEY_W)
+		ctx->view_conf->offset_y -= 10;
+	else if (keycode == KEY_S)
+		ctx->view_conf->offset_y += 10;
+	render(ctx, true, false);
+}
+
 static int	_handle_keydown(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_ESCAPE)
@@ -33,13 +46,16 @@ static int	_handle_keydown(int keycode, t_ctx *ctx)
 	else if (keycode == KEY_1)
 	{
 		ctx->view_conf->type = ISOMETRIC;
-		render(ctx, true);
+		render(ctx, false, true);
 	}
 	else if (keycode == KEY_2)
 	{
 		ctx->view_conf->type = TOPVIEW;
-		render(ctx, true);
+		render(ctx, false, true);
 	}
+	else if (keycode == KEY_D || keycode == KEY_A
+		|| keycode == KEY_W || keycode == KEY_S)
+		_handle_translation(keycode, ctx);
 	return (0);
 }
 

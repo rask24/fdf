@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:09:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 21:03:31 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:18:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 
 # include "ctx.h"
 
-void	render(t_ctx *ctx, bool is_rereder);
+void	render(t_ctx *ctx, bool only_render, bool is_clean);
 
 #endif
