@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   view_conf.h                                        :+:      :+:    :+:   */
+/*   event_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/22 01:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 11:13:08 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 21:43:54 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/24 02:53:30 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIEW_CONF_H
-# define VIEW_CONF_H
+#ifndef EVENT_INTERNAL_H
+# define EVENT_INTERNAL_H
 
-# include <stdbool.h>
+# include "ctx.h"
 
-typedef enum e_type
-{
-	ISOMETRIC,
-	TOPVIEW,
-}	t_type;
-
-typedef enum e_preset
-{
-	DEFAULT,
-	DARK,
-	TROPICAL,
-	PASTEL,
-}	t_preset;
-
-typedef struct s_view_conf
-{
-	int			offset_x;
-	int			offset_y;
-	t_type		type;
-	t_preset	preset;
-	int			click_x;
-	int			click_y;
-	int			click_btn;
-	bool		show_instr;
-}	t_view_conf;
-
-t_view_conf	*construct_view_conf(void);
+int	handle_keydown(int keycode, t_ctx *ctx);
+int	handle_mousedown(int button, int x, int y, t_ctx *ctx);
+int	handle_mousemove(int x, int y, t_ctx *ctx);
+int	handle_mouseup(int button, int x, int y, t_ctx *ctx);
+int	exit_window(t_ctx *ctx);
 
 #endif

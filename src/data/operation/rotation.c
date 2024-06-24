@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:35:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 16:46:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 02:08:13 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_point	rotate_x(t_point p, double angle)
 		.x = p.x,
 		.y = p.y * cos(angle) - p.z * sin(angle),
 		.z = p.y * sin(angle) + p.z * cos(angle),
-		.color = p.color
+		.color = p.color,
 	};
 	return (new);
 }

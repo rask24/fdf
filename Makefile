@@ -37,16 +37,23 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/data/operation/scale.c \
 				$(SRC_DIR)/data/operation/translation.c \
 				$(SRC_DIR)/data/apply_operation.c \
+				$(SRC_DIR)/data/clean_points.c \
 				$(SRC_DIR)/data/construct_data.c \
 				$(SRC_DIR)/data/init_colors.c \
 				$(SRC_DIR)/data/init_cols.c \
 				$(SRC_DIR)/data/init_orig_points.c \
+				$(SRC_DIR)/data/init_orig_z_min_max.c \
 				$(SRC_DIR)/data/init_points.c \
 				$(SRC_DIR)/data/init_rows.c \
-				$(SRC_DIR)/data/init_z_min_max.c \
+				$(SRC_DIR)/event/exit_window.c \
+				$(SRC_DIR)/event/handle_events.c \
+				$(SRC_DIR)/event/handle_keydown.c \
+				$(SRC_DIR)/event/handle_mouse.c \
 				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
 				$(SRC_DIR)/render/plot_line.c \
 				$(SRC_DIR)/render/plot_pixel.c \
+				$(SRC_DIR)/render/render_image.c \
+				$(SRC_DIR)/render/render_instructions.c \
 				$(SRC_DIR)/render/render.c \
 				$(SRC_DIR)/utils/is_delimiter.c \
 				$(SRC_DIR)/utils/interpolate_color.c \

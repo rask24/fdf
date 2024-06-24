@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:19:12 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/23 21:19:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string.h>
 
 #include "ctx.h"
+#include "event.h"
 #include "mlx.h"
 #include "render.h"
 #include "validate.h"
@@ -41,11 +42,8 @@ int	main(int argc, char **argv)
 	validate_arguments(argc, argv);
 	validate_map(argv[1]);
 	ctx = _construct_ctx(argv[1]);
-	mlx_put_image_to_window(ctx->mlx_conf->p_mlx,
-		ctx->mlx_conf->p_win, ctx->mlx_conf->p_img, 0, 0);
-	apply_operation(ctx->data, rotate_z, M_PI_4);
-	apply_operation(ctx->data, rotate_x, atan(1 / sqrt(2)));
-	render(ctx);
+	render(ctx, false, false);
+	handle_events(ctx);
 	mlx_loop(ctx->mlx_conf->p_mlx);
 	return (EXIT_SUCCESS);
 }

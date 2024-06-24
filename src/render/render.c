@@ -6,53 +6,58 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:23:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 15:14:33 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:12:38 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+#include "ctx.h"
+#include "libft.h"
+#include "mlx.h"
 #include "render.h"
+#include "view_conf.h"
 
 #include "render_internal.h"
 
-static void	_plot_row_line(t_ctx *ctx, int i, int j)
+static void	_reset_points(t_ctx *ctx)
 {
-	t_point	p1;
-	t_point	p2;
-
-	if (j == ctx->data->cols - 1)
-		return ;
-	p1 = ctx->data->points[i][j];
-	p2 = ctx->data->points[i][j + 1];
-	plot_line(ctx, p1, p2);
+	ft_bzero(ctx->mlx_conf->p_data,
+		WIN_WIDTH * WIN_HEIGHT * (ctx->mlx_conf->bits_per_pixel / 8));
+	clean_points(ctx->data);
+	ctx->view_conf->offset_x = 0;
+	ctx->view_conf->offset_y = 0;
+	init_points(ctx->data);
+	init_colors(ctx->data, ctx->view_conf->preset);
 }
 
-static void	_plot_col_line(t_ctx *ctx, int i, int j)
+void	render(t_ctx *ctx, bool only_render, bool is_clean)
 {
-	t_point	p1;
-	t_point	p2;
-
-	if (i == ctx->data->rows - 1)
-		return ;
-	p1 = ctx->data->points[i][j];
-	p2 = ctx->data->points[i + 1][j];
-	plot_line(ctx, p1, p2);
-}
-
-void	render(t_ctx *ctx)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < ctx->data->rows)
+	if (only_render)
 	{
-		j = 0;
-		while (j < ctx->data->cols)
-		{
-			_plot_row_line(ctx, i, j);
-			_plot_col_line(ctx, i, j);
-			j++;
-		}
-		i++;
+		ft_bzero(ctx->mlx_conf->p_data,
+			WIN_WIDTH * WIN_HEIGHT * (ctx->mlx_conf->bits_per_pixel / 8));
+		render_image(ctx);
+		render_instructions(ctx);
+		return ;
 	}
+	if (is_clean)
+		_reset_points(ctx);
+	if (ctx->view_conf->type == ISOMETRIC)
+	{
+		apply_operation(ctx->data, rotate_z, M_PI_4);
+		apply_operation(ctx->data, rotate_x, atan(1 / sqrt(2)));
+		render_image(ctx);
+		mlx_string_put(ctx->mlx_conf->p_mlx, ctx->mlx_conf->p_win,
+			920, 20, 0xFFFFFF, "isometric view");
+	}
+	else if (ctx->view_conf->type == TOPVIEW)
+	{
+		render_image(ctx);
+		mlx_string_put(ctx->mlx_conf->p_mlx, ctx->mlx_conf->p_win,
+			920, 20, 0xFFFFFF, "top view");
+	}
+	render_instructions(ctx);
 }

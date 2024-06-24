@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scale.c                                            :+:      :+:    :+:   */
+/*   init_z_min_max.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/22 23:36:09 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 21:35:42 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/23 17:09:46 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/24 01:52:31 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
+
 #include "data.h"
+#include "libft.h"
 
-t_point	scale_x(t_point p, double param)
-{
-	p.x *= param;
-	return (p);
-}
+#include "data_internal.h"
 
-t_point	scale_y(t_point p, double param)
+void	init_orig_z_min_max(t_data *data)
 {
-	p.y *= param;
-	return (p);
-}
+	int	i;
+	int	j;
+	int	z;
 
-t_point	scale_z(t_point p, double param)
-{
-	p.z *= param;
-	return (p);
-}
-
-t_point	scale(t_point p, double param)
-{
-	p.x *= param;
-	p.y *= param;
-	p.z *= param;
-	return (p);
+	data->orig_z_min = INT_MAX;
+	data->orig_z_max = INT_MIN;
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->cols)
+		{
+			z = (int)data->orig_points[i][j].z;
+			ft_chmin(&data->orig_z_min, z);
+			ft_chmax(&data->orig_z_max, z);
+			j++;
+		}
+		i++;
+	}
 }
