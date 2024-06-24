@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:41:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 01:07:36 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:19:16 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ int	handle_keydown(int keycode, t_ctx *ctx)
 	{
 		ctx->view_conf->preset = (ctx->view_conf->preset + 1) % NUM_PRESETS;
 		init_colors(ctx->data, ctx->view_conf->preset);
+		render(ctx, true, false);
+	}
+	else if (keycode == KEY_T)
+	{
+		ctx->view_conf->show_instr = !ctx->view_conf->show_instr;
 		render(ctx, true, false);
 	}
 	return (0);
