@@ -1,3 +1,27 @@
+# FDF
+
+## Installation
+
+To install the project, use the following command:
+
+```sh
+git clone https://github.com/rask24/fdf --recursive
+```
+
+## Building
+To build the project, navigate to the project directory and run:
+
+```sh
+make
+```
+
+## Usage
+To run the application, use:
+
+```sh
+./fdf ./maps/42.fdf
+```
+
 ## FDF File Format
 
 - Each line consists of multiple elements separated by spaces or tabs (trailing spaces or tabs are also accepted).
