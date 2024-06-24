@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   validate_arguments.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 01:02:08 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:44:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 00:19:46 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 19:38:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
 
 #include "libft.h"
 #include "utils.h"
 
 #include "validate_internal.h"
 
-void	validate_map(char *file_path)
+static void	_validate_number_of_arguments(int argc)
 {
-	char	**map;
+	if (argc == 2)
+		return ;
+	error_exit(INV_ARGS_ERR_MSG);
+}
 
-	map = file_to_lines(file_path);
-	if (map == NULL)
-		error_exit(strerror(errno));
-	if (map[0] == NULL)
-		error_exit(EMPTY_MAP_ERR_MSG);
-	validate_rectangle_map(map);
-	validate_map_format(map);
-	validate_map_values(map);
-	ft_free_strs(map);
+static void	_validate_file_format(char *file_path)
+{
+	char	*ext;
+
+	ext = ft_strrchr(file_path, '.');
+	if (ext && ext != file_path && ft_strcmp(ext, ".fdf") == 0)
+		return ;
+	error_exit(INV_FILE_FORMAT_ERR_MSG);
+}
+
+void	validate_arguments(int argc, char **argv)
+{
+	_validate_number_of_arguments(argc);
+	_validate_file_format(argv[1]);
 }

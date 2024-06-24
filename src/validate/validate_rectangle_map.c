@@ -1,35 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   validate_rectangle_map.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 01:02:08 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:44:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 02:05:29 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 19:39:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stddef.h>
 
 #include "libft.h"
 #include "utils.h"
 
 #include "validate_internal.h"
 
-void	validate_map(char *file_path)
+static size_t	_count_elements(char *str)
 {
-	char	**map;
+	size_t	cnt;
+	size_t	i;
 
-	map = file_to_lines(file_path);
-	if (map == NULL)
-		error_exit(strerror(errno));
-	if (map[0] == NULL)
-		error_exit(EMPTY_MAP_ERR_MSG);
-	validate_rectangle_map(map);
-	validate_map_format(map);
-	validate_map_values(map);
-	ft_free_strs(map);
+	cnt = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (!is_delimiter(str[i]) && is_delimiter(str[i + 1]))
+			cnt++;
+		i++;
+	}
+	return (cnt);
+}
+
+void	validate_rectangle_map(char **map)
+{
+	size_t	i;
+	size_t	init_cnt;
+
+	i = 0;
+	init_cnt = _count_elements(map[0]);
+	while (map[i])
+	{
+		if (_count_elements(map[i]) != init_cnt)
+			error_exit(MAP_NOT_RECT_ERR_MSG);
+		i++;
+	}
 }

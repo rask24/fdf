@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   error_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 01:02:08 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:44:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 19:31:03 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/21 19:37:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
 #include <stdlib.h>
-#include <string.h>
+#include <unistd.h>
 
 #include "libft.h"
 #include "utils.h"
 
-#include "validate_internal.h"
-
-void	validate_map(char *file_path)
+void	error_exit(char *msg)
 {
-	char	**map;
-
-	map = file_to_lines(file_path);
-	if (map == NULL)
-		error_exit(strerror(errno));
-	if (map[0] == NULL)
-		error_exit(EMPTY_MAP_ERR_MSG);
-	validate_rectangle_map(map);
-	validate_map_format(map);
-	validate_map_values(map);
-	ft_free_strs(map);
+	ft_dprintf(STDERR_FILENO, "%s: %s\n", EXE_NAME, msg);
+	exit(EXIT_FAILURE);
 }

@@ -5,63 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 21:35:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/03/18 20:07:25 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/21 00:01:51 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/23 21:19:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <errno.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
-#ifdef DEV
+#include "ctx.h"
+#include "event.h"
+#include "mlx.h"
+#include "render.h"
+#include "validate.h"
+#include "utils.h"
 
-void	free_points(t_ctx ctx)
+static t_ctx	*_construct_ctx(char *file_path)
 {
-	int	i;
+	t_ctx	*ctx;
 
-	i = 0;
-	while (i < ctx.map_height)
-	{
-		free(ctx.points[i]);
-		i++;
-	}
-	free(ctx.points);
+	ctx = malloc(sizeof(t_ctx));
+	if (ctx == NULL)
+		error_exit(strerror(errno));
+	ctx->data = construct_data(file_path);
+	ctx->mlx_conf = construct_mlx_conf();
+	ctx->view_conf = construct_view_conf();
+	return (ctx);
 }
-
-void	dev(t_ctx ctx)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < ctx.map_height)
-	{
-		j = 0;
-		while (j < ctx.map_witdh)
-		{
-			printf("(%f, %f, %f) #%#X\n",
-				ctx.points[i][j].x,
-				ctx.points[i][j].y,
-				ctx.points[i][j].z,
-				ctx.points[i][j].color);
-			j++;
-		}
-		i++;
-	}
-}
-
-#endif
 
 int	main(int argc, char **argv)
 {
-	t_ctx	ctx;
+	t_ctx	*ctx;
 
-	validate_args(argc, argv);
+	validate_arguments(argc, argv);
 	validate_map(argv[1]);
-	extract_map_info(&ctx, argv[1]);
-	convert_points_to_isometric(&ctx);
-	set_mlx(&ctx);
-	render_image(&ctx);
-	handle_events(&ctx);
-	mlx_loop(ctx.mlx_ptr);
-	return (0);
+	ctx = _construct_ctx(argv[1]);
+	render(ctx, false, false);
+	handle_events(ctx);
+	mlx_loop(ctx->mlx_conf->p_mlx);
+	return (EXIT_SUCCESS);
 }

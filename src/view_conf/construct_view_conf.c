@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   construct_view_conf.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 01:02:08 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:44:38 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/22 01:50:34 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/24 11:13:22 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "libft.h"
 #include "utils.h"
+#include "view_conf.h"
 
-#include "validate_internal.h"
-
-void	validate_map(char *file_path)
+t_view_conf	*construct_view_conf(void)
 {
-	char	**map;
+	t_view_conf	*view_conf;
 
-	map = file_to_lines(file_path);
-	if (map == NULL)
+	view_conf = (t_view_conf *)malloc(sizeof(t_view_conf));
+	if (!view_conf)
 		error_exit(strerror(errno));
-	if (map[0] == NULL)
-		error_exit(EMPTY_MAP_ERR_MSG);
-	validate_rectangle_map(map);
-	validate_map_format(map);
-	validate_map_values(map);
-	ft_free_strs(map);
+	view_conf->offset_x = 0;
+	view_conf->offset_y = 0;
+	view_conf->type = ISOMETRIC;
+	view_conf->preset = DEFAULT;
+	view_conf->click_x = 0;
+	view_conf->click_y = 0;
+	view_conf->click_btn = 0;
+	view_conf->show_instr = false;
+	return (view_conf);
 }

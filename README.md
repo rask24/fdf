@@ -1,13 +1,38 @@
+# FDF
+
+## Installation
+
+To install the project, use the following command:
+
+```sh
+git clone https://github.com/rask24/fdf --recursive
+```
+
+## Building
+
+To build the project, navigate to the project directory and run:
+
+```sh
+make
+```
+
+## Usage
+
+To run the application, use:
+
+```sh
+./fdf ./maps/42.fdf
+```
+
 ## FDF File Format
 
-The .fdf file is structured in the following format:
-- Each line consists of multiple elements separated by spaces or tabs. (trailing spaces or tabs is also accepted)
-- The first element represents the **height** and must be an integer; it's a mandatory element.
-- The second element represents the **color** and is optional. It should be a positive hexadecimal number starting with `0x`.
+- Each line consists of multiple elements separated by spaces or tabs (trailing spaces or tabs are also accepted).
+- Each element represents the **height** and must be an integer within the range of `INT_MIN` to `INT_MAX`.
+- An element can optionally include a **color** in hexadecimal format starting with `0x`, within the range of `0x000000` to `0xFFFFFF`.
 - The number of elements in each line remains consistent, forming a well-defined rectangular shape.
-- A newline character(or spaces or tabs) at the end of the file is mandatory.
+- A newline character, space, or tab at the end of the file is optional.
 
-### Sample Format:
+### Sample Format
 
 ```plaintext
 0  0  0  0  0  0  0  0  0  0
@@ -21,9 +46,3 @@ The .fdf file is structured in the following format:
 0  1  0  0  0  0  0  0  3  0
 0  0  0  0  0  0  0  0  0  0
 ```
-
-Above format describes the .fdf file structure, where each line represents a set of elements:
-
-- The first element denotes the height of the segment and is mandatory.
-- The second element represents the color of the segment and is optional. It should be a positive hexadecimal number starting with 0x.
-- The file ends with a newline character, which is mandatory.

@@ -1,87 +1,141 @@
-NAME			= fdf
-UNAME			= $(shell uname)
-CFLAGS			= -Werror -Wextra -Wall -O3
-NORM			= norminette
+# shell
+SHELL		= /bin/bash
+UNAME		= $(shell uname)
 
-SRC_DIR			= ./src
-BUILD_DIR		= ./build
-INC_DIR			= ./inc
-SRC				= $(SRC_DIR)/main.c \
-					$(SRC_DIR)/validate/validate_args.c \
-					$(SRC_DIR)/validate/validate_map.c \
-					$(SRC_DIR)/init/extract_map_info.c \
-					$(SRC_DIR)/init/convert_points_to_isometric.c \
-					$(SRC_DIR)/events/handle_events.c \
-					$(SRC_DIR)/events/keydown_events.c \
-					$(SRC_DIR)/events/exit_window.c \
-					$(SRC_DIR)/point_operations/rotate_points_x.c \
-					$(SRC_DIR)/point_operations/rotate_points_y.c \
-					$(SRC_DIR)/point_operations/rotate_points_z.c \
-					$(SRC_DIR)/point_operations/translate_points.c \
-					$(SRC_DIR)/point_operations/scale_points.c \
-					$(SRC_DIR)/utils/mlx_utils.c \
-					$(SRC_DIR)/utils/exit_with_error.c \
-					$(SRC_DIR)/render_image/render_image.c \
-					$(SRC_DIR)/render_image/plot_line.c \
-					$(SRC_DIR)/render_image/color_gradient.c \
-					$(SRC_DIR)/render_image/calc_ratio.c \
-					$(SRC_DIR)/render_image/frac_utils.c \
-					$(SRC_DIR)/render_image/plot_point_to_image.c
-OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
-DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
-DEPFLAGS		= -MMD -MP
+# executable and archive files
+NAME		= fdf
+LIBFT		= $(LIBFT_DIR)/libft.a
 
-LIBFT_FLAGS		= -lft
-LIBFT_DIR		= ./libft
+# compiler options
+CFLAGS		= -Werror -Wextra -Wall
+PROD_FLAGS	= -O3
+DEV_FLAGS	= -O0 -g -fsanitize=address,undefined,integer
+DEP_FLAGS	= -MMD -MP
+INCLUDE		= -I $(INC_DIR) -I $(LIBFT_DIR)/include -I $(LIBMLX_DIR)
+LD_FLAGS	= -L $(LIBFT_DIR) -L $(LIBMLX_DIR)
+LD_LIBS		= -lft
+
+# directories
+SRC_DIR		= src
+BUILD_DIR	= build
+INC_DIR		= include
+LIBFT_DIR	= libft
+
 ifeq ($(UNAME), Linux)
-	LIBMLX_DIR   = ./libmlx/linux
-	LIBMLX_FLAGS = -lmlx -lXext -lX11 -lm -lz
+	LIBMLX		= $(LIBMLX_DIR)/libmlx.a
+	LIBMLX_DIR	= libmlx/linux
+	LD_LIBS		+= -lmlx -lXext -lX11 -lm -lz
 else ifeq ($(UNAME), Darwin)
-	LIBMLX_DIR   = ./libmlx/macos
-	LIBMLX_FLAGS = -lmlx -framework openGL -framework AppKit
+	LIBMLX		= $(LIBMLX_DIR)/libmlx.dylib
+	LIBMLX_DIR	= libmlx/macos
+	LD_LIBS		+= -lmlx -framework openGL -framework AppKit
 endif
 
-INCLUDE = -I $(INC_DIR) -I $(LIBFT_DIR) -I $(LIBMLX_DIR)
+# files
+SRC			= $(SRC_DIR)/main.c \
+				$(SRC_DIR)/data/operation/rotation.c \
+				$(SRC_DIR)/data/operation/scale.c \
+				$(SRC_DIR)/data/operation/translation.c \
+				$(SRC_DIR)/data/apply_operation.c \
+				$(SRC_DIR)/data/clean_points.c \
+				$(SRC_DIR)/data/construct_data.c \
+				$(SRC_DIR)/data/init_colors.c \
+				$(SRC_DIR)/data/init_cols.c \
+				$(SRC_DIR)/data/init_orig_points.c \
+				$(SRC_DIR)/data/init_orig_z_min_max.c \
+				$(SRC_DIR)/data/init_points.c \
+				$(SRC_DIR)/data/init_rows.c \
+				$(SRC_DIR)/event/exit_window.c \
+				$(SRC_DIR)/event/handle_events.c \
+				$(SRC_DIR)/event/handle_keydown.c \
+				$(SRC_DIR)/event/handle_mouse.c \
+				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
+				$(SRC_DIR)/render/plot_line.c \
+				$(SRC_DIR)/render/plot_pixel.c \
+				$(SRC_DIR)/render/render_image.c \
+				$(SRC_DIR)/render/render_instructions.c \
+				$(SRC_DIR)/render/render.c \
+				$(SRC_DIR)/utils/is_delimiter.c \
+				$(SRC_DIR)/utils/interpolate_color.c \
+				$(SRC_DIR)/utils/error_exit.c \
+				$(SRC_DIR)/validate/validate_arguments.c \
+				$(SRC_DIR)/validate/validate_map_format.c \
+				$(SRC_DIR)/validate/validate_map_values.c \
+				$(SRC_DIR)/validate/validate_map.c \
+				$(SRC_DIR)/validate/validate_rectangle_map.c \
+				$(SRC_DIR)/view_conf/construct_view_conf.c
+OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
+DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
+HEADER		= $(wildcard $(INC_DIR)/*.h)
 
-GREEN	=	\033[0;32m
-BLUE	=	\033[0;34m
-RED		=	\033[0;31m
-RESET	=	\033[0m
+# colors
+RESET		= \033[0m
+ORANGE		= \033[0;33m
+GRAY		= \033[0;90m
+RED			= \033[0;91m
+GREEN		= \033[1;92m
+YELLOW		= \033[1;93m
+BLUE		= \033[0;94m
+MAGENTA		= \033[0;95m
+CYAN		= \033[0;96m
+WHITE		= \033[0;97m
 
-all: title $(NAME)
+# rules
+.PHONY: all
+all: CFLAGS += $(PROD_FLAGS)
+all: $(NAME)
 
-$(NAME): $(OBJ)
-	@echo "\ncomplied [$(GREEN)✔︎$(RESET)]"
-	@$(MAKE) -C $(LIBFT_DIR)
-	@$(MAKE) -C $(LIBMLX_DIR)
-	@if [ $(UNAME) = "Darwin" ]; then cp $(LIBMLX_DIR)/libmlx.dylib .; fi
-	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT_FLAGS) $(LIBMLX_FLAGS) -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -o $(NAME)
+$(NAME): $(LIBFT) $(LIBMLX) $(SRC) $(HEADER)
+	@make _main CFLAGS="$(CFLAGS)"
+
+.PHONY: _main
+_main:
+	@printf "$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(WHITE)compling...$(RESET)\n"
+	@make _build CFLAGS="$(CFLAGS)"
+
+.PHONY: _build
+_build: $(OBJ)
+	@if [ $(UNAME) = "Darwin" ]; then \
+		cp $(LIBMLX) . ; \
+	fi
+	@$(CC) $(OBJ) $(CFLAGS) $(LD_FLAGS) $(LD_LIBS) -o $(NAME)
+	@printf "\n$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(GREEN)compiled ✔$(RESET)\n"
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDE) $(DEPFLAGS) -c $< -o $@
-	@printf "$(GREEN).$(RESET)"
+	@$(CC) $(CFLAGS) $(INCLUDE) $(DEP_FLAGS) -c $< -o $@
+	@printf "$(GREEN)─$(RESET)"
 
-clean:
-	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(MAKE) -C $(LIBMLX_DIR) clean
-	@if [ $(UNAME) = "Darwin" ]; then $(RM) libmlx.dylib ; fi
-	@$(RM) $(OBJ) $(DEP)
-	@echo "$(RED)fdf: delete objs deps$(RESET)"
+$(LIBFT):
+	git submodule update --init
+	make -C $(LIBFT_DIR)
 
-fclean: clean
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(RM) $(NAME)
-	@echo "$(RED)fdf: delete fdf$(RESET)"
-
-re: fclean all
-
-norm:
-	$(NORM) $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
-
-title:
-	@echo "$(BLUE)fdf$(RESET)"
-
-.PHONY: all clean fclean re
+$(LIBMLX):
+	make -C $(LIBMLX_DIR)
 
 -include $(DEP)
+
+.PHONY: clean
+clean:
+	-@make clean -C $(LIBFT_DIR)
+	@make clean -C $(LIBMLX_DIR)
+	@if [ $(UNAME) = "Darwin" ]; then \
+		$(RM) $(shell basename $(LIBMLX)) ; \
+	fi
+	@$(RM) $(OBJ) $(DEP)
+	@printf "$(BLUE)[$(NAME)]\t\tobject files$(RESET)\t$(GREEN)deleted ✔$(RESET)\n"
+
+.PHONY: fclean
+fclean: clean
+	-@make fclean -C $(LIBFT_DIR)
+	@$(RM) $(NAME)
+	@printf "$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(GREEN)deleted ✔$(RESET)\n"
+
+.PHONY: re
+re: fclean all
+
+.PHONY: norm
+norm:
+	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
+
+include unit_test.mk

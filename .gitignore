@@ -61,3 +61,7 @@ dkms.conf
 
 # executable file
 fdf
+
+# tests
+gtest
+unit_tester
