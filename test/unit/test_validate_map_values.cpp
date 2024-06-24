@@ -39,7 +39,7 @@ TEST(validate_map_values, invalidValues1) {
               "fdf: Invalid map value\n");
 }
 
-TEST(validate_map_format, invalidValues2) {
+TEST(validate_map_values, invalidValues2) {
   char *map[] = {const_cast<char *>("0 0 0 0 0,0x10000000\n"), nullptr};
 
   EXPECT_EXIT(validate_map_values(map), ::testing::ExitedWithCode(1),
