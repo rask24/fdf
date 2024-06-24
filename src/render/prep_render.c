@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 23:08:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 23:16:56 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 00:27:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ static void	_reset_points(t_ctx *ctx)
 	init_colors(ctx->data, ctx->view_conf->preset);
 }
 
+static void	_put_label(t_ctx *ctx, char *str)
+{
+	mlx_string_put(ctx->mlx_conf->p_mlx, ctx->mlx_conf->p_win,
+		920, 20, 0xFFFFFF, str);
+}
+
 void	prep_render(t_ctx *ctx, bool is_clean)
 {
 	if (is_clean)
@@ -38,14 +44,17 @@ void	prep_render(t_ctx *ctx, bool is_clean)
 		apply_operation(ctx->data, rotate_z, M_PI_4);
 		apply_operation(ctx->data, rotate_x, atan(1 / sqrt(2)));
 		render_image(ctx);
-		mlx_string_put(ctx->mlx_conf->p_mlx, ctx->mlx_conf->p_win,
-			920, 20, 0xFFFFFF, "isometric view");
+		_put_label(ctx, "isometric view");
 	}
 	else if (ctx->view_conf->type == TOPVIEW)
 	{
 		render_image(ctx);
-		mlx_string_put(ctx->mlx_conf->p_mlx, ctx->mlx_conf->p_win,
-			920, 20, 0xFFFFFF, "top view");
+		_put_label(ctx, "top view");
+	}
+	else if (ctx->view_conf->type == OBLIQUE)
+	{
+		render_image(ctx);
+		_put_label(ctx, "oblique view");
 	}
 	render_instructions(ctx);
 }
