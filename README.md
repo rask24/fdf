@@ -9,6 +9,7 @@ git clone https://github.com/rask24/fdf --recursive
 ```
 
 ## Building
+
 To build the project, navigate to the project directory and run:
 
 ```sh
@@ -16,6 +17,7 @@ make
 ```
 
 ## Usage
+
 To run the application, use:
 
 ```sh
