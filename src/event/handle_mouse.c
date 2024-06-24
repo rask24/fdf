@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 02:29:56 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 03:18:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 23:10:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	handle_mousemove(int x, int y, t_ctx *ctx)
 			-(y - ctx->view_conf->click_y) * 0.002);
 		ctx->view_conf->click_x = x;
 		ctx->view_conf->click_y = y;
-		render(ctx, true, false);
+		render(ctx);
 	}
 	else if (ctx->view_conf->click_btn == MOUSE_RIGHT)
 	{
@@ -45,7 +45,7 @@ int	handle_mousemove(int x, int y, t_ctx *ctx)
 		ctx->view_conf->offset_y += y - ctx->view_conf->click_y;
 		ctx->view_conf->click_x = x;
 		ctx->view_conf->click_y = y;
-		render(ctx, true, false);
+		render(ctx);
 	}
 	return (0);
 }
@@ -62,17 +62,17 @@ int	handle_mousedown(int button, int x, int y, t_ctx *ctx)
 	{
 		ctx->view_conf->preset = (ctx->view_conf->preset + 1) % NUM_PRESETS;
 		init_colors(ctx->data, ctx->view_conf->preset);
-		render(ctx, true, false);
+		render(ctx);
 	}
 	else if (button == MOUSE_SCROLL_UP)
 	{
 		apply_operation(ctx->data, scale, 1.1);
-		render(ctx, true, false);
+		render(ctx);
 	}
 	else if (button == MOUSE_SCROLL_DOWN)
 	{
 		apply_operation(ctx->data, scale, 0.9);
-		render(ctx, true, false);
+		render(ctx);
 	}
 	return (0);
 }

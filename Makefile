@@ -52,6 +52,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
 				$(SRC_DIR)/render/plot_line.c \
 				$(SRC_DIR)/render/plot_pixel.c \
+				$(SRC_DIR)/render/prep_render.c \
 				$(SRC_DIR)/render/render_image.c \
 				$(SRC_DIR)/render/render_instructions.c \
 				$(SRC_DIR)/render/render.c \

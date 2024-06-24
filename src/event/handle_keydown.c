@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:41:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 11:19:16 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/24 23:12:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	_handle_change_view(int keycode, t_ctx *ctx)
 		ctx->view_conf->type = ISOMETRIC;
 	else if (keycode == KEY_2)
 		ctx->view_conf->type = TOPVIEW;
-	render(ctx, false, true);
+	prep_render(ctx, true);
 }
 
 static void	_handle_translation(int keycode, t_ctx *ctx)
@@ -38,7 +38,7 @@ static void	_handle_translation(int keycode, t_ctx *ctx)
 		ctx->view_conf->offset_y -= 10;
 	else if (keycode == KEY_S)
 		ctx->view_conf->offset_y += 10;
-	render(ctx, true, false);
+	render(ctx);
 }
 
 static void	_handle_scale(int keycode, t_ctx *ctx)
@@ -47,7 +47,7 @@ static void	_handle_scale(int keycode, t_ctx *ctx)
 		apply_operation(ctx->data, scale, 1.1);
 	else if (keycode == KEY_G)
 		apply_operation(ctx->data, scale, 0.9);
-	render(ctx, true, false);
+	render(ctx);
 }
 
 static void	_handle_rotation(int keycode, t_ctx *ctx)
@@ -64,7 +64,7 @@ static void	_handle_rotation(int keycode, t_ctx *ctx)
 		apply_operation(ctx->data, rotate_z, -0.1);
 	else if (keycode == KEY_C)
 		apply_operation(ctx->data, rotate_z, 0.1);
-	render(ctx, true, false);
+	render(ctx);
 }
 
 int	handle_keydown(int keycode, t_ctx *ctx)
@@ -86,12 +86,12 @@ int	handle_keydown(int keycode, t_ctx *ctx)
 	{
 		ctx->view_conf->preset = (ctx->view_conf->preset + 1) % NUM_PRESETS;
 		init_colors(ctx->data, ctx->view_conf->preset);
-		render(ctx, true, false);
+		render(ctx);
 	}
 	else if (keycode == KEY_T)
 	{
 		ctx->view_conf->show_instr = !ctx->view_conf->show_instr;
-		render(ctx, true, false);
+		render(ctx);
 	}
 	return (0);
 }
