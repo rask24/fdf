@@ -6,13 +6,14 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 20:12:38 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 21:53:19 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
 
+// TODO: fix validator
 # define DEFAULT_XY_SCALE	40
 # define DEFAULT_Z_SCALE	20
 

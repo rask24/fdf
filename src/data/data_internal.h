@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:50:42 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 20:18:40 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 21:53:41 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "data.h"
 
 # define DEFAULT_COLOR_FLAG	-1
+
+# define Z_RANGE_THRESHOLD	200.0
 
 void	init_cols(t_data *data, char **map);
 void	init_rows(t_data *data, char **map);
