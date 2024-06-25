@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 23:08:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 00:27:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 20:05:53 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	_reset_points(t_ctx *ctx)
 static void	_put_label(t_ctx *ctx, char *str)
 {
 	mlx_string_put(ctx->mlx_conf->p_mlx, ctx->mlx_conf->p_win,
-		920, 20, 0xFFFFFF, str);
+		LABEL_X_OFFSET, LABEL_Y_OFFSET, 0xFFFFFF, str);
 }
 
 void	prep_render(t_ctx *ctx, bool is_clean)
