@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 20:59:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 00:33:19 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:49:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static t_point	_transform_point(t_ctx *ctx, t_point p)
 {
 	if (ctx->view_conf->type == OBLIQUE)
 	{
-		p.x = p.x +  - 0.5 * cos(M_PI_4) * p.z;
-		p.y = p.y +  - 0.5 * sin(M_PI_4) * p.z;
+		p.x = p.x - 0.5 * cos(M_PI_4) * p.z;
+		p.y = p.y - 0.5 * sin(M_PI_4) * p.z;
 	}
 	return (p);
 }
