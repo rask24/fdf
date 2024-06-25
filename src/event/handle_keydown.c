@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:41:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 00:28:00 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:59:07 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,39 @@ static void	_handle_change_view(int keycode, t_ctx *ctx)
 static void	_handle_translation(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_D)
-		ctx->view_conf->offset_x += 10;
+		ctx->view_conf->offset_x += TRANSLATION_STEP;
 	else if (keycode == KEY_A)
-		ctx->view_conf->offset_x -= 10;
+		ctx->view_conf->offset_x -= TRANSLATION_STEP;
 	else if (keycode == KEY_W)
-		ctx->view_conf->offset_y -= 10;
+		ctx->view_conf->offset_y -= TRANSLATION_STEP;
 	else if (keycode == KEY_S)
-		ctx->view_conf->offset_y += 10;
+		ctx->view_conf->offset_y += TRANSLATION_STEP;
 	render(ctx);
 }
 
 static void	_handle_scale(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_F)
-		apply_operation(ctx->data, scale, 1.1);
+		apply_operation(ctx->data, scale, 1 + SCALE_STEP);
 	else if (keycode == KEY_G)
-		apply_operation(ctx->data, scale, 0.9);
+		apply_operation(ctx->data, scale, 1 - SCALE_STEP);
 	render(ctx);
 }
 
 static void	_handle_rotation(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_Q)
-		apply_operation(ctx->data, rotate_y, -0.1);
+		apply_operation(ctx->data, rotate_y, -ROTATION_STEP_KEY);
 	else if (keycode == KEY_E)
-		apply_operation(ctx->data, rotate_y, 0.1);
+		apply_operation(ctx->data, rotate_y, ROTATION_STEP_KEY);
 	else if (keycode == KEY_R)
-		apply_operation(ctx->data, rotate_x, 0.1);
+		apply_operation(ctx->data, rotate_x, ROTATION_STEP_KEY);
 	else if (keycode == KEY_V)
-		apply_operation(ctx->data, rotate_x, -0.1);
+		apply_operation(ctx->data, rotate_x, -ROTATION_STEP_KEY);
 	else if (keycode == KEY_Z)
-		apply_operation(ctx->data, rotate_z, -0.1);
+		apply_operation(ctx->data, rotate_z, -ROTATION_STEP_KEY);
 	else if (keycode == KEY_C)
-		apply_operation(ctx->data, rotate_z, 0.1);
+		apply_operation(ctx->data, rotate_z, ROTATION_STEP_KEY);
 	render(ctx);
 }
 
