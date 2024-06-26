@@ -6,17 +6,17 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 02:05:09 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 20:12:38 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
 
-# define DEFAULT_XY_SCALE 40
-# define DEFAULT_Z_SCALE  20
+# define DEFAULT_XY_SCALE	40
+# define DEFAULT_Z_SCALE	20
 
-# define NUM_PRESETS 4
+# define NUM_PRESETS	4
 
 # define DARK_BOTTOM_COLOR		0x54AFF7
 # define DARK_TOP_COLOR			0x692BF7

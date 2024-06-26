@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:41:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 11:19:16 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:59:07 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,53 +25,55 @@ static void	_handle_change_view(int keycode, t_ctx *ctx)
 		ctx->view_conf->type = ISOMETRIC;
 	else if (keycode == KEY_2)
 		ctx->view_conf->type = TOPVIEW;
-	render(ctx, false, true);
+	else if (keycode == KEY_3)
+		ctx->view_conf->type = OBLIQUE;
+	prep_render(ctx, true);
 }
 
 static void	_handle_translation(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_D)
-		ctx->view_conf->offset_x += 10;
+		ctx->view_conf->offset_x += TRANSLATION_STEP;
 	else if (keycode == KEY_A)
-		ctx->view_conf->offset_x -= 10;
+		ctx->view_conf->offset_x -= TRANSLATION_STEP;
 	else if (keycode == KEY_W)
-		ctx->view_conf->offset_y -= 10;
+		ctx->view_conf->offset_y -= TRANSLATION_STEP;
 	else if (keycode == KEY_S)
-		ctx->view_conf->offset_y += 10;
-	render(ctx, true, false);
+		ctx->view_conf->offset_y += TRANSLATION_STEP;
+	render(ctx);
 }
 
 static void	_handle_scale(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_F)
-		apply_operation(ctx->data, scale, 1.1);
+		apply_operation(ctx->data, scale, 1 + SCALE_STEP);
 	else if (keycode == KEY_G)
-		apply_operation(ctx->data, scale, 0.9);
-	render(ctx, true, false);
+		apply_operation(ctx->data, scale, 1 - SCALE_STEP);
+	render(ctx);
 }
 
 static void	_handle_rotation(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_Q)
-		apply_operation(ctx->data, rotate_y, -0.1);
+		apply_operation(ctx->data, rotate_y, -ROTATION_STEP_KEY);
 	else if (keycode == KEY_E)
-		apply_operation(ctx->data, rotate_y, 0.1);
+		apply_operation(ctx->data, rotate_y, ROTATION_STEP_KEY);
 	else if (keycode == KEY_R)
-		apply_operation(ctx->data, rotate_x, 0.1);
+		apply_operation(ctx->data, rotate_x, ROTATION_STEP_KEY);
 	else if (keycode == KEY_V)
-		apply_operation(ctx->data, rotate_x, -0.1);
+		apply_operation(ctx->data, rotate_x, -ROTATION_STEP_KEY);
 	else if (keycode == KEY_Z)
-		apply_operation(ctx->data, rotate_z, -0.1);
+		apply_operation(ctx->data, rotate_z, -ROTATION_STEP_KEY);
 	else if (keycode == KEY_C)
-		apply_operation(ctx->data, rotate_z, 0.1);
-	render(ctx, true, false);
+		apply_operation(ctx->data, rotate_z, ROTATION_STEP_KEY);
+	render(ctx);
 }
 
 int	handle_keydown(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_ESCAPE)
 		exit_window(ctx);
-	else if (keycode == KEY_1 || keycode == KEY_2)
+	else if (keycode == KEY_1 || keycode == KEY_2 || keycode == KEY_3)
 		_handle_change_view(keycode, ctx);
 	else if (keycode == KEY_D || keycode == KEY_A
 		|| keycode == KEY_W || keycode == KEY_S)
@@ -86,12 +88,12 @@ int	handle_keydown(int keycode, t_ctx *ctx)
 	{
 		ctx->view_conf->preset = (ctx->view_conf->preset + 1) % NUM_PRESETS;
 		init_colors(ctx->data, ctx->view_conf->preset);
-		render(ctx, true, false);
+		render(ctx);
 	}
 	else if (keycode == KEY_T)
 	{
 		ctx->view_conf->show_instr = !ctx->view_conf->show_instr;
-		render(ctx, true, false);
+		render(ctx);
 	}
 	return (0);
 }
