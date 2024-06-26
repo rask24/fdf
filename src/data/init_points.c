@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:40:43 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/26 01:57:38 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/26 21:02:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static double	_calc_z_scale(t_data *data, double xy_scale)
 {
 	double	z_range;
 
+	if (data->orig_z_max == data->orig_z_min)
+		return (0);
 	z_range = data->orig_z_max - data->orig_z_min;
 	if (z_range * xy_scale < Z_RANGE_THRESHOLD)
 		return (xy_scale / 2.0);
