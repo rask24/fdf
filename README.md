@@ -27,7 +27,7 @@ To run the application, use:
 ## FDF File Format
 
 - Each line consists of multiple elements separated by spaces or tabs (trailing spaces or tabs are also accepted).
-- Each element represents the **height** and must be an integer within the range of `INT_MIN / MAX_Z_SCALE` to `INT_MAX / MAX_Z_SCALE`. (now: MAX_Z_SCALE = 280)
+- Each element represents the **height** and must be an integer within the range of `INT_MIN` to `INT_MAX`.
 - An element can optionally include a **color** in hexadecimal format starting with `0x`, within the range of `0x000000` to `0xFFFFFF`.
 - The number of elements in each line remains consistent, forming a well-defined rectangular shape.
 - A newline character, space, or tab at the end of the file is optional.
