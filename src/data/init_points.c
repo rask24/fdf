@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:40:43 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 21:54:55 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/26 01:57:38 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,15 @@ static double	_calc_z_scale(t_data *data, double xy_scale)
 void	init_points(t_data *data)
 {
 	double	xy_scale;
+	double	z_scale;
 
 	data->points = _alloc_points(data->rows, data->cols);
 	_copy_orig_points(data);
 	apply_operation(data, translate_x, -(data->cols - 1.0) / 2.0);
 	apply_operation(data, translate_y, -(data->rows - 1.0) / 2.0);
 	xy_scale = _calc_xy_scale(data);
+	z_scale = _calc_z_scale(data, xy_scale);
 	apply_operation(data, scale_x, xy_scale);
 	apply_operation(data, scale_y, xy_scale);
-	apply_operation(data, scale_z, _calc_z_scale(data, xy_scale));
+	apply_operation(data, scale_z, _calc_z_scale(data, z_scale));
 }

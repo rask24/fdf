@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:44:53 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 17:44:42 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/26 01:54:14 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	_validate_map_values_internal(char *str)
 		if (*str == '\0' || *str == '\n')
 			break ;
 		val = ft_strtol(str, &endptr, 10);
-		if (val < INT_MIN / DEFAULT_Z_SCALE || INT_MAX / DEFAULT_Z_SCALE < val)
+		if (val < INT_MIN / MAX_Z_SCALE || INT_MAX / MAX_Z_SCALE < val)
 			error_exit(INV_MAP_VALUE_ERR_MSG);
 		if (*endptr == ',')
 		{

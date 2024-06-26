@@ -6,15 +6,15 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/26 20:21:37 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/26 20:22:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
 
-# define DEFAULT_XY_SCALE	40
-# define DEFAULT_Z_SCALE	20
+# define Z_RANGE_THRESHOLD	200.0
+# define MAX_Z_SCALE		280
 
 # define NUM_PRESETS	4
 
