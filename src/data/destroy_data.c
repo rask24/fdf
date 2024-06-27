@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_window.c                                      :+:      :+:    :+:   */
+/*   destroy_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 21:45:14 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 03:13:52 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/28 02:54:16 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/28 03:13:40 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "ctx.h"
 #include "data.h"
-#include "mlx.h"
-#include "mlx_conf.h"
 
-int	exit_window(t_ctx *ctx)
+static void	free_points(t_point **points, int rows)
 {
-	destroy_data(ctx->data);
-	destroy_mlx_conf(ctx->mlx_conf);
-	free(ctx->view_conf);
-	free(ctx);
-	exit(EXIT_SUCCESS);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (i < rows)
+	{
+		free(points[i]);
+		i++;
+	}
+	free(points);
+}
+
+void	destroy_data(t_data *data)
+{
+	if (data == NULL)
+		return ;
+	if (data->orig_points)
+		free_points((t_point **)data->orig_points, data->rows);
+	if (data->points)
+		free_points(data->points, data->rows);
+	free(data);
 }

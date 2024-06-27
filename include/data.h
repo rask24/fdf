@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/26 20:43:02 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 02:56:11 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 typedef t_point	(*t_operation)(t_point p, double param);
 
 t_data	*construct_data(char *file_path);
+void	destroy_data(t_data *data);
 
 void	init_points(t_data *data);
 void	init_colors(t_data *data, int preset);

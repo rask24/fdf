@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_window.c                                      :+:      :+:    :+:   */
+/*   destroy_mlx_conf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 21:45:14 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 03:13:52 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/28 02:59:58 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/28 03:13:14 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "ctx.h"
-#include "data.h"
 #include "mlx.h"
 #include "mlx_conf.h"
 
-int	exit_window(t_ctx *ctx)
+void	destroy_mlx_conf(t_mlx_conf *mlx_conf)
 {
-	destroy_data(ctx->data);
-	destroy_mlx_conf(ctx->mlx_conf);
-	free(ctx->view_conf);
-	free(ctx);
-	exit(EXIT_SUCCESS);
-	return (0);
+	if (mlx_conf == NULL)
+		return ;
+	if (mlx_conf->p_img)
+		mlx_destroy_image(mlx_conf->p_mlx, mlx_conf->p_img);
+	if (mlx_conf->p_win)
+		mlx_destroy_window(mlx_conf->p_mlx, mlx_conf->p_win);
+	free(mlx_conf);
 }
