@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_window.c                                      :+:      :+:    :+:   */
+/*   reset_image.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/23 21:45:14 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 03:13:52 by reasuke          ###   ########.fr       */
+/*   Created: 2024/06/28 02:09:33 by reasuke           #+#    #+#             */
+/*   Updated: 2024/06/28 03:41:26 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "ctx.h"
-#include "data.h"
 #include "mlx.h"
 #include "mlx_conf.h"
+#include "utils.h"
 
-int	exit_window(t_ctx *ctx)
+void	reset_image(t_mlx_conf *mlx_conf)
 {
-	destroy_data(ctx->data);
-	destroy_mlx_conf(ctx->mlx_conf);
-	free(ctx->view_conf);
-	free(ctx);
-	exit(EXIT_SUCCESS);
-	return (0);
+	mlx_destroy_image(mlx_conf->p_mlx, mlx_conf->p_img);
+	mlx_conf->p_img = mlx_new_image(mlx_conf->p_mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (mlx_conf->p_img == NULL)
+		error_exit("mlx_new_image() failed");
+	mlx_conf->p_data = mlx_get_data_addr(mlx_conf->p_img,
+			&mlx_conf->bits_per_pixel, &mlx_conf->line_length,
+			&mlx_conf->endian);
+	if (mlx_conf->p_data == NULL)
+		error_exit("mlx_get_data_addr() failed");
 }

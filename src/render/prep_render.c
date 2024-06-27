@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 23:08:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 20:05:53 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 02:11:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "ctx.h"
 #include "libft.h"
 #include "mlx.h"
+#include "mlx_conf.h"
 
 #include "render_internal.h"
 
 static void	_reset_points(t_ctx *ctx)
 {
-	ft_bzero(ctx->mlx_conf->p_data,
-		WIN_WIDTH * WIN_HEIGHT * (ctx->mlx_conf->bits_per_pixel / 8));
+	reset_image(ctx->mlx_conf);
 	clean_points(ctx->data);
 	ctx->view_conf->offset_x = 0;
 	ctx->view_conf->offset_y = 0;
