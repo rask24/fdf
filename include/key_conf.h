@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 19:55:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 20:18:10 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 03:19:18 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 #  define KEY_9				57
 #  define KEY_0				48
 #  define KEY_ENTER			65293
-#  define KEY_ESCAP			65307
+#  define KEY_ESCAPE		65307
 #  define KEY_BACKSPACE		65288
 #  define KEY_TAB			65289
 #  define KEY_SPACE			32
