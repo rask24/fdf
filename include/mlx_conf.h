@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 23:43:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 21:52:14 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 02:08:44 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ typedef enum e_mouse
 }	t_mouse;
 
 t_mlx_conf	*construct_mlx_conf(void);
+void		reset_image(t_mlx_conf *mlx_conf);
 
 #endif

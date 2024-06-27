@@ -50,6 +50,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/event/handle_keydown.c \
 				$(SRC_DIR)/event/handle_mouse.c \
 				$(SRC_DIR)/mlx_conf/construct_mlx_conf.c \
+				$(SRC_DIR)/mlx_conf/reset_image.c \
 				$(SRC_DIR)/render/plot_line.c \
 				$(SRC_DIR)/render/plot_pixel.c \
 				$(SRC_DIR)/render/prep_render.c \
