@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:40:43 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 15:00:37 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/26 21:10:51 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include "data.h"
 #include "libft.h"
+#include "mlx_conf.h"
 #include "utils.h"
 
 #include "data_internal.h"
@@ -52,13 +53,43 @@ static void	_copy_orig_points(t_data *data)
 	}
 }
 
+static double	_calc_xy_scale(t_data *data)
+{
+	double	x_scale;
+	double	y_scale;
+
+	x_scale = (double)(WIN_WIDTH - 2 * WIN_MARGIN) / data->cols;
+	y_scale = (double)(WIN_HEIGHT - 2 * WIN_MARGIN) / data->rows;
+	if (x_scale < y_scale)
+		return (x_scale);
+	else
+		return (y_scale);
+}
+
+static double	_calc_z_scale(t_data *data, double xy_scale)
+{
+	double	z_range;
+
+	if (data->orig_z_max == data->orig_z_min)
+		return (0);
+	z_range = data->orig_z_max - data->orig_z_min;
+	if (z_range * xy_scale < Z_RANGE_THRESHOLD)
+		return (xy_scale);
+	return (Z_RANGE_THRESHOLD / z_range);
+}
+
 void	init_points(t_data *data)
 {
+	double	xy_scale;
+	double	z_scale;
+
 	data->points = _alloc_points(data->rows, data->cols);
 	_copy_orig_points(data);
 	apply_operation(data, translate_x, -(data->cols - 1.0) / 2.0);
 	apply_operation(data, translate_y, -(data->rows - 1.0) / 2.0);
-	apply_operation(data, scale_x, DEFAULT_XY_SCALE);
-	apply_operation(data, scale_y, DEFAULT_XY_SCALE);
-	apply_operation(data, scale_z, DEFAULT_Z_SCALE);
+	xy_scale = _calc_xy_scale(data);
+	z_scale = _calc_z_scale(data, xy_scale);
+	apply_operation(data, scale_x, xy_scale);
+	apply_operation(data, scale_y, xy_scale);
+	apply_operation(data, scale_z, _calc_z_scale(data, z_scale));
 }

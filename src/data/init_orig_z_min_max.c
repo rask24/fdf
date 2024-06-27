@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_z_min_max.c                                   :+:      :+:    :+:   */
+/*   init_orig_z_min_max.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:09:46 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/24 01:52:31 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/26 20:43:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 void	init_orig_z_min_max(t_data *data)
 {
-	int	i;
-	int	j;
-	int	z;
+	int		i;
+	int		j;
+	double	z;
 
 	data->orig_z_min = INT_MAX;
 	data->orig_z_max = INT_MIN;
@@ -31,9 +31,9 @@ void	init_orig_z_min_max(t_data *data)
 		j = 0;
 		while (j < data->cols)
 		{
-			z = (int)data->orig_points[i][j].z;
-			ft_chmin(&data->orig_z_min, z);
-			ft_chmax(&data->orig_z_max, z);
+			z = data->orig_points[i][j].z;
+			ft_fchmin(&data->orig_z_min, z);
+			ft_fchmax(&data->orig_z_max, z);
 			j++;
 		}
 		i++;

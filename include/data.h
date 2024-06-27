@@ -6,15 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:24:03 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 20:12:38 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/26 20:43:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
-
-# define DEFAULT_XY_SCALE	40
-# define DEFAULT_Z_SCALE	20
 
 # define NUM_PRESETS	4
 
@@ -39,8 +36,8 @@ typedef struct s_data
 	t_point			**points;
 	int				rows;
 	int				cols;
-	int				orig_z_min;
-	int				orig_z_max;
+	double			orig_z_min;
+	double			orig_z_max;
 }	t_data;
 
 typedef t_point	(*t_operation)(t_point p, double param);

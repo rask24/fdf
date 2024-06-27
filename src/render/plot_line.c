@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:00:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/23 18:17:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 01:33:34 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,18 @@
 
 #include "render_internal.h"
 
-static void	_init_line_vars(t_line_vars *line, t_point p1, t_point p2)
+static double	_calculate_ratio(double dx1, double dy1, double dx2, double dy2)
+{
+	double	total_distance;
+	double	current_distance;
+
+	total_distance = sqrt((dx1 * dx1) + (dy1 * dy1));
+	current_distance = sqrt((dx2 * dx2) + (dy2 * dy2));
+	return (1 - (current_distance / total_distance));
+}
+
+static void	_init_line_vars(t_line_vars *line, t_point p1, t_point p2,
+				double *depth_buffer)
 {
 	line->dx = ft_abs((int)p2.x - (int)p1.x);
 	line->dy = ft_abs((int)p2.y - (int)p1.y);
@@ -41,13 +52,12 @@ static void	_init_line_vars(t_line_vars *line, t_point p1, t_point p2)
 	line->c1 = p1.color;
 	line->c2 = p2.color;
 	line->color = p1.color;
+	line->depth_buffer = depth_buffer;
 }
 
 static void	_update_line_vars(t_line_vars *line)
 {
 	int		e2;
-	double	total_distance;
-	double	current_distance;
 	double	ratio;
 
 	e2 = line->err;
@@ -61,21 +71,36 @@ static void	_update_line_vars(t_line_vars *line)
 		line->err += line->dx;
 		line->y0 += line->sy;
 	}
-	total_distance = sqrt((line->dx * line->dx) + (line->dy * line->dy));
-	current_distance = sqrt(((line->x0 - line->x1) * (line->x0 - line->x1))
-			+ ((line->y0 - line->y1) * (line->y0 - line->y1)));
-	ratio = 1 - (current_distance / total_distance);
+	ratio = _calculate_ratio(line->dx, line->dy, line->x0 - line->x1,
+			line->y0 - line->y1);
 	line->color = interpolate_color(line->c1, line->c2, ratio);
 }
 
-void	plot_line(t_ctx *ctx, t_point p1, t_point p2)
+static double	_interpolate_z(t_point p1, t_point p2, int x, int y)
+{
+	double	ratio;
+
+	ratio = _calculate_ratio(p2.x - p1.x, p2.y - p1.y, x - p1.x, y - p1.y);
+	return (p1.z + ((p2.z - p1.z) * ratio));
+}
+
+void	plot_line(t_ctx *ctx, t_point p1, t_point p2, double *depth_buffer)
 {
 	t_line_vars	line;
+	double		z;
+	int			win_x;
+	int			win_y;
 
-	_init_line_vars(&line, p1, p2);
+	_init_line_vars(&line, p1, p2, depth_buffer);
 	while (true)
 	{
-		plot_pixel(ctx, line.x0, line.y0, line.color);
+		z = _interpolate_z(p1, p2, line.x0, line.y0);
+		(void)z;
+		win_x = line.x0 + (WIN_WIDTH - 1) / 2 + ctx->view_conf->offset_x;
+		win_y = line.y0 + (WIN_HEIGHT - 1) / 2 + ctx->view_conf->offset_y;
+		if (win_x >= 0 && win_x < WIN_WIDTH && win_y >= 0 && win_y < WIN_HEIGHT
+			&& ft_fchmax(depth_buffer + win_y * WIN_WIDTH + win_x, z))
+			plot_pixel(ctx, win_x, win_y, line.color);
 		if (line.x0 == line.x1 && line.y0 == line.y1)
 			break ;
 		_update_line_vars(&line);
