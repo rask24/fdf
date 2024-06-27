@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:00:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 00:45:41 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 01:33:34 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 #include "utils.h"
 
 #include "render_internal.h"
+
+static double	_calculate_ratio(double dx1, double dy1, double dx2, double dy2)
+{
+	double	total_distance;
+	double	current_distance;
+
+	total_distance = sqrt((dx1 * dx1) + (dy1 * dy1));
+	current_distance = sqrt((dx2 * dx2) + (dy2 * dy2));
+	return (1 - (current_distance / total_distance));
+}
 
 static void	_init_line_vars(t_line_vars *line, t_point p1, t_point p2,
 				double *depth_buffer)
@@ -48,8 +58,6 @@ static void	_init_line_vars(t_line_vars *line, t_point p1, t_point p2,
 static void	_update_line_vars(t_line_vars *line)
 {
 	int		e2;
-	double	total_distance;
-	double	current_distance;
 	double	ratio;
 
 	e2 = line->err;
@@ -63,24 +71,16 @@ static void	_update_line_vars(t_line_vars *line)
 		line->err += line->dx;
 		line->y0 += line->sy;
 	}
-	total_distance = sqrt((line->dx * line->dx) + (line->dy * line->dy));
-	current_distance = sqrt(((line->x0 - line->x1) * (line->x0 - line->x1))
-			+ ((line->y0 - line->y1) * (line->y0 - line->y1)));
-	ratio = 1 - (current_distance / total_distance);
+	ratio = _calculate_ratio(line->dx, line->dy, line->x0 - line->x1,
+			line->y0 - line->y1);
 	line->color = interpolate_color(line->c1, line->c2, ratio);
 }
 
 static double	_interpolate_z(t_point p1, t_point p2, int x, int y)
 {
-	double	total_distance;
-	double	current_distance;
 	double	ratio;
 
-	total_distance = sqrt(((p2.x - p1.x) * (p2.x - p1.x))
-			+ ((p2.y - p1.y) * (p2.y - p1.y)));
-	current_distance = sqrt(((x - p1.x) * (x - p1.x))
-			+ ((y - p1.y) * (y - p1.y)));
-	ratio = 1 - (current_distance / total_distance);
+	ratio = _calculate_ratio(p2.x - p1.x, p2.y - p1.y, x - p1.x, y - p1.y);
 	return (p1.z + ((p2.z - p1.z) * ratio));
 }
 
