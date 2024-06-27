@@ -6,16 +6,37 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 20:59:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 20:10:16 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 00:03:10 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
 #include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "mlx.h"
 #include "render.h"
+#include "utils.h"
 
 #include "render_internal.h"
+
+static double	*_construct_depth_duffer(void)
+{
+	double	*depth_buffer;
+	int		i;
+
+	depth_buffer = malloc(sizeof(double) * WIN_HEIGHT * WIN_WIDTH);
+	if (depth_buffer == NULL)
+		error_exit(strerror(errno));
+	i = 0;
+	while (i < WIN_HEIGHT * WIN_WIDTH)
+	{
+		depth_buffer[i] = -INFINITY;
+		i++;
+	}
+	return (depth_buffer);
+}
 
 static t_point	_transform_point(t_ctx *ctx, t_point p)
 {
@@ -27,7 +48,7 @@ static t_point	_transform_point(t_ctx *ctx, t_point p)
 	return (p);
 }
 
-static void	_plot_row_line(t_ctx *ctx, int i, int j)
+static void	_plot_row_line(t_ctx *ctx, int i, int j, double *depth_buffer)
 {
 	t_point	p1;
 	t_point	p2;
@@ -36,10 +57,10 @@ static void	_plot_row_line(t_ctx *ctx, int i, int j)
 		return ;
 	p1 = _transform_point(ctx, ctx->data->points[i][j]);
 	p2 = _transform_point(ctx, ctx->data->points[i][j + 1]);
-	plot_line(ctx, p1, p2);
+	plot_line(ctx, p1, p2, depth_buffer);
 }
 
-static void	_plot_col_line(t_ctx *ctx, int i, int j)
+static void	_plot_col_line(t_ctx *ctx, int i, int j, double *depth_buffer)
 {
 	t_point	p1;
 	t_point	p2;
@@ -48,26 +69,29 @@ static void	_plot_col_line(t_ctx *ctx, int i, int j)
 		return ;
 	p1 = _transform_point(ctx, ctx->data->points[i][j]);
 	p2 = _transform_point(ctx, ctx->data->points[i + 1][j]);
-	plot_line(ctx, p1, p2);
+	plot_line(ctx, p1, p2, depth_buffer);
 }
 
 void	render_image(t_ctx *ctx)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	double	*depth_buffer;
 
+	depth_buffer = _construct_depth_duffer();
 	i = 0;
 	while (i < ctx->data->rows)
 	{
 		j = 0;
 		while (j < ctx->data->cols)
 		{
-			_plot_row_line(ctx, i, j);
-			_plot_col_line(ctx, i, j);
+			_plot_row_line(ctx, i, j, depth_buffer);
+			_plot_col_line(ctx, i, j, depth_buffer);
 			j++;
 		}
 		i++;
 	}
 	mlx_put_image_to_window(ctx->mlx_conf->p_mlx,
 		ctx->mlx_conf->p_win, ctx->mlx_conf->p_img, 0, 0);
+	free(depth_buffer);
 }
