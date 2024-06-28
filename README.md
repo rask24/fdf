@@ -63,6 +63,9 @@ The application supports various keyboard and mouse inputs to manipulate the vie
 - Each element represents the **height** and must be an integer within the range of `INT_MIN` to `INT_MAX`.
 - An element can optionally include a **color** in hexadecimal format starting with `0x`, within the range of `0x000000` to `0xFFFFFF`.
 - The number of elements in each line remains consistent, forming a well-defined rectangular shape.
+  - A single element in a map (e.g., 0) is considered invalid and will result in an error.
+  - A map that forms a straight line (e.g., 0 0 or 0\n0) is considered a valid rectangle if it consists of at least two elements in total, either in a single row or across multiple rows.
+  - An empty map or a map with only delimiters or invalid characters is considered invalid and will result in an error.
 - A newline character, space, or tab at the end of the file is optional.
 
 ### Sample Format

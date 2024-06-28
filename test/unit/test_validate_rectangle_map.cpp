@@ -62,3 +62,24 @@ TEST(validate_rectangle_map, InvalidMap3) {
   EXPECT_EXIT(validate_rectangle_map(map), ::testing::ExitedWithCode(1),
               "fdf: Map is not a rectangle\n");
 }
+
+TEST(validate_rectangle_map, InvalidMap4) {
+  char *map[] = {const_cast<char *>("0"), NULL};
+
+  EXPECT_EXIT(validate_rectangle_map(map), ::testing::ExitedWithCode(1),
+              "fdf: Map has only one element\n");
+}
+
+TEST(validate_rectangle_map, InvalidMap5) {
+  char *map[] = {const_cast<char *>(" "), NULL};
+
+  EXPECT_EXIT(validate_rectangle_map(map), ::testing::ExitedWithCode(1),
+              "fdf: First line of map has no elements\n");
+}
+
+TEST(validate_rectangle_map, InvalidMap6) {
+  char *map[] = {const_cast<char *>(" \n"), const_cast<char *>(" \n"), NULL};
+
+  EXPECT_EXIT(validate_rectangle_map(map), ::testing::ExitedWithCode(1),
+              "fdf: First line of map has no elements\n");
+}
