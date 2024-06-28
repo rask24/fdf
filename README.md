@@ -79,3 +79,19 @@ The application supports various keyboard and mouse inputs to manipulate the vie
 0  1  0  0  0  0  0  0  3  0
 0  0  0  0  0  0  0  0  0  0
 ```
+
+## Design Diagrams
+
+### Class Diagram
+
+![Class Diagram](assets/class_diagram.jpg)
+
+### Sequence Diagrams
+
+#### normal
+
+![Seqence Diagram](assets/sequence_diagram_normal.jpg)
+
+#### handle events
+
+![Sequence Diagram: handle events](assets/sequence_diagram_handle_events.jpg)
