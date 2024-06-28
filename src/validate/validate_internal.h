@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 00:33:59 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 19:49:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 19:58:35 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define INV_ARGS_ERR_MSG					"Invalid number of arguments"
 # define INV_FILE_FORMAT_ERR_MSG			"Invalid file format"
 # define EMPTY_MAP_ERR_MSG					"Empty map"
-# define MAP_HAS_NO_ELEMENTS_ERR_MSG		"Map has no elements"
+# define MAP_FIRST_LINE_ERR_MSG				"First line of map has no elements"
 # define MAP_HAS_ONLY_ONE_ELEMENT_ERR_MSG	"Map has only one element"
 # define MAP_NOT_RECT_ERR_MSG				"Map is not a rectangle"
 # define INV_MAP_FORMAT_ERR_MSG				"Invalid map format"
