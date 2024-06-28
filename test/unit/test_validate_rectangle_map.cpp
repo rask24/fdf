@@ -62,3 +62,10 @@ TEST(validate_rectangle_map, InvalidMap3) {
   EXPECT_EXIT(validate_rectangle_map(map), ::testing::ExitedWithCode(1),
               "fdf: Map is not a rectangle\n");
 }
+
+TEST(validate_rectangle_map, InvalidMap4) {
+  char *map[] = {const_cast<char *>("0"), NULL};
+
+  EXPECT_EXIT(validate_rectangle_map(map), ::testing::ExitedWithCode(1),
+              "fdf: Map is not a rectangle\n");
+}
