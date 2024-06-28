@@ -24,6 +24,39 @@ To run the application, use:
 ./fdf ./maps/42.fdf
 ```
 
+### Controls
+
+The application supports various keyboard and mouse inputs to manipulate the view and interact with the map:
+
+#### Keyboard Controls
+
+- 1: Switch to isometric view
+- 2: Switch to top view
+- 3: Switch to oblique view
+- W: Move the view up
+- A: Move the view left
+- S: Move the view down
+- D: Move the view right
+- F: Zoom in
+- G: Zoom out
+- Q: Rotate left around the Y-axis
+- E: Rotate right around the Y-axis
+- R: Rotate up around the X-axis
+- V: Rotate down around the X-axis
+- Z: Rotate counterclockwise around the Z-axis
+- C: Rotate clockwise around the Z-axis
+- X: Cycle through color presets
+- T: Toggle instructions
+- ESC: Exit the application
+
+#### Mouse Controls
+
+- Left Button: Rotate the view
+- Right Button: Move the view
+- Middle Button: Cycle through color presets
+- Scroll Up: Zoom in
+- Scroll Down: Zoom out
+
 ## FDF File Format
 
 - Each line consists of multiple elements separated by spaces or tabs (trailing spaces or tabs are also accepted).
