@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 02:05:29 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/21 19:39:59 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/06/28 19:20:55 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	validate_rectangle_map(char **map)
 
 	i = 0;
 	init_cnt = _count_elements(map[0]);
+	if (init_cnt == 1 && map[1] == NULL)
+		error_exit(MAP_NOT_RECT_ERR_MSG);
 	while (map[i])
 	{
 		if (_count_elements(map[i]) != init_cnt)
