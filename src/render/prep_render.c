@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 23:08:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 02:11:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/01 12:30:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	prep_render(t_ctx *ctx, bool is_clean)
 	if (ctx->view_conf->type == ISOMETRIC)
 	{
 		apply_operation(ctx->data, rotate_z, M_PI_4);
-		apply_operation(ctx->data, rotate_x, atan(1 / sqrt(2)));
+		apply_operation(ctx->data, rotate_x, atan(sqrt(2)));
 		render_image(ctx);
 		_put_label(ctx, "isometric view");
 	}
