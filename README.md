@@ -33,6 +33,7 @@ The application supports various keyboard and mouse inputs to manipulate the vie
 - 1: Switch to isometric view
 - 2: Switch to top view
 - 3: Switch to oblique view
+- 3: Switch to perspective view
 - W: Move the view up
 - A: Move the view left
 - S: Move the view down
