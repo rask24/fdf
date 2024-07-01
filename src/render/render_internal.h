@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 00:24:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 00:41:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/02 00:21:14 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 
 # define STR_INTERVAL	20
 
-# define LABEL_X_OFFSET	920
+# define LABEL_X_OFFSET	900
 # define LABEL_Y_OFFSET	20
 
 # define SHRINK_FACTOR	0.5
+
+# define PERSPECTIVE_POINT	1000
 
 typedef struct s_line_vars
 {

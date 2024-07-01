@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:11:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 20:01:48 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/02 00:17:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	_show_instruction(t_ctx *ctx)
 	_render_instruction(ctx, &y, color, "1 - Isometric View");
 	_render_instruction(ctx, &y, color, "2 - Top View");
 	_render_instruction(ctx, &y, color, "3 - Oblique View");
+	_render_instruction(ctx, &y, color, "4 - Perspective View");
 	_render_instruction(ctx, &y, color, "W - Move Up");
 	_render_instruction(ctx, &y, color, "A - Move Left");
 	_render_instruction(ctx, &y, color, "S - Move Down");

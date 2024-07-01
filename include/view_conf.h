@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 01:51:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 00:23:34 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/01 17:19:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef enum e_type
 	ISOMETRIC,
 	TOPVIEW,
 	OBLIQUE,
+	PERSPECTIVE,
 }	t_type;
 
 typedef enum e_preset
