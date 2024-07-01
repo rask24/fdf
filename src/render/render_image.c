@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 20:59:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/07/02 00:11:08 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/02 00:37:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static double	*_construct_depth_buffer(void)
 
 static t_point	_transform_point(t_ctx *ctx, t_point p)
 {
+	double	scale;
+
 	if (ctx->view_conf->type == OBLIQUE)
 	{
 		p.x -= SHRINK_FACTOR * cos(M_PI_4) * p.z;
@@ -51,8 +53,9 @@ static t_point	_transform_point(t_ctx *ctx, t_point p)
 			p.x = NAN;
 		else
 		{
-			p.x = p.x * PERSPECTIVE_POINT / (PERSPECTIVE_POINT - p.z);
-			p.y = p.y * PERSPECTIVE_POINT / (PERSPECTIVE_POINT - p.z);
+			scale = PERSPECTIVE_POINT / (PERSPECTIVE_POINT - p.z);
+			p.x *= scale;
+			p.y *= scale;
 		}
 	}
 	return (p);
