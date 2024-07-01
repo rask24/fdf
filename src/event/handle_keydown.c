@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 21:41:34 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/25 19:59:07 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/02 00:08:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	_handle_change_view(int keycode, t_ctx *ctx)
 		ctx->view_conf->type = TOPVIEW;
 	else if (keycode == KEY_3)
 		ctx->view_conf->type = OBLIQUE;
+	else if (keycode == KEY_4)
+		ctx->view_conf->type = PERSPECTIVE;
 	prep_render(ctx, true);
 }
 
@@ -73,7 +75,7 @@ int	handle_keydown(int keycode, t_ctx *ctx)
 {
 	if (keycode == KEY_ESCAPE)
 		exit_window(ctx);
-	else if (keycode == KEY_1 || keycode == KEY_2 || keycode == KEY_3)
+	else if (KEY_1 <= keycode && keycode <= KEY_4)
 		_handle_change_view(keycode, ctx);
 	else if (keycode == KEY_D || keycode == KEY_A
 		|| keycode == KEY_W || keycode == KEY_S)

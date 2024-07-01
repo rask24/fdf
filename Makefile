@@ -70,7 +70,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/view_conf/construct_view_conf.c
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
-HEADER		= $(wildcard $(INC_DIR)/*.h)
+HEADER		= $(wildcard $(INC_DIR)/*.h, $(SRC_DIR)/**/*.h)
 
 # colors
 RESET		= \033[0m
