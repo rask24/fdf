@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 20:59:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 00:59:45 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/02 00:37:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,23 @@ static double	*_construct_depth_buffer(void)
 
 static t_point	_transform_point(t_ctx *ctx, t_point p)
 {
+	double	scale;
+
 	if (ctx->view_conf->type == OBLIQUE)
 	{
 		p.x -= SHRINK_FACTOR * cos(M_PI_4) * p.z;
 		p.y -= SHRINK_FACTOR * sin(M_PI_4) * p.z;
+	}
+	else if (ctx->view_conf->type == PERSPECTIVE)
+	{
+		if (p.z > PERSPECTIVE_POINT)
+			p.x = NAN;
+		else
+		{
+			scale = PERSPECTIVE_POINT / (PERSPECTIVE_POINT - p.z);
+			p.x *= scale;
+			p.y *= scale;
+		}
 	}
 	return (p);
 }
@@ -57,13 +70,15 @@ static void	_plot_grid_lines(t_ctx *ctx, int i, int j, double *depth_buffer)
 	{
 		p1 = _transform_point(ctx, ctx->data->points[i][j]);
 		p2 = _transform_point(ctx, ctx->data->points[i + 1][j]);
-		plot_line(ctx, p1, p2, depth_buffer);
+		if (!isnan(p1.x) && !isnan(p2.x))
+			plot_line(ctx, p1, p2, depth_buffer);
 	}
 	if (j < ctx->data->cols - 1)
 	{
 		p1 = _transform_point(ctx, ctx->data->points[i][j]);
 		p2 = _transform_point(ctx, ctx->data->points[i][j + 1]);
-		plot_line(ctx, p1, p2, depth_buffer);
+		if (!isnan(p1.x) && !isnan(p2.x))
+			plot_line(ctx, p1, p2, depth_buffer);
 	}
 }
 

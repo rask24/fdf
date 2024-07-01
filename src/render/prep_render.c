@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 23:08:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/07/01 12:30:54 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/07/01 17:34:56 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void	prep_render(t_ctx *ctx, bool is_clean)
 	{
 		render_image(ctx);
 		_put_label(ctx, "oblique view");
+	}
+	else if (ctx->view_conf->type == PERSPECTIVE)
+	{
+		render_image(ctx);
+		_put_label(ctx, "perspective view");
 	}
 	render_instructions(ctx);
 }
