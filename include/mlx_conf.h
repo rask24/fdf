@@ -6,14 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 23:43:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/06/28 02:59:34 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/06 19:52:15 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_CONF_H
 # define MLX_CONF_H
-
-# include "key_conf.h"
 
 # define WIN_TITLE	"fdf"
 # define WIN_HEIGHT	800
